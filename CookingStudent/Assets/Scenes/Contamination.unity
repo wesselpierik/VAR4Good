@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da4670933680b5443a4461af1fcb4fc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  decontaminationType: 0
 --- !u!1 &390521805
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,7 +739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isContaminated: 1
-  isDecontaminatable: 0
+  decontaminationType: 2
   showContamination: 1
 --- !u!1 &646125395
 GameObject:
@@ -1674,7 +1675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isContaminated: 0
-  isDecontaminatable: 1
+  decontaminationType: 0
   showContamination: 1
 --- !u!114 &992783362
 MonoBehaviour:
@@ -2278,7 +2279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isContaminated: 0
-  isDecontaminatable: 1
+  decontaminationType: 0
   showContamination: 1
 --- !u!1 &1162046966
 GameObject:
@@ -2330,7 +2331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isContaminated: 0
-  isDecontaminatable: 1
+  decontaminationType: 0
   showContamination: 1
 --- !u!114 &1162046969
 MonoBehaviour:
@@ -2635,7 +2636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isContaminated: 0
-  isDecontaminatable: 1
+  decontaminationType: 0
   showContamination: 1
 --- !u!114 &1341835099
 MonoBehaviour:

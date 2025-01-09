@@ -5,17 +5,24 @@ public class Contamination : MonoBehaviour
 {
     /* public states */
     public bool isContaminated = false;
-    public bool isDecontaminatable = true;
 
-    // this should be a global settings scripts probably...
+    // this should be in a global settings scripts probably...
     public bool showContamination = true;
+    public DecontaminationType decontaminationType = DecontaminationType.Washable;
+
+
 
 
     void Start()
     {
-        if (isContaminated)
+        // if (isContaminated)
+        // {
+        //     Contaminate();
+        // }
+
+        if (isContaminated && showContamination)
         {
-            Contaminate();
+            GetComponent<Renderer>().material.color = Color.red;
         }
     }
 
@@ -25,13 +32,13 @@ public class Contamination : MonoBehaviour
         isContaminated = true;
         if (showContamination)
         {
-            GetComponent<Renderer>().material.color = Color.red;
+            GetComponent<Renderer>().material.color = new Color(1.0f, 0.64f, 0.0f);
         }
     }
 
-    public void Decontaminate()
+    public void Decontaminate(DecontaminationType sourceDecontaminationType)
     {
-        if (!isDecontaminatable) { return; }
+        if (decontaminationType != sourceDecontaminationType) { return; }
         isContaminated = false;
 
         // TODO: reset the color to original state instead of hardcolor color
