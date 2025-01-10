@@ -1793,20 +1793,20 @@ MonoBehaviour:
   m_GroupName: Right
   m_InteractionManager: {fileID: 1045018311}
   m_StartingGroupMembers:
-  - {fileID: 293674552}
   - {fileID: 689355349}
+  - {fileID: 1516919881}
   - {fileID: 147448864}
+  - {fileID: 293674552}
   m_StartingInteractionOverridesMap:
-  - groupMember: {fileID: 1516919881}
-    overrideGroupMembers:
-    - {fileID: 293674552}
-    - {fileID: 689355349}
-    - {fileID: 147448864}
   - groupMember: {fileID: 147448864}
-    overrideGroupMembers: []
+    overrideGroupMembers:
+    - {fileID: 689355349}
   - groupMember: {fileID: 689355349}
-    overrideGroupMembers: []
+    overrideGroupMembers:
+    - {fileID: 1516919881}
   - groupMember: {fileID: 293674552}
+    overrideGroupMembers: []
+  - groupMember: {fileID: 1516919881}
     overrideGroupMembers: []
 --- !u!114 &788059137
 MonoBehaviour:
@@ -1822,7 +1822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ManipulationInteractionGroup: {fileID: 788059136}
   m_DirectInteractor: {fileID: 689355349}
-  m_RayInteractor: {fileID: 0}
+  m_RayInteractor: {fileID: 1516919881}
   m_TeleportInteractor: {fileID: 293674552}
   m_TeleportModeActivate: {fileID: -8061240218431744966, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_TeleportModeCancel: {fileID: 2307464322626738743, guid: c348712bda248c246b8c49b3db54643f, type: 3}
@@ -3077,7 +3077,7 @@ MonoBehaviour:
   m_HoverTimeToSelect: 0.5
   m_AutoDeselect: 0
   m_TimeToAutoDeselect: 3
-  m_EnableUIInteraction: 0
+  m_EnableUIInteraction: 1
   m_BlockUIOnInteractableSelection: 1
   m_AllowAnchorControl: 1
   m_UseForceGrab: 1
@@ -3411,7 +3411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6803edce0201f574f923fd9d10e5b30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 0}
+  m_InteractionManager: {fileID: 1045018311}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
