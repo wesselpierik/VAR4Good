@@ -9,77 +9,62 @@ public class Contamination : MonoBehaviour
     public bool showContamination = true;
     public DecontaminationType decontaminationType = DecontaminationType.Washable;
 
+    private Color contaminationColor = Color.red;
+    // new Color(1.0f, 0.5f, 0.0f)
+    private Color originalColor;
+
     void Start()
     {
-        // if (isContaminated)
-        // {
-        //     Contaminate();
-        // }
+        originalColor = GetMaterial().color;
+        Debug.Log(originalColor);
 
-        if (isContaminated && showContamination)
-        {
-            GetComponent<Renderer>().material.color = Color.red;
-        }
+        if (isContaminated)
+            UpdateMaterial(contaminationColor);
+    }
+
+    Material GetMaterial()
+    {
+        return CompareTag("Hand") ? GetComponentInChildren<SkinnedMeshRenderer>().material : GetComponent<Renderer>().material;
+    }
+
+    void UpdateMaterial(Color color)
+    {
+        if (!showContamination) return;
+        GetMaterial().color = color;
     }
 
     // Contaminate self
-    void Contaminate()
+    void Contaminate(DecontaminationType sourceDecontaminationType)
     {
+        //decontaminationType = sourceDecontaminationType; // contaminate the same type?
         isContaminated = true;
-        if (showContamination)
-        {
-            // if is hand:
-            if (gameObject.tag == "Hand")
-            {
-                GetComponentInChildren<SkinnedMeshRenderer>().material.color = new Color(1.0f, 0.5f, 0.0f);
-            }
-            else
-            {
-                GetComponent<Renderer>().material.color = new Color(1.0f, 0.5f, 0.0f);
-            }
-        }
+        UpdateMaterial(contaminationColor);
     }
 
     public void Decontaminate(DecontaminationType sourceDecontaminationType)
     {
-        if (decontaminationType != sourceDecontaminationType) { return; }
+        if (decontaminationType != sourceDecontaminationType) return;
+        Debug.Log(1);
         isContaminated = false;
-
-        // TODO: reset the color to original state instead of hardcolor color
-        if (gameObject.tag == "Hand")
-        {
-            GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.green;
-
-        }
-        else
-        {
-            GetComponent<Renderer>().material.color = Color.green;
-        }
-
-
+        UpdateMaterial(originalColor);
     }
 
 
-    // improve the code quality
     void OnCollisionEnter(Collision other)
     {
-        if (!isContaminated) { return; }
-
-        Contamination c = other.gameObject.GetComponent<Contamination>();
-        if (c != null && !c.isContaminated)
-        {
-            c.Contaminate();
-        }
+        AttemptContamination(other.gameObject.GetComponent<Contamination>());
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (!isContaminated) { return; }
+        AttemptContamination(other.gameObject.GetComponent<Contamination>());
+    }
 
-        Contamination c = other.gameObject.GetComponent<Contamination>();
-        if (c != null && !c.isContaminated)
+    void AttemptContamination(Contamination c)
+    {
+        if (isContaminated && c != null && !c.isContaminated)
         {
-            c.Contaminate();
+            c.Contaminate(decontaminationType);
         }
     }
 }
