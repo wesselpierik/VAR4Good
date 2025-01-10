@@ -73,4 +73,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Ignore VSCode specific files
-.vscode
+.vscode/
+
+*.json
