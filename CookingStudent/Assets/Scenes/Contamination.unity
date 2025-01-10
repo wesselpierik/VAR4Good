@@ -739,8 +739,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isContaminated: 1
-  decontaminationType: 2
   showContamination: 1
+  decontaminationType: 2
 --- !u!1 &646125395
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,9 +895,11 @@ GameObject:
   - component: {fileID: 766006498}
   - component: {fileID: 766006500}
   - component: {fileID: 766006499}
+  - component: {fileID: 766006501}
+  - component: {fileID: 766006502}
   m_Layer: 0
   m_Name: Left Controller
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1254,6 +1256,48 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_PhysicsTriggerInteraction: 1
+--- !u!114 &766006501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766006496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6f2183699fc8341b685987b4f4b807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isContaminated: 0
+  showContamination: 1
+  decontaminationType: 0
+--- !u!54 &766006502
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766006496}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &788059133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,9 +1310,11 @@ GameObject:
   - component: {fileID: 788059135}
   - component: {fileID: 788059137}
   - component: {fileID: 788059136}
+  - component: {fileID: 788059138}
+  - component: {fileID: 788059139}
   m_Layer: 0
   m_Name: Right Controller
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1625,6 +1671,48 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_PhysicsTriggerInteraction: 1
+--- !u!114 &788059138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788059133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6f2183699fc8341b685987b4f4b807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isContaminated: 0
+  showContamination: 1
+  decontaminationType: 0
+--- !u!54 &788059139
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788059133}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &992783359
 GameObject:
   m_ObjectHideFlags: 0
@@ -1675,8 +1763,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isContaminated: 0
-  decontaminationType: 0
   showContamination: 1
+  decontaminationType: 0
 --- !u!114 &992783362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2279,8 +2367,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isContaminated: 0
-  decontaminationType: 0
   showContamination: 1
+  decontaminationType: 0
 --- !u!1 &1162046966
 GameObject:
   m_ObjectHideFlags: 0
@@ -2331,8 +2419,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isContaminated: 0
-  decontaminationType: 0
   showContamination: 1
+  decontaminationType: 0
 --- !u!114 &1162046969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2636,8 +2724,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isContaminated: 0
-  decontaminationType: 0
   showContamination: 1
+  decontaminationType: 0
 --- !u!114 &1341835099
 MonoBehaviour:
   m_ObjectHideFlags: 0
