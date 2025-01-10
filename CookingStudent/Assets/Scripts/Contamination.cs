@@ -9,8 +9,6 @@ public class Contamination : MonoBehaviour
     public bool showContamination = true;
     public DecontaminationType decontaminationType = DecontaminationType.Washable;
 
-    private originalMaterial
-
     void Start()
     {
         // if (isContaminated)
@@ -31,10 +29,12 @@ public class Contamination : MonoBehaviour
         if (showContamination)
         {
             // if is hand:
-            if (gameObject.tag == "Hand") {
+            if (gameObject.tag == "Hand")
+            {
                 GetComponentInChildren<SkinnedMeshRenderer>().material.color = new Color(1.0f, 0.5f, 0.0f);
             }
-            else {
+            else
+            {
                 GetComponent<Renderer>().material.color = new Color(1.0f, 0.5f, 0.0f);
             }
         }
@@ -46,11 +46,13 @@ public class Contamination : MonoBehaviour
         isContaminated = false;
 
         // TODO: reset the color to original state instead of hardcolor color
-        if (gameObject.tag == "Hand") {
+        if (gameObject.tag == "Hand")
+        {
             GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.green;
 
         }
-        else {
+        else
+        {
             GetComponent<Renderer>().material.color = Color.green;
         }
 
@@ -70,7 +72,8 @@ public class Contamination : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter(Collider other)
+    {
         if (!isContaminated) { return; }
 
         Contamination c = other.gameObject.GetComponent<Contamination>();
