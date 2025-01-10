@@ -329,6 +329,7 @@ GameObject:
   - component: {fileID: 3240524871626806228}
   - component: {fileID: 3240524871636401154}
   - component: {fileID: 7103508275897493694}
+  - component: {fileID: 1173447989010925489}
   m_Layer: 0
   m_Name: RightHand
   m_TagString: Untagged
@@ -389,6 +390,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gripInputAction: {fileID: -1758520528963094988, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   triggerInputAction: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+--- !u!114 &1173447989010925489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3240524871627034548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e78f0523b7545468906388475f3692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PokePoint: {fileID: 3240524871626806254}
 --- !u!1 &3240524871627034550
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,7 +896,7 @@ Transform:
   m_GameObject: {fileID: 3240524871627034582}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.026469523, y: 0.0000004068423, z: 0.00000019527813}
+  m_LocalPosition: {x: 0.026469523, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
