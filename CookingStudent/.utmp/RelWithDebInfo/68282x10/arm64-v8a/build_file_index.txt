@@ -1,0 +1,2 @@
+C:\VAR4Good\CookingStudent\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\VAR4Good\CookingStudent\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt
