@@ -77,3 +77,4 @@ crashlytics-build.properties
 
 *.json
 .utmp/
+CookingStudent_BurstDebugInformation_*/
