@@ -9,14 +9,15 @@ public class Contamination : MonoBehaviour
     public bool showContamination = true;
     public DecontaminationType decontaminationType = DecontaminationType.Washable;
 
+
     private Color contaminationColor = Color.red;
     // new Color(1.0f, 0.5f, 0.0f)
     private Color originalColor;
 
     void Start()
     {
-        originalColor = GetMaterial().color;
-        Debug.Log(originalColor);
+        // TODO: remove hardcoded hand color
+        originalColor = CompareTag("Hand") ? new Color32(0xC4, 0xC4, 0xC4, 0xFF) : GetMaterial().color;
 
         if (isContaminated)
             UpdateMaterial(contaminationColor);
@@ -44,7 +45,6 @@ public class Contamination : MonoBehaviour
     public void Decontaminate(DecontaminationType sourceDecontaminationType)
     {
         if (decontaminationType != sourceDecontaminationType) return;
-        Debug.Log(1);
         isContaminated = false;
         UpdateMaterial(originalColor);
     }
