@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class Contamination : MonoBehaviour
 {
     /* public states */
@@ -10,8 +9,7 @@ public class Contamination : MonoBehaviour
     public bool showContamination = true;
     public DecontaminationType decontaminationType = DecontaminationType.Washable;
 
-
-
+    private originalMaterial
 
     void Start()
     {
@@ -32,7 +30,13 @@ public class Contamination : MonoBehaviour
         isContaminated = true;
         if (showContamination)
         {
-            GetComponent<Renderer>().material.color = new Color(1.0f, 0.64f, 0.0f);
+            // if is hand:
+            if (gameObject.tag == "Hand") {
+                GetComponentInChildren<SkinnedMeshRenderer>().material.color = new Color(1.0f, 0.5f, 0.0f);
+            }
+            else {
+                GetComponent<Renderer>().material.color = new Color(1.0f, 0.5f, 0.0f);
+            }
         }
     }
 
@@ -42,11 +46,31 @@ public class Contamination : MonoBehaviour
         isContaminated = false;
 
         // TODO: reset the color to original state instead of hardcolor color
-        GetComponent<Renderer>().material.color = Color.green;
+        if (gameObject.tag == "Hand") {
+            GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.green;
+
+        }
+        else {
+            GetComponent<Renderer>().material.color = Color.green;
+        }
+
+
     }
 
+
+    // improve the code quality
     void OnCollisionEnter(Collision other)
     {
+        if (!isContaminated) { return; }
+
+        Contamination c = other.gameObject.GetComponent<Contamination>();
+        if (c != null && !c.isContaminated)
+        {
+            c.Contaminate();
+        }
+    }
+
+    void OnTriggerEnter(Collider other) {
         if (!isContaminated) { return; }
 
         Contamination c = other.gameObject.GetComponent<Contamination>();
