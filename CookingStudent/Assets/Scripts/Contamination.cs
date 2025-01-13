@@ -3,23 +3,26 @@ using UnityEngine;
 public class Contamination : MonoBehaviour
 {
     /* public states */
-    public bool isContaminated = false;
+    public bool isContaminatedCookable = false;
+    public bool isContaminatedWashable = false;
 
     // this should be in a global settings scripts probably...
     public bool showContamination = true;
-    public DecontaminationType decontaminationType = DecontaminationType.Washable;
 
 
     private Color contaminationColor = Color.red;
-    // new Color(1.0f, 0.5f, 0.0f)
     private Color originalColor;
+
+    public bool IsContaminated() {
+        return isContaminatedWashable || isContaminatedCookable;
+    }
 
     void Start()
     {
         // TODO: remove hardcoded hand color
         originalColor = CompareTag("Hand") ? new Color32(0xC4, 0xC4, 0xC4, 0xFF) : GetMaterial().color;
 
-        if (isContaminated)
+        if (IsContaminated())
             UpdateMaterial(contaminationColor);
     }
 
@@ -35,17 +38,26 @@ public class Contamination : MonoBehaviour
     }
 
     // Contaminate self
-    void Contaminate(DecontaminationType sourceDecontaminationType)
+    void Contaminate(bool contaminateWashable, bool contaminateCookable)
     {
-        //decontaminationType = sourceDecontaminationType; // contaminate the same type?
-        isContaminated = true;
-        UpdateMaterial(contaminationColor);
+        // update contamination status
+        isContaminatedWashable = isContaminatedWashable || contaminateWashable;
+        isContaminatedCookable = isContaminatedCookable || contaminateCookable;
+
+        if (IsContaminated())
+            UpdateMaterial(contaminationColor);
     }
 
-    public void Decontaminate(DecontaminationType sourceDecontaminationType)
+    public void Decontaminate(bool decontaminateWashable, bool decontaminateCookable)
     {
-        if (decontaminationType != sourceDecontaminationType) return;
-        isContaminated = false;
+        if (isContaminatedWashable && decontaminateWashable) {
+            isContaminatedWashable = false;
+        }
+
+        if (isContaminatedCookable && decontaminateCookable && !isContaminatedWashable) {
+            isContaminatedCookable = false;
+        }
+
         UpdateMaterial(originalColor);
     }
 
@@ -62,9 +74,9 @@ public class Contamination : MonoBehaviour
 
     void AttemptContamination(Contamination c)
     {
-        if (isContaminated && c != null && !c.isContaminated)
+        if (IsContaminated() && c != null && !c.IsContaminated())
         {
-            c.Contaminate(decontaminationType);
+            c.Contaminate(isContaminatedWashable, isContaminatedCookable);
         }
     }
 }

@@ -1,17 +1,18 @@
 using UnityEngine;
 
-public enum DecontaminationType { Washable, Cookable, None };
 
 public class Decontamination : MonoBehaviour
 {
-    public DecontaminationType decontaminationType = DecontaminationType.Washable;
+    public bool decontaminateWashable = false;
+    public bool decontaminateCookable = false;
+
 
     void OnTriggerEnter(Collider other)
     {
         Contamination c = other.gameObject.GetComponent<Contamination>();
-        if (c != null && c.isContaminated)
+        if (c != null && c.IsContaminated())
         {
-            c.Decontaminate(DecontaminationType.Washable);
+            c.Decontaminate(decontaminateWashable, decontaminateCookable);
         }
     }
 }
