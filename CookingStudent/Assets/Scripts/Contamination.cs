@@ -3,50 +3,89 @@ using UnityEngine;
 public class Contamination : MonoBehaviour
 {
     /* public states */
-    public bool isContaminated = false;
+    public bool isContaminatedCookable = false;
+    public bool isContaminatedWashable = false;
 
-    // this should be in a global settings scripts probably...
-    public bool showContamination = true;
-    public DecontaminationType decontaminationType = DecontaminationType.Washable;
+    public bool mustBeWashed = false;
 
+    public bool showContamination = true; // this should be in a global settings scripts probably...
 
-    private Color contaminationColor = Color.red;
-    // new Color(1.0f, 0.5f, 0.0f)
+    private Color washableColor = Color.blue;
+    private Color cookableColor = Color.red;
+    private Color washableCookableColor = new Color(1.0f, 0.0f, 1.0f);
+
+    //set by start
     private Color originalColor;
+
+    private bool isHand;
+
+    public bool IsContaminated() {
+        return isContaminatedWashable || isContaminatedCookable;
+    }
 
     void Start()
     {
         // TODO: remove hardcoded hand color
-        originalColor = CompareTag("Hand") ? new Color32(0xC4, 0xC4, 0xC4, 0xFF) : GetMaterial().color;
+        isHand = CompareTag("Hand");
+        originalColor = isHand ? new Color32(0xC4, 0xC4, 0xC4, 0xFF) : GetMaterial().color;
 
-        if (isContaminated)
-            UpdateMaterial(contaminationColor);
+        if (IsContaminated())
+            UpdateMaterial();
     }
 
     Material GetMaterial()
     {
-        return CompareTag("Hand") ? GetComponentInChildren<SkinnedMeshRenderer>().material : GetComponent<Renderer>().material;
+        return isHand ? GetComponentInChildren<SkinnedMeshRenderer>().material : GetComponent<Renderer>().material;
     }
 
-    void UpdateMaterial(Color color)
+    void UpdateMaterial()
     {
         if (!showContamination) return;
-        GetMaterial().color = color;
+
+        if (isContaminatedWashable && isContaminatedCookable) {
+            GetMaterial().color = washableCookableColor;
+        }
+        else if (isContaminatedWashable) {
+            GetMaterial().color = washableColor;
+        }
+        else if (isContaminatedCookable) {
+            GetMaterial().color = cookableColor;
+        }
+        else {
+            GetMaterial().color = originalColor;
+        }
+        
     }
 
     // Contaminate self
-    void Contaminate(DecontaminationType sourceDecontaminationType)
+    void Contaminate(bool contaminateWashable, bool contaminateCookable)
     {
-        //decontaminationType = sourceDecontaminationType; // contaminate the same type?
-        isContaminated = true;
-        UpdateMaterial(contaminationColor);
+        // update contamination status
+        isContaminatedWashable = isContaminatedWashable || contaminateWashable;
+        isContaminatedCookable = isContaminatedCookable || contaminateCookable;
+
+        UpdateMaterial();
     }
 
-    public void Decontaminate(DecontaminationType sourceDecontaminationType)
+    public void Decontaminate(bool decontaminateWashable, bool decontaminateCookable)
     {
-        if (decontaminationType != sourceDecontaminationType) return;
-        isContaminated = false;
-        UpdateMaterial(originalColor);
+        if (mustBeWashed) {
+            if (decontaminateWashable) {
+                isContaminatedWashable = false;
+                isContaminatedCookable = false;
+            }
+        }
+        else {
+            if (isContaminatedWashable && decontaminateWashable) {
+                isContaminatedWashable = false;
+            }
+
+            if (isContaminatedCookable && decontaminateCookable && !isContaminatedWashable) {
+                isContaminatedCookable = false;
+            }
+        }
+
+        UpdateMaterial();
     }
 
 
@@ -62,9 +101,9 @@ public class Contamination : MonoBehaviour
 
     void AttemptContamination(Contamination c)
     {
-        if (isContaminated && c != null && !c.isContaminated)
+        if (IsContaminated() && c != null)
         {
-            c.Contaminate(decontaminationType);
+            c.Contaminate(isContaminatedWashable, isContaminatedCookable);
         }
     }
 }

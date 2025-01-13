@@ -193,6 +193,129 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -8525429354371678379, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+--- !u!1 &104787523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 104787524}
+  - component: {fileID: 104787528}
+  - component: {fileID: 104787527}
+  - component: {fileID: 104787526}
+  - component: {fileID: 104787525}
+  m_Layer: 0
+  m_Name: Fire
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &104787524
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104787523}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.533, y: 0.139, z: 0.716}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1878430284}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &104787525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104787523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da4670933680b5443a4461af1fcb4fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decontaminateWashable: 0
+  decontaminateCookable: 1
+--- !u!65 &104787526
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104787523}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &104787527
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104787523}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 0e9e8136fd48ad440a30b3983e970bb2, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &104787528
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104787523}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &322716852
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da4670933680b5443a4461af1fcb4fc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decontaminationType: 0
+  decontaminateWashable: 1
+  decontaminateCookable: 0
 --- !u!1 &390521805
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +591,7 @@ Transform:
   m_GameObject: {fileID: 468780463}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.346, y: 0.139, z: 0.07}
+  m_LocalPosition: {x: -0.868, y: 0.139, z: -0.024}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -738,9 +862,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6f2183699fc8341b685987b4f4b807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isContaminated: 1
+  isContaminatedCookable: 0
+  isContaminatedWashable: 1
+  mustBeWashed: 0
   showContamination: 1
-  decontaminationType: 2
 --- !u!1 &646125395
 GameObject:
   m_ObjectHideFlags: 0
@@ -1268,9 +1393,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6f2183699fc8341b685987b4f4b807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isContaminated: 0
+  isContaminatedCookable: 0
+  isContaminatedWashable: 0
+  mustBeWashed: 1
   showContamination: 1
-  decontaminationType: 0
 --- !u!54 &766006502
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1683,9 +1809,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6f2183699fc8341b685987b4f4b807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isContaminated: 0
+  isContaminatedCookable: 0
+  isContaminatedWashable: 0
+  mustBeWashed: 1
   showContamination: 1
-  decontaminationType: 0
 --- !u!54 &788059139
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1728,7 +1855,7 @@ GameObject:
   - component: {fileID: 992783363}
   - component: {fileID: 992783362}
   - component: {fileID: 992783361}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1744,7 +1871,7 @@ Transform:
   m_GameObject: {fileID: 992783359}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.376, y: 0.156, z: -0.27}
+  m_LocalPosition: {x: 0.323, y: 0.156, z: -1.027}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1762,9 +1889,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6f2183699fc8341b685987b4f4b807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isContaminated: 0
+  isContaminatedCookable: 0
+  isContaminatedWashable: 0
+  mustBeWashed: 0
   showContamination: 1
-  decontaminationType: 0
 --- !u!114 &992783362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2095,7 +2223,7 @@ Transform:
   m_GameObject: {fileID: 1066253229}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.777, y: 0.156, z: 0.382}
+  m_LocalPosition: {x: 1.213, y: 0.156, z: 0.382}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2366,9 +2494,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6f2183699fc8341b685987b4f4b807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isContaminated: 0
+  isContaminatedCookable: 1
+  isContaminatedWashable: 0
+  mustBeWashed: 0
   showContamination: 1
-  decontaminationType: 0
 --- !u!1 &1162046966
 GameObject:
   m_ObjectHideFlags: 0
@@ -2400,7 +2529,7 @@ Transform:
   m_GameObject: {fileID: 1162046966}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.977, y: 0.156, z: -0.284}
+  m_LocalPosition: {x: -0.977, y: 0.156, z: -0.766}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2418,9 +2547,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6f2183699fc8341b685987b4f4b807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isContaminated: 0
+  isContaminatedCookable: 0
+  isContaminatedWashable: 0
+  mustBeWashed: 0
   showContamination: 1
-  decontaminationType: 0
 --- !u!114 &1162046969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2705,7 +2835,7 @@ Transform:
   m_GameObject: {fileID: 1341835096}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.025, y: 0.156, z: 0.382}
+  m_LocalPosition: {x: 1.295, y: 0.156, z: -0.338}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2723,9 +2853,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6f2183699fc8341b685987b4f4b807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isContaminated: 0
+  isContaminatedCookable: 0
+  isContaminatedWashable: 0
+  mustBeWashed: 0
   showContamination: 1
-  decontaminationType: 0
 --- !u!114 &1341835099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3666,6 +3797,7 @@ Transform:
   - {fileID: 1341835097}
   - {fileID: 468780464}
   - {fileID: 322716853}
+  - {fileID: 104787524}
   - {fileID: 723408276}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
