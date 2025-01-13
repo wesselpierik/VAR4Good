@@ -6,12 +6,15 @@ public class Contamination : MonoBehaviour
     public bool isContaminatedCookable = false;
     public bool isContaminatedWashable = false;
 
-    // this should be in a global settings scripts probably...
-    public bool showContamination = true;
+    public bool showContamination = true; // this should be in a global settings scripts probably...
 
+    private Color washableColor = Color.blue;
+    private Color cookableColor = Color.red;
+    private Color washableCookableColor = new Color(1.0f, 0.0f, 1.0f);
 
-    private Color contaminationColor = Color.red;
-    private Color originalColor;
+    private Color originalColor; // set by start
+
+    private string tag = "Hand"
 
     public bool IsContaminated() {
         return isContaminatedWashable || isContaminatedCookable;
@@ -20,21 +23,34 @@ public class Contamination : MonoBehaviour
     void Start()
     {
         // TODO: remove hardcoded hand color
-        originalColor = CompareTag("Hand") ? new Color32(0xC4, 0xC4, 0xC4, 0xFF) : GetMaterial().color;
+        originalColor = CompareTag(tag) ? new Color32(0xC4, 0xC4, 0xC4, 0xFF) : GetMaterial().color;
 
         if (IsContaminated())
-            UpdateMaterial(contaminationColor);
+            UpdateMaterial();
     }
 
     Material GetMaterial()
     {
-        return CompareTag("Hand") ? GetComponentInChildren<SkinnedMeshRenderer>().material : GetComponent<Renderer>().material;
+        return CompareTag(tag) ? GetComponentInChildren<SkinnedMeshRenderer>().material : GetComponent<Renderer>().material;
     }
 
-    void UpdateMaterial(Color color)
+    void UpdateMaterial()
     {
         if (!showContamination) return;
-        GetMaterial().color = color;
+
+        if (isContaminatedWashable && isContaminatedCookable) {
+            GetMaterial().color = washableCookableColor;
+        }
+        else if (isContaminatedWashable) {
+            GetMaterial().color = washableColor;
+        }
+        else if (isContaminatedCookable) {
+            GetMaterial().color = cookableColor;
+        }
+        else {
+            GetMaterial().color = originalColor;
+        }
+        
     }
 
     // Contaminate self
@@ -44,21 +60,25 @@ public class Contamination : MonoBehaviour
         isContaminatedWashable = isContaminatedWashable || contaminateWashable;
         isContaminatedCookable = isContaminatedCookable || contaminateCookable;
 
-        if (IsContaminated())
-            UpdateMaterial(contaminationColor);
+        UpdateMaterial();
     }
 
     public void Decontaminate(bool decontaminateWashable, bool decontaminateCookable)
     {
         if (isContaminatedWashable && decontaminateWashable) {
             isContaminatedWashable = false;
+
+            // hands can cleared of both when washing
+            if (CompareTag(tag)) {
+                isContaminatedCookable = false;
+            }
         }
 
-        if (isContaminatedCookable && decontaminateCookable && !isContaminatedWashable) {
+        if (isContaminatedCookable && decontaminateCookable && !isContaminatedWashable ) {
             isContaminatedCookable = false;
         }
 
-        UpdateMaterial(originalColor);
+        UpdateMaterial();
     }
 
 
@@ -74,7 +94,7 @@ public class Contamination : MonoBehaviour
 
     void AttemptContamination(Contamination c)
     {
-        if (IsContaminated() && c != null && !c.IsContaminated())
+        if (IsContaminated() && c != null)
         {
             c.Contaminate(isContaminatedWashable, isContaminatedCookable);
         }
