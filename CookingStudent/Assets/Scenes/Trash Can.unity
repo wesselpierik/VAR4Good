@@ -137,8 +137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsThrownAway: []
---- !u!65 &51752717
-BoxCollider:
+--- !u!135 &51752715
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -156,8 +156,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6, y: 10.6, z: 7}
-  m_Center: {x: 26.04, y: 1.2553976, z: 0.63}
+  m_Radius: 3.5
+  m_Center: {x: 25.79, y: 3.5, z: 0.61}
 --- !u!1 &76546419
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,7 +447,7 @@ PrefabInstance:
       addedObject: {fileID: 51752714}
     - targetCorrespondingSourceObject: {fileID: 408668558163431998, guid: d90558cbf527ebe46a33700de2b76d21, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 51752717}
+      addedObject: {fileID: 51752715}
   m_SourcePrefab: {fileID: 100100000, guid: d90558cbf527ebe46a33700de2b76d21, type: 3}
 --- !u!1 &290742843
 GameObject:
