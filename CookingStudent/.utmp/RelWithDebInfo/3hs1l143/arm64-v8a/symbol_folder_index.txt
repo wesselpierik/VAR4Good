@@ -1,0 +1,1 @@
+C:\Users\soete\Documents\vrgood\VAR4Good\CookingStudent\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\3hs1l143\obj\arm64-v8a

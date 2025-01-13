@@ -76,3 +76,5 @@ crashlytics-build.properties
 .vscode/
 
 *.json
+.utmp/
+CookingStudent_BurstDebugInformation_*/
