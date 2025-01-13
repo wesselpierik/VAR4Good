@@ -864,6 +864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isContaminatedCookable: 0
   isContaminatedWashable: 1
+  mustBeWashed: 0
   showContamination: 1
 --- !u!1 &646125395
 GameObject:
@@ -1394,6 +1395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isContaminatedCookable: 0
   isContaminatedWashable: 0
+  mustBeWashed: 1
   showContamination: 1
 --- !u!54 &766006502
 Rigidbody:
@@ -1809,6 +1811,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isContaminatedCookable: 0
   isContaminatedWashable: 0
+  mustBeWashed: 1
   showContamination: 1
 --- !u!54 &788059139
 Rigidbody:
@@ -1888,6 +1891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isContaminatedCookable: 0
   isContaminatedWashable: 0
+  mustBeWashed: 0
   showContamination: 1
 --- !u!114 &992783362
 MonoBehaviour:
@@ -2492,6 +2496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isContaminatedCookable: 1
   isContaminatedWashable: 0
+  mustBeWashed: 0
   showContamination: 1
 --- !u!1 &1162046966
 GameObject:
@@ -2544,6 +2549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isContaminatedCookable: 0
   isContaminatedWashable: 0
+  mustBeWashed: 0
   showContamination: 1
 --- !u!114 &1162046969
 MonoBehaviour:
@@ -2849,6 +2855,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isContaminatedCookable: 0
   isContaminatedWashable: 0
+  mustBeWashed: 0
   showContamination: 1
 --- !u!114 &1341835099
 MonoBehaviour:

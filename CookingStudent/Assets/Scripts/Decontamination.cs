@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Decontamination : MonoBehaviour
 {
-    public bool decontaminateWashable = false;
+    public bool decontaminateWashable = true;
     public bool decontaminateCookable = false;
 
 

@@ -6,15 +6,18 @@ public class Contamination : MonoBehaviour
     public bool isContaminatedCookable = false;
     public bool isContaminatedWashable = false;
 
+    public bool mustBeWashed = false;
+
     public bool showContamination = true; // this should be in a global settings scripts probably...
 
     private Color washableColor = Color.blue;
     private Color cookableColor = Color.red;
     private Color washableCookableColor = new Color(1.0f, 0.0f, 1.0f);
 
-    private Color originalColor; // set by start
+    //set by start
+    private Color originalColor;
 
-    private string tag = "Hand"
+    private bool isHand;
 
     public bool IsContaminated() {
         return isContaminatedWashable || isContaminatedCookable;
@@ -23,7 +26,8 @@ public class Contamination : MonoBehaviour
     void Start()
     {
         // TODO: remove hardcoded hand color
-        originalColor = CompareTag(tag) ? new Color32(0xC4, 0xC4, 0xC4, 0xFF) : GetMaterial().color;
+        isHand = CompareTag("Hand");
+        originalColor = isHand ? new Color32(0xC4, 0xC4, 0xC4, 0xFF) : GetMaterial().color;
 
         if (IsContaminated())
             UpdateMaterial();
@@ -31,7 +35,7 @@ public class Contamination : MonoBehaviour
 
     Material GetMaterial()
     {
-        return CompareTag(tag) ? GetComponentInChildren<SkinnedMeshRenderer>().material : GetComponent<Renderer>().material;
+        return isHand ? GetComponentInChildren<SkinnedMeshRenderer>().material : GetComponent<Renderer>().material;
     }
 
     void UpdateMaterial()
@@ -65,17 +69,20 @@ public class Contamination : MonoBehaviour
 
     public void Decontaminate(bool decontaminateWashable, bool decontaminateCookable)
     {
-        if (isContaminatedWashable && decontaminateWashable) {
-            isContaminatedWashable = false;
-
-            // hands can cleared of both when washing
-            if (CompareTag(tag)) {
+        if (mustBeWashed) {
+            if (decontaminateWashable) {
+                isContaminatedWashable = false;
                 isContaminatedCookable = false;
             }
         }
+        else {
+            if (isContaminatedWashable && decontaminateWashable) {
+                isContaminatedWashable = false;
+            }
 
-        if (isContaminatedCookable && decontaminateCookable && !isContaminatedWashable ) {
-            isContaminatedCookable = false;
+            if (isContaminatedCookable && decontaminateCookable && !isContaminatedWashable) {
+                isContaminatedCookable = false;
+            }
         }
 
         UpdateMaterial();
