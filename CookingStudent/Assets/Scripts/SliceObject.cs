@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 using Unity.VisualScripting;
 using UnityEngine.XR.Interaction.Toolkit.Filtering;
 using UnityEngine.XR.Interaction.Toolkit;
-using static UnityEditor.Experimental.GraphView.GraphView;
+
 
 public class SliceObject : MonoBehaviour
 {
@@ -19,6 +19,9 @@ public class SliceObject : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
+
+
         if (canSlice)
         {
             bool hasHit = Physics.Linecast(startSlicepoint.position, endSlicepoint.position, out RaycastHit hit, sliceableLayer);
@@ -42,20 +45,17 @@ public class SliceObject : MonoBehaviour
 
         if(hull != null)
         {
-            //LayerMask mask = GetComponent<XRGrabInteractable>().LayerMask.GetMask;
             Material crossSectionMaterial = target.GetComponent<Renderer>().material; 
 
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
             SetupSlicedComponent(upperHull);
             upperHull.AddComponent<XRGrabInteractable>();
             upperHull.layer = target.layer;
-            //upperHull.GetComponent<XRGrabInteractable>().interactionLayerMask = GetComponent<XRGrabInteractable>().interactionLayerMask;
 
             GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
             SetupSlicedComponent(lowerHull);
             lowerHull.AddComponent<XRGrabInteractable>();
             lowerHull.layer = target.layer;
-            //lowerHull.GetComponent<XRGrabInteractable>().interactionLayerMask = GetComponent<XRGrabInteractable>().interactionLayerMask;
 
             Destroy(target);
             counter--;
