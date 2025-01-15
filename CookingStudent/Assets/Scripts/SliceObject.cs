@@ -1,31 +1,37 @@
 using UnityEngine;
 using EzySlice;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
+using UnityEngine.XR.Interaction.Toolkit.Filtering;
+using UnityEngine.XR.Interaction.Toolkit;
+
 
 public class SliceObject : MonoBehaviour
-
 {
+    private bool canSlice = true;
+    private int counter = 0;
+
     public Transform startSlicepoint;
     public Transform endSlicepoint;
     public VelocityEstimator velocityEstimator;
-    public Material crossSectionMaterial;
-    public float cutForce = 100;
     public LayerMask sliceableLayer;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        bool hasHit = Physics.Linecast(startSlicepoint.position, endSlicepoint.position, out RaycastHit hit, sliceableLayer);
-        if (hasHit)
+
+
+
+        if (canSlice)
         {
-            GameObject target = hit.transform.gameObject;
-            Slice(target);
+            bool hasHit = Physics.Linecast(startSlicepoint.position, endSlicepoint.position, out RaycastHit hit, sliceableLayer);
+
+            if (hasHit)
+            {
+                canSlice = false;
+                GameObject target = hit.transform.gameObject;
+                Slice(target);
+            }
         }
     }
 
@@ -39,14 +45,20 @@ public class SliceObject : MonoBehaviour
 
         if(hull != null)
         {
+            Material crossSectionMaterial = target.GetComponent<Renderer>().material; 
+
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
             SetupSlicedComponent(upperHull);
+            upperHull.AddComponent<XRGrabInteractable>();
             upperHull.layer = target.layer;
 
             GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
             SetupSlicedComponent(lowerHull);
+            lowerHull.AddComponent<XRGrabInteractable>();
             lowerHull.layer = target.layer;
+
             Destroy(target);
+            counter--;
         }
 
     }
@@ -56,8 +68,28 @@ public class SliceObject : MonoBehaviour
         Rigidbody rb = slicedObject.AddComponent<Rigidbody>();
         MeshCollider collider = slicedObject.AddComponent<MeshCollider>();
         collider.convex = true;
-        rb.AddExplosionForce(cutForce, slicedObject.transform.position, 1);
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
+        {
+            counter++;
+            Debug.Log(counter);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
+        {
+            counter--;
+            if (counter == 0)
+                canSlice = true;
+
+            Debug.Log(counter);
+        }
     }
 }
 
