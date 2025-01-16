@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Hand
+  - Ingredient
+  - Pan
   layers:
   - Default
   - TransparentFX
