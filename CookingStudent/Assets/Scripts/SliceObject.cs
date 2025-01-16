@@ -19,9 +19,6 @@ public class SliceObject : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
-
-
         if (canSlice)
         {
             bool hasHit = Physics.Linecast(startSlicepoint.position, endSlicepoint.position, out RaycastHit hit, sliceableLayer);
@@ -45,17 +42,29 @@ public class SliceObject : MonoBehaviour
 
         if(hull != null)
         {
-            Material crossSectionMaterial = target.GetComponent<Renderer>().material; 
+            Contamination targetContamination = target.GetComponent<Contamination>();
+
+            Material crossSectionMaterial = target.GetComponent<Renderer>().material;
 
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
             SetupSlicedComponent(upperHull);
             upperHull.AddComponent<XRGrabInteractable>();
             upperHull.layer = target.layer;
 
+            upperHull.AddComponent<Contamination>();
+            upperHull.GetComponent<Contamination>().isContaminatedCookable = targetContamination.isContaminatedCookable;
+            upperHull.GetComponent<Contamination>().isContaminatedWashable = targetContamination.isContaminatedWashable;
+
+
             GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
             SetupSlicedComponent(lowerHull);
             lowerHull.AddComponent<XRGrabInteractable>();
             lowerHull.layer = target.layer;
+
+            lowerHull.AddComponent<Contamination>();
+            lowerHull.GetComponent<Contamination>().isContaminatedCookable = targetContamination.isContaminatedCookable;
+            lowerHull.GetComponent<Contamination>().isContaminatedWashable = targetContamination.isContaminatedWashable;
+            
 
             Destroy(target);
             counter--;
