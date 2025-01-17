@@ -40,10 +40,9 @@ public class SliceObject : MonoBehaviour
 
         SlicedHull hull = target.Slice(endSlicepoint.position, planeNormal);
 
-        if(hull != null)
+        if (hull != null)
         {
             Contamination targetContamination = target.GetComponent<Contamination>();
-
             Material crossSectionMaterial = target.GetComponent<Renderer>().material;
 
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
@@ -64,7 +63,7 @@ public class SliceObject : MonoBehaviour
             lowerHull.AddComponent<Contamination>();
             lowerHull.GetComponent<Contamination>().isContaminatedCookable = targetContamination.isContaminatedCookable;
             lowerHull.GetComponent<Contamination>().isContaminatedWashable = targetContamination.isContaminatedWashable;
-            
+
 
             Destroy(target);
             counter--;
@@ -85,7 +84,7 @@ public class SliceObject : MonoBehaviour
         if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
         {
             counter++;
-            Debug.Log(counter);
+            // Debug.Log(counter);
         }
     }
 
@@ -97,8 +96,7 @@ public class SliceObject : MonoBehaviour
             if (counter == 0)
                 canSlice = true;
 
-            Debug.Log(counter);
+            // Debug.Log(counter);
         }
     }
 }
-
