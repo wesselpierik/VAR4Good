@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 using Unity.VisualScripting;
 using UnityEngine.XR.Interaction.Toolkit.Filtering;
 using UnityEngine.XR.Interaction.Toolkit;
+using JetBrains.Annotations;
+using static GlobalRecipe;
 
 
 public class SliceObject : MonoBehaviour
@@ -16,12 +18,19 @@ public class SliceObject : MonoBehaviour
     public VelocityEstimator velocityEstimator;
     public LayerMask sliceableLayer;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        RecipeList recipeList = GetComponent<RecipeList>();
+        recipeList.OnRecipeEvent += OnRecipeUpdated;
+    }
+
+    private void OnRecipeUpdated(Recipe recipe)
+    {
+        Debug.Log($"Updated Recipe: {recipe.ObjectName} ({recipe.CurrentCount}/{recipe.TargetCount})");
+    }
+
     void FixedUpdate()
     {
-
-
-
         if (canSlice)
         {
             bool hasHit = Physics.Linecast(startSlicepoint.position, endSlicepoint.position, out RaycastHit hit, sliceableLayer);
@@ -37,6 +46,9 @@ public class SliceObject : MonoBehaviour
 
     public void Slice(GameObject target)
     {
+        string objectName = target.name;
+
+        Debug.Log("Slice!");
         Vector3 velocity = velocityEstimator.GetVelocityEstimate();
         Vector3 planeNormal = Vector3.Cross(endSlicepoint.position - startSlicepoint.position, velocity);
         planeNormal.Normalize();
@@ -51,14 +63,25 @@ public class SliceObject : MonoBehaviour
             SetupSlicedComponent(upperHull);
             upperHull.AddComponent<XRGrabInteractable>();
             upperHull.layer = target.layer;
+            upperHull.name = target.name;
 
             GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
             SetupSlicedComponent(lowerHull);
             lowerHull.AddComponent<XRGrabInteractable>();
             lowerHull.layer = target.layer;
+            lowerHull.name = target.name;
 
             Destroy(target);
             counter--;
+
+            RecipeList recipeList = GetComponent<RecipeList>();
+            recipeList.UpdateRecipeProgress(objectName);
+
+            // Check if recipe is complete
+            if (recipeList.IsRecipeComplete())
+            {
+                Debug.Log("Recipe Complete!");
+            }
         }
 
     }
@@ -76,7 +99,7 @@ public class SliceObject : MonoBehaviour
         if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
         {
             counter++;
-            Debug.Log(counter);
+            //Debug.Log(counter);
         }
     }
 
@@ -88,7 +111,7 @@ public class SliceObject : MonoBehaviour
             if (counter == 0)
                 canSlice = true;
 
-            Debug.Log(counter);
+            //Debug.Log(counter);
         }
     }
 }
