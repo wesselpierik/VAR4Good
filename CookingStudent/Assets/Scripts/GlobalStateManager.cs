@@ -3,6 +3,7 @@ using UnityEngine;
 public class GlobalStateManager : MonoBehaviour
 {
     public GlobalScore globalScore;
+    public GlobalRecipe globalRecipe;
 
     private static GlobalStateManager _instance;
 
@@ -25,6 +26,11 @@ public class GlobalStateManager : MonoBehaviour
             Debug.LogWarning("globalScore is null");
         }
         globalScore.ResetScore();
+
+        if (globalRecipe == null) {
+            Debug.LogWarning("globalRecipe is null");
+        }
+        globalRecipe.ResetRecipe();
     }
 
     public void AddScore(int amount) {
@@ -36,5 +42,20 @@ public class GlobalStateManager : MonoBehaviour
 
     public void DisplayScore() {
         Debug.Log(globalScore.GetScore());
+    }
+
+    public int GetCutsState()
+    {
+        return globalRecipe.GetCutsState();
+    }
+
+    public int GetCookingState()
+    {
+        return globalRecipe.GetCookingState();
+    }
+
+   public void UpdateCutsState()
+    {
+        globalRecipe.UpdateCutsState();
     }
 }
