@@ -10,54 +10,58 @@ public class Contamination : MonoBehaviour
 
     public bool showContamination = true; // this should be in a global settings scripts probably...
 
+    // Hardcode
+    private Color originalColor = Color.white;
     private Color washableColor = Color.blue;
     private Color cookableColor = Color.red;
-    private Color washableCookableColor = new Color(1.0f, 0.0f, 1.0f);
-
-    //set by start
-    private Color originalColor;
+    private Color washableCookableColor = new Color(0.5f, 0.0f, 1.0f);
 
     private bool isHand;
 
-    public bool IsContaminated() {
-        return isContaminatedWashable || isContaminatedCookable;
-    }
-
     void Start()
     {
-        // TODO: remove hardcoded hand color
         isHand = CompareTag("Hand");
-        originalColor = isHand ? new Color32(0xC4, 0xC4, 0xC4, 0xFF) : GetMaterial().color;
 
         if (IsContaminated())
             UpdateMaterial();
     }
 
-    Material GetMaterial()
+    public bool IsContaminated()
     {
-        return isHand ? GetComponentInChildren<SkinnedMeshRenderer>().material : GetComponent<Renderer>().material;
+        return isContaminatedWashable || isContaminatedCookable;
+    }
+
+    Outline GetOutline()
+    {
+        // GetComponentInChildren<Outline>() doesn't work on start, so we have to retrieve on demand.
+        return isHand ? GetComponentInChildren<Outline>() : GetComponent<Outline>();
     }
 
     void UpdateMaterial()
     {
         if (!showContamination) return;
 
-        if (isContaminatedWashable && isContaminatedCookable) {
-            GetMaterial().color = washableCookableColor;
+        GetOutline().OutlineMode = IsContaminated() ? Outline.Mode.OutlineVisible : Outline.Mode.OutlineHidden;
+
+        if (isContaminatedWashable && isContaminatedCookable)
+        {
+            GetOutline().OutlineColor = washableCookableColor;
         }
-        else if (isContaminatedWashable) {
-            GetMaterial().color = washableColor;
+        else if (isContaminatedWashable)
+        {
+            GetOutline().OutlineColor = washableColor;
         }
-        else if (isContaminatedCookable) {
-            GetMaterial().color = cookableColor;
+        else if (isContaminatedCookable)
+        {
+            GetOutline().OutlineColor = cookableColor;
         }
-        else {
-            GetMaterial().color = originalColor;
+        else
+        {
+            GetOutline().OutlineColor = originalColor;
         }
-        
+
     }
 
-    // Contaminate self
     void Contaminate(bool contaminateWashable, bool contaminateCookable)
     {
         // update contamination status
@@ -69,18 +73,25 @@ public class Contamination : MonoBehaviour
 
     public void Decontaminate(bool decontaminateWashable, bool decontaminateCookable)
     {
-        if (mustBeWashed) {
-            if (decontaminateWashable) {
+        // If must be washed, then both types of contamination are removed only if washed.
+        if (mustBeWashed)
+        {
+            if (decontaminateWashable)
+            {
                 isContaminatedWashable = false;
                 isContaminatedCookable = false;
             }
         }
-        else {
-            if (isContaminatedWashable && decontaminateWashable) {
+        else
+        {
+            if (isContaminatedWashable && decontaminateWashable)
+            {
                 isContaminatedWashable = false;
             }
 
-            if (isContaminatedCookable && decontaminateCookable && !isContaminatedWashable) {
+            /* Only decontaminate if it's not washable.*/
+            if (isContaminatedCookable && decontaminateCookable && !isContaminatedWashable)
+            {
                 isContaminatedCookable = false;
             }
         }
