@@ -32,8 +32,28 @@ public class SliceObject : MonoBehaviour
         }
     }
 
+
+
+    private void PrepareHull(GameObject target, GameObject hull)
+    {
+        Contamination targetContamination = target.GetComponent<Contamination>();
+
+        SetupSlicedComponent(hull);
+        hull.AddComponent<XRGrabInteractable>();
+        hull.layer = target.layer;
+
+        hull.AddComponent<Contamination>();
+        hull.GetComponent<Contamination>().isContaminatedCookable = targetContamination.isContaminatedCookable;
+        hull.GetComponent<Contamination>().isContaminatedWashable = targetContamination.isContaminatedWashable;
+        hull.AddComponent<Outline>();
+    }
+
+
     public void Slice(GameObject target)
     {
+        // destroy because it will break otherwise
+        Destroy(target.GetComponent<Outline>());
+
         Vector3 velocity = velocityEstimator.GetVelocityEstimate();
         Vector3 planeNormal = Vector3.Cross(endSlicepoint.position - startSlicepoint.position, velocity);
         planeNormal.Normalize();
@@ -42,27 +62,14 @@ public class SliceObject : MonoBehaviour
 
         if (hull != null)
         {
-            Contamination targetContamination = target.GetComponent<Contamination>();
             Material crossSectionMaterial = target.GetComponent<Renderer>().material;
 
+
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
-            SetupSlicedComponent(upperHull);
-            upperHull.AddComponent<XRGrabInteractable>();
-            upperHull.layer = target.layer;
-
-            upperHull.AddComponent<Contamination>();
-            upperHull.GetComponent<Contamination>().isContaminatedCookable = targetContamination.isContaminatedCookable;
-            upperHull.GetComponent<Contamination>().isContaminatedWashable = targetContamination.isContaminatedWashable;
-
-
             GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
-            SetupSlicedComponent(lowerHull);
-            lowerHull.AddComponent<XRGrabInteractable>();
-            lowerHull.layer = target.layer;
 
-            lowerHull.AddComponent<Contamination>();
-            lowerHull.GetComponent<Contamination>().isContaminatedCookable = targetContamination.isContaminatedCookable;
-            lowerHull.GetComponent<Contamination>().isContaminatedWashable = targetContamination.isContaminatedWashable;
+            PrepareHull(target, upperHull);
+            PrepareHull(target, lowerHull);
 
 
             Destroy(target);
