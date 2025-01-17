@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 using Unity.VisualScripting;
 using UnityEngine.XR.Interaction.Toolkit.Filtering;
 using UnityEngine.XR.Interaction.Toolkit;
+using JetBrains.Annotations;
+using static GlobalRecipe;
 
 
 public class SliceObject : MonoBehaviour
@@ -16,7 +18,17 @@ public class SliceObject : MonoBehaviour
     public VelocityEstimator velocityEstimator;
     public LayerMask sliceableLayer;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        RecipeList recipeList = GetComponent<RecipeList>();
+        recipeList.OnRecipeEvent += OnRecipeUpdated;
+    }
+
+    private void OnRecipeUpdated(Recipe recipe)
+    {
+        Debug.Log($"Updated Recipe: {recipe.ObjectName} ({recipe.CurrentCount}/{recipe.TargetCount})");
+    }
+
     void FixedUpdate()
     {
         if (canSlice)
@@ -46,6 +58,7 @@ public class SliceObject : MonoBehaviour
         hull.GetComponent<Contamination>().isContaminatedCookable = targetContamination.isContaminatedCookable;
         hull.GetComponent<Contamination>().isContaminatedWashable = targetContamination.isContaminatedWashable;
         hull.AddComponent<Outline>();
+        hull.name = target.name;
     }
 
 
@@ -54,6 +67,9 @@ public class SliceObject : MonoBehaviour
         // destroy because it will break otherwise
         Destroy(target.GetComponent<Outline>());
 
+        string objectName = target.name;
+
+        // Debug.Log("Slice!");
         Vector3 velocity = velocityEstimator.GetVelocityEstimate();
         Vector3 planeNormal = Vector3.Cross(endSlicepoint.position - startSlicepoint.position, velocity);
         planeNormal.Normalize();
@@ -74,6 +90,15 @@ public class SliceObject : MonoBehaviour
 
             Destroy(target);
             counter--;
+
+            RecipeList recipeList = GetComponent<RecipeList>();
+            recipeList.UpdateRecipeProgress(objectName);
+
+            // Check if recipe is complete
+            if (recipeList.IsRecipeComplete())
+            {
+                Debug.Log("Recipe Complete!");
+            }
         }
 
     }

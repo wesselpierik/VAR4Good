@@ -2232,7 +2232,7 @@ GameObject:
   - component: {fileID: 468780470}
   - component: {fileID: 468780471}
   m_Layer: 6
-  m_Name: Contaminated cube
+  m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2633,6 +2633,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: d2e2a853635ce0541a57bf54bb3b3249, type: 3}
       insertIndex: -1
       addedObject: {fileID: 592457921}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: d2e2a853635ce0541a57bf54bb3b3249, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 592457925}
   m_SourcePrefab: {fileID: 100100000, guid: d2e2a853635ce0541a57bf54bb3b3249, type: 3}
 --- !u!4 &592457907 stripped
 Transform:
@@ -2738,6 +2741,22 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &592457925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592457908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd9375566d43fb4ea2eed6bc3839914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Recipes:
+  - ObjectName: Cube
+    TargetCount: 6
+    CurrentCount: 0
 --- !u!1001 &642128216
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5261,7 +5280,7 @@ GameObject:
   - component: {fileID: 1017258855}
   - component: {fileID: 1017258854}
   m_Layer: 6
-  m_Name: Cube (1)
+  m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7043,7 +7062,7 @@ GameObject:
   - component: {fileID: 1299888217}
   - component: {fileID: 1299888216}
   m_Layer: 6
-  m_Name: Cube (2)
+  m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7674,6 +7693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalScore: {fileID: 11400000, guid: 24c08e953e130ac07a85edb6b2418308, type: 2}
+  globalRecipe: {fileID: 0}
 --- !u!4 &1404326427
 Transform:
   m_ObjectHideFlags: 0
