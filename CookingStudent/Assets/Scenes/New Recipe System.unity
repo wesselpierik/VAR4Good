@@ -431,6 +431,7 @@ GameObject:
   - component: {fileID: 155441489}
   - component: {fileID: 155441488}
   - component: {fileID: 155441487}
+  - component: {fileID: 155441492}
   m_Layer: 6
   m_Name: Tomato
   m_TagString: Untagged
@@ -706,6 +707,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155441485}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &155441492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155441485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6f2183699fc8341b685987b4f4b807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isContaminatedCookable: 0
+  isContaminatedWashable: 0
+  mustBeWashed: 0
+  showContamination: 1
 --- !u!1 &290742843
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,7 +799,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalScore: {fileID: 11400000, guid: 24c08e953e130ac07a85edb6b2418308, type: 2}
-  globalRecipe: {fileID: 11400000, guid: 97dd78d0a98db644f840fcb09e14d3e5, type: 2}
+  recipeList:
+  - ObjectName: Cucumber
+    TargetCount: 3
+    CurrentCount: 0
+    TargetCookMinutes: 0
+    CurrentCookMinutes: 0
+  - ObjectName: Tomato
+    TargetCount: 5
+    CurrentCount: 0
+    TargetCookMinutes: 0
+    CurrentCookMinutes: 0
 --- !u!4 &293001216
 Transform:
   m_ObjectHideFlags: 0
@@ -1059,6 +1086,7 @@ GameObject:
   - component: {fileID: 316884189}
   - component: {fileID: 316884188}
   - component: {fileID: 316884187}
+  - component: {fileID: 316884192}
   m_Layer: 6
   m_Name: Banana
   m_TagString: Untagged
@@ -1334,6 +1362,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316884185}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &316884192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316884185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6f2183699fc8341b685987b4f4b807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isContaminatedCookable: 0
+  isContaminatedWashable: 0
+  mustBeWashed: 0
+  showContamination: 1
 --- !u!1 &327605267
 GameObject:
   m_ObjectHideFlags: 0
@@ -4954,6 +4998,7 @@ GameObject:
   - component: {fileID: 1612706057}
   - component: {fileID: 1612706056}
   - component: {fileID: 1612706055}
+  - component: {fileID: 1612706060}
   m_Layer: 6
   m_Name: Cucumber
   m_TagString: Untagged
@@ -5229,6 +5274,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1612706053}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1612706060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612706053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6f2183699fc8341b685987b4f4b807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isContaminatedCookable: 0
+  isContaminatedWashable: 0
+  mustBeWashed: 0
+  showContamination: 1
 --- !u!1 &1652692367
 GameObject:
   m_ObjectHideFlags: 0

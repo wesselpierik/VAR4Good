@@ -40,6 +40,7 @@ public class SliceObject : MonoBehaviour
 
         SetupSlicedComponent(hull);
         hull.AddComponent<XRGrabInteractable>();
+        hull.name = target.name;
         hull.layer = target.layer;
 
         hull.AddComponent<Contamination>();
@@ -57,7 +58,6 @@ public class SliceObject : MonoBehaviour
 
         string objectName = target.name;
 
-        // Debug.Log("Slice!");
         Vector3 velocity = velocityEstimator.GetVelocityEstimate();
         Vector3 planeNormal = Vector3.Cross(endSlicepoint.position - startSlicepoint.position, velocity);
         planeNormal.Normalize();
@@ -75,14 +75,14 @@ public class SliceObject : MonoBehaviour
             PrepareHull(target, upperHull);
             PrepareHull(target, lowerHull);
 
-
-            Destroy(target);
-            counter--;
-
             GlobalStateManager.Instance.SliceObject(objectName);
             if (GlobalStateManager.Instance.isRecipeComplete()) {
                 Debug.Log("Recipe is complete");
             }
+
+
+            Destroy(target);
+            counter--;
         }
 
     }
@@ -109,10 +109,9 @@ public class SliceObject : MonoBehaviour
         if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
         {
             counter--;
-            if (counter == 0)
+            if (counter == 0) {
                 canSlice = true;
-
-            // Debug.Log(counter);
+            }
         }
     }
 }

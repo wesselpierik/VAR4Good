@@ -14,15 +14,17 @@ public class Ingredient
     public void UpdateIngredientProgress(int action)
     {
         switch (action) {
-            case 0:
+            case 0: // Slice the ingredient
                 CurrentCount++;
                 break;
 
-            case 1:
+            case 1: // Cook the ingredient
                 CurrentCookMinutes++;
                 break;
 
         }
+
+        Debug.Log($"{ObjectName}: {CurrentCount}/{TargetCount}");
     }
 
     public bool IsIngredientComplete()
