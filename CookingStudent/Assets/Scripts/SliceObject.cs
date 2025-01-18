@@ -5,7 +5,6 @@ using Unity.VisualScripting;
 using UnityEngine.XR.Interaction.Toolkit.Filtering;
 using UnityEngine.XR.Interaction.Toolkit;
 using JetBrains.Annotations;
-using static GlobalRecipe;
 
 
 public class SliceObject : MonoBehaviour
@@ -17,17 +16,6 @@ public class SliceObject : MonoBehaviour
     public Transform endSlicepoint;
     public VelocityEstimator velocityEstimator;
     public LayerMask sliceableLayer;
-
-    private void Start()
-    {
-        RecipeList recipeList = GetComponent<RecipeList>();
-        recipeList.OnRecipeEvent += OnRecipeUpdated;
-    }
-
-    private void OnRecipeUpdated(Recipe recipe)
-    {
-        Debug.Log($"Updated Recipe: {recipe.ObjectName} ({recipe.CurrentCount}/{recipe.TargetCount})");
-    }
 
     void FixedUpdate()
     {
@@ -91,13 +79,9 @@ public class SliceObject : MonoBehaviour
             Destroy(target);
             counter--;
 
-            RecipeList recipeList = GetComponent<RecipeList>();
-            recipeList.UpdateRecipeProgress(objectName);
-
-            // Check if recipe is complete
-            if (recipeList.IsRecipeComplete())
-            {
-                Debug.Log("Recipe Complete!");
+            GlobalStateManager.Instance.SliceObject(objectName);
+            if (GlobalStateManager.Instance.isRecipeComplete()) {
+                Debug.Log("Recipe is complete");
             }
         }
 
