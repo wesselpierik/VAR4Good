@@ -1,3 +1,4 @@
+using UnityEditor.SpeedTree.Importer;
 using UnityEngine;
 
 public class Ingredient : MonoBehaviour
@@ -40,19 +41,19 @@ public class Ingredient : MonoBehaviour
 
     private void Cook()
     {
-        if (cookedMaterial != null)
+        if (cookedMaterial)
         {
-            ingredientRenderer.material = cookedMaterial;
+            Material[] raw = ingredientRenderer.materials;
+            Material[] cooked = new Material[raw.Length + 1];
+
+            for (int i = 0; i < raw.Length; i++) {
+                cooked[i] = raw[i];
+            }
+
+            cooked[raw.Length] = cookedMaterial;
+            ingredientRenderer.materials = cooked;
         }
 
-        Collider[] colliders = GetComponents<Collider>();
-        foreach (var collider in colliders)
-        {
-            if (!collider.isTrigger)
-            {
-                collider.enabled = true;
-            }
-        }
         Debug.Log($"{gameObject.name} is cooked!");
     }
 }
