@@ -14,7 +14,7 @@ public class Contamination : MonoBehaviour
     private Color originalColor = Color.white;
     private Color washableColor = Color.blue;
     private Color cookableColor = Color.red;
-    private Color washableCookableColor = new Color(0.5f, 0.0f, 1.0f);
+    private Color washableCookableColor = new Color(0.75f, 0.0f, 1.0f);
 
     private bool isHand;
 

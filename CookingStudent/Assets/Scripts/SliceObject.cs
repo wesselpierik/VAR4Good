@@ -44,44 +44,49 @@ public class SliceObject : MonoBehaviour
         }
     }
 
+
+
+    private void PrepareHull(GameObject target, GameObject hull)
+    {
+        Contamination targetContamination = target.GetComponent<Contamination>();
+
+        SetupSlicedComponent(hull);
+        hull.AddComponent<XRGrabInteractable>();
+        hull.layer = target.layer;
+
+        hull.AddComponent<Contamination>();
+        hull.GetComponent<Contamination>().isContaminatedCookable = targetContamination.isContaminatedCookable;
+        hull.GetComponent<Contamination>().isContaminatedWashable = targetContamination.isContaminatedWashable;
+        hull.AddComponent<Outline>();
+        hull.name = target.name;
+    }
+
+
     public void Slice(GameObject target)
     {
+        // destroy because it will break otherwise
+        Destroy(target.GetComponent<Outline>());
+
         string objectName = target.name;
 
-        Debug.Log("Slice!");
+        // Debug.Log("Slice!");
         Vector3 velocity = velocityEstimator.GetVelocityEstimate();
         Vector3 planeNormal = Vector3.Cross(endSlicepoint.position - startSlicepoint.position, velocity);
         planeNormal.Normalize();
 
         SlicedHull hull = target.Slice(endSlicepoint.position, planeNormal);
 
-        if(hull != null)
+        if (hull != null)
         {
-            Contamination targetContamination = target.GetComponent<Contamination>();
-
             Material crossSectionMaterial = target.GetComponent<Renderer>().material;
 
+
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
-            SetupSlicedComponent(upperHull);
-            upperHull.AddComponent<XRGrabInteractable>();
-            upperHull.layer = target.layer;
-            upperHull.name = target.name;
-
-            upperHull.AddComponent<Contamination>();
-            upperHull.GetComponent<Contamination>().isContaminatedCookable = targetContamination.isContaminatedCookable;
-            upperHull.GetComponent<Contamination>().isContaminatedWashable = targetContamination.isContaminatedWashable;
-
-
             GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
-            SetupSlicedComponent(lowerHull);
-            lowerHull.AddComponent<XRGrabInteractable>();
-            lowerHull.layer = target.layer;
-            lowerHull.name = target.name;
 
-            lowerHull.AddComponent<Contamination>();
-            lowerHull.GetComponent<Contamination>().isContaminatedCookable = targetContamination.isContaminatedCookable;
-            lowerHull.GetComponent<Contamination>().isContaminatedWashable = targetContamination.isContaminatedWashable;
-            
+            PrepareHull(target, upperHull);
+            PrepareHull(target, lowerHull);
+
 
             Destroy(target);
             counter--;
@@ -111,7 +116,7 @@ public class SliceObject : MonoBehaviour
         if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
         {
             counter++;
-            //Debug.Log(counter);
+            // Debug.Log(counter);
         }
     }
 
@@ -123,8 +128,7 @@ public class SliceObject : MonoBehaviour
             if (counter == 0)
                 canSlice = true;
 
-            //Debug.Log(counter);
+            // Debug.Log(counter);
         }
     }
 }
-
