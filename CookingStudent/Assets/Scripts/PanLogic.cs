@@ -17,7 +17,7 @@ public class PanLogic : MonoBehaviour
             Ingredient ingredient = item.GetComponent<Ingredient>();
             Debug.Log("Found item with ingredient tag");
 
-            if (ingredient != null && onStove)
+            if (ingredient && onStove)
             {
                 Debug.Log("Cooking");
                 ingredient.StartCooking();

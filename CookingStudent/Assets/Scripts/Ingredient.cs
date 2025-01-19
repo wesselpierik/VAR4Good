@@ -4,22 +4,28 @@ using UnityEngine;
 public class Ingredient : MonoBehaviour
 {
     private bool isCooking = false;
-    [SerializeField]
-    public float cookingTime = 2.0f; // In Seconds
-    private float timer = 0f;
+    private bool isBurnt = false;
 
     [SerializeField]
-    private Material cookedMaterial;
-    private Renderer ingredientRenderer;
+    public float cookingTime = 2.0f; // In Seconds
+    [SerializeField]
+    public float burningTime = 5.0f; // In Seconds
+    private float timer = 0f;
+    private Outline outline;
+
 
     private void Start()
     {
-        ingredientRenderer = GetComponent<Renderer>();
+        outline = GetComponent<Outline>();
+        if (burningTime <= cookingTime)
+        {
+            Debug.LogWarning($"Burning time ({burningTime}s) should be greater than cooking time ({cookingTime}s) on {gameObject.name}!");
+        }
     }
 
     public void StartCooking()
     {
-        if (!isCooking)
+        if (!isCooking && !isBurnt)
         {
             isCooking = true;
             timer = 0f;
@@ -28,32 +34,55 @@ public class Ingredient : MonoBehaviour
 
     private void Update()
     {
-        if (isCooking)
+        if (isCooking && !isBurnt)
         {
             timer += Time.deltaTime;
-            if (timer >= cookingTime)
+            if (timer >= burningTime)
+            {
+                Burn();
+                isCooking = false;
+            }
+            else if (timer >= cookingTime)
             {
                 Cook();
-                isCooking = false;
             }
         }
     }
 
     private void Cook()
     {
-        if (cookedMaterial)
+        isBurnt = false;
+        UpdateMaterial();
+        Debug.Log($"{gameObject.name} cooked");
+
+    }
+
+    private void Burn()
+    {
+        isBurnt = true;
+        UpdateMaterial();
+        Debug.Log($"{gameObject.name} burnt");
+
+    }
+
+    private void UpdateMaterial()
+    {
+        if (!outline)
         {
-            Material[] raw = ingredientRenderer.materials;
-            Material[] cooked = new Material[raw.Length + 1];
-
-            for (int i = 0; i < raw.Length; i++) {
-                cooked[i] = raw[i];
-            }
-
-            cooked[raw.Length] = cookedMaterial;
-            ingredientRenderer.materials = cooked;
+            Debug.Log("Outline is null");
         }
 
-        Debug.Log($"{gameObject.name} is cooked!");
+        outline.OutlineMode = Outline.Mode.OutlineVisible;
+        outline.OutlineColor = isBurnt ? Color.red : Color.green;
+    }
+
+
+    private void OnTriggerExit(Collider item)
+    {
+        if (item.CompareTag("Pan"))
+        {
+            isCooking = false;
+            Debug.Log($"{gameObject.name} stopped cooking");
+        }
     }
 }

@@ -3884,6 +3884,7 @@ GameObject:
   - component: {fileID: 1255288192}
   - component: {fileID: 1255288191}
   - component: {fileID: 1255288190}
+  - component: {fileID: 1255288198}
   m_Layer: 0
   m_Name: Test Ingredient (1)
   m_TagString: Ingredient
@@ -4098,7 +4099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cookingTime: 2
-  cookedMaterial: {fileID: 2100000, guid: c76afb13f38a6954ab52bc2ee34928d9, type: 2}
+  burningTime: 5
 --- !u!54 &1255288194
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4194,6 +4195,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1255288198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255288189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 2
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 6
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1340865347
 GameObject:
   m_ObjectHideFlags: 0
@@ -5267,6 +5286,7 @@ GameObject:
   - component: {fileID: 2050509859}
   - component: {fileID: 2050509861}
   - component: {fileID: 2050509860}
+  - component: {fileID: 2050509862}
   m_Layer: 0
   m_Name: Test Ingredient
   m_TagString: Ingredient
@@ -5287,7 +5307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cookingTime: 2
-  cookedMaterial: {fileID: 2100000, guid: c76afb13f38a6954ab52bc2ee34928d9, type: 2}
+  burningTime: 5
 --- !u!54 &2050509854
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5577,6 +5597,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2050509862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050509852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 2
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 6
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &2059216135
 GameObject:
   m_ObjectHideFlags: 0
