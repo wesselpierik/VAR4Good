@@ -7,7 +7,7 @@ public class PanLogic : MonoBehaviour
     public void SetPan(bool action)
     {
         onStove = action;
-        Debug.Log($"Cook zone status: {action}");
+        // Debug.Log($"Cook zone status: {action}");
     }
 
     private void OnTriggerEnter(Collider item)
@@ -18,7 +18,7 @@ public class PanLogic : MonoBehaviour
 
             if (ingredient && onStove)
             {
-                Debug.Log("Cooking");
+                // Debug.Log("Cooking");
                 ingredient.StartCooking();
             }
         }

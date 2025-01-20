@@ -7,14 +7,21 @@ public class IngredientCooking : MonoBehaviour
     private bool isCooking = false;
     private bool isBurnt = false;
 
+    private Color doneColor = new Color(0.0f, 1.0f, 0.0f, 0.75f);
+    private Color burntColor = new Color(0.2f, 0.2f, 0.0f, 0.975f);
+
     [SerializeField]
     public float cookingTime = 2.0f; // In Seconds
     [SerializeField]
     public float burningTime = 5.0f; // In Seconds
     private float timer = 0f;
 
+    private Renderer r;
+
     private void Start()
     {
+        r = GetComponent<Renderer>();
+
         if (burningTime <= cookingTime)
         {
             Debug.LogWarning($"Burning time ({burningTime}s) should be greater than cooking time ({cookingTime}s) on {gameObject.name}!");
@@ -32,13 +39,12 @@ public class IngredientCooking : MonoBehaviour
 
     private void Update()
     {
-        if (isCooking && !isBurnt)
+        if (isCooking)
         {
             timer += Time.deltaTime;
             if (timer >= burningTime)
             {
                 Burn();
-                isCooking = false;
             }
             else if (timer >= cookingTime)
             {
@@ -49,28 +55,18 @@ public class IngredientCooking : MonoBehaviour
 
     private void Cook()
     {
-        isBurnt = false;
-        UpdateMaterial();
+        r.materials[1].color = doneColor;
         GlobalStateManager.Instance.CookObject(name);
-        if (GlobalStateManager.Instance.isRecipeComplete())
-        {
-            Debug.Log("Recipe is complete");
-        }
-        Debug.Log($"{gameObject.name} cooked");
+        // Debug.Log($"{gameObject.name} cooked");
     }
 
     private void Burn()
     {
         isBurnt = true;
-        UpdateMaterial();
+        r.materials[1].color = burntColor;
         GlobalStateManager.Instance.AddScore(-5);
         GlobalStateManager.Instance.DisplayScore();
-        Debug.Log($"{gameObject.name} burnt");
-    }
-
-    private void UpdateMaterial()
-    {
-
+        // Debug.Log($"{gameObject.name} burnt");
     }
 
     private void OnTriggerExit(Collider item)
@@ -78,7 +74,7 @@ public class IngredientCooking : MonoBehaviour
         if (item.CompareTag("Pan"))
         {
             isCooking = false;
-            Debug.Log($"{gameObject.name} stopped cooking");
+            // Debug.Log($"{gameObject.name} stopped cooking");
         }
     }
 }

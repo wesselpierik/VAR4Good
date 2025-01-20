@@ -8,7 +8,6 @@ public class StoveZone : MonoBehaviour
     {
         if (item.CompareTag("Pan"))
         {
-
             item.transform.position = snapPoint.position;
             item.transform.rotation = snapPoint.rotation;
 
@@ -16,6 +15,7 @@ public class StoveZone : MonoBehaviour
 
             PanLogic panLogic = item.GetComponent<PanLogic>();
             if (panLogic != null)
+
             {
                 panLogic.SetPan(true);
             }
