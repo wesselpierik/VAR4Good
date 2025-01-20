@@ -1,41 +1,26 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class StoveZone : MonoBehaviour
+public class StoveZone : XRSocketInteractor
 {
-    public Transform snapPoint;
+    protected override void OnSelectEntered(SelectEnterEventArgs args) {
+        if (args.interactable.transform.tag == "Pan") {
+            XRBaseInteractable interactable = args.interactable;
 
-    private void OnTriggerEnter(Collider item)
-    {
-        if (item.CompareTag("Pan"))
-        {
-            item.transform.position = snapPoint.position;
-            item.transform.rotation = snapPoint.rotation;
+            interactable.GetComponent<CustomXRGrabInteractable>().attachTransform = interactable.transform.Find("SnapTransform");
 
-            // remove transform to snap correctly
-            item.GetComponent<XRGrabInteractable>().attachTransform = null;
-
-            PanLogic panLogic = item.GetComponent<PanLogic>();
-            if (panLogic != null)
-            {
-                Debug.Log("Pan entered stove zone");
-                panLogic.SetPan(true);
-            }
+            base.OnSelectEntered(args);
         }
+
     }
 
-    private void OnTriggerExit(Collider item)
-    {
-        if (item.CompareTag("Pan"))
-        {
-            Debug.Log(item.transform.Find("GrabPoint"));
-            item.GetComponent<XRGrabInteractable>().attachTransform = item.transform.Find("GrabPoint");
-            PanLogic panLogic = item.GetComponent<PanLogic>();
+    protected override void OnSelectExited(SelectExitEventArgs args) {
+        if (args.interactable.transform.tag == "Pan") {
+            XRBaseInteractable interactable = args.interactable;
 
-            if (panLogic != null)
-            {
-                panLogic.SetPan(false);
-            }
+            interactable.GetComponent<CustomXRGrabInteractable>().attachTransform = interactable.transform.Find("GrabPoint");
+
+            base.OnSelectExited(args);
         }
     }
 }
