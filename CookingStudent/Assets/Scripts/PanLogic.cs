@@ -14,7 +14,7 @@ public class PanLogic : MonoBehaviour
     {
         if (item.CompareTag("Ingredient"))
         {
-            Ingredient ingredient = item.GetComponent<Ingredient>();
+            IngredientCooking ingredient = item.GetComponent<IngredientCooking>();
 
             if (ingredient && onStove)
             {

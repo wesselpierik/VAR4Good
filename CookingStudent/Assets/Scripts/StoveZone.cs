@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class StoveZone : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class StoveZone : MonoBehaviour
 
             item.transform.position = snapPoint.position;
             item.transform.rotation = snapPoint.rotation;
+
+            item.GetComponent<XRGrabInteractable>().attachTransform = null;
 
             PanLogic panLogic = item.GetComponent<PanLogic>();
             if (panLogic != null)
@@ -23,7 +26,10 @@ public class StoveZone : MonoBehaviour
     {
         if (item.CompareTag("Pan"))
         {
+            item.GetComponent<XRGrabInteractable>().attachTransform = transform.Find("GrabPoint");
+
             PanLogic panLogic = item.GetComponent<PanLogic>();
+
             if (panLogic != null)
             {
                 panLogic.SetPan(false);
