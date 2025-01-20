@@ -2069,9 +2069,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: d2e2a853635ce0541a57bf54bb3b3249, type: 3}
       insertIndex: -1
       addedObject: {fileID: 698496050}
-    - targetCorrespondingSourceObject: {fileID: 100000, guid: d2e2a853635ce0541a57bf54bb3b3249, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 698496049}
   m_SourcePrefab: {fileID: 100100000, guid: d2e2a853635ce0541a57bf54bb3b3249, type: 3}
 --- !u!4 &698496047 stripped
 Transform:
@@ -2083,25 +2080,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: d2e2a853635ce0541a57bf54bb3b3249, type: 3}
   m_PrefabInstance: {fileID: 698496046}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &698496049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 698496048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd9375566d43fb4ea2eed6bc3839914, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Recipes:
-  - ObjectName: Cucumber
-    TargetCount: 3
-    CurrentCount: 0
-  - ObjectName: Tomato
-    TargetCount: 5
-    CurrentCount: 0
 --- !u!65 &698496050
 BoxCollider:
   m_ObjectHideFlags: 0

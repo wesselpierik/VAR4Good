@@ -47,7 +47,6 @@ public class SliceObject : MonoBehaviour
         hull.GetComponent<Contamination>().isContaminatedCookable = targetContamination.isContaminatedCookable;
         hull.GetComponent<Contamination>().isContaminatedWashable = targetContamination.isContaminatedWashable;
         hull.AddComponent<Outline>();
-        hull.name = target.name;
     }
 
 
