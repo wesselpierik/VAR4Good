@@ -23,6 +23,8 @@ public class SliceObject : MonoBehaviour
         {
             bool hasHit = Physics.Linecast(startSlicepoint.position, endSlicepoint.position, out RaycastHit hit, sliceableLayer);
 
+            Debug.Log(hasHit);
+
             if (hasHit)
             {
                 canSlice = false;
@@ -39,9 +41,14 @@ public class SliceObject : MonoBehaviour
         Contamination targetContamination = target.GetComponent<Contamination>();
 
         SetupSlicedComponent(hull);
-        hull.AddComponent<XRGrabInteractable>();
         hull.name = target.name;
         hull.layer = target.layer;
+        hull.tag = target.tag;
+
+        hull.AddComponent<XRGrabInteractable>();
+
+        // TODO: should also copy fields
+        hull.AddComponent<IngredientCooking>();
 
         if (targetContamination == null) return;
 
@@ -54,6 +61,7 @@ public class SliceObject : MonoBehaviour
 
     public void Slice(GameObject target)
     {
+        Debug.Log("Slice");
         // destroy because it will break otherwise
         Destroy(target.GetComponent<Outline>());
 
@@ -86,6 +94,9 @@ public class SliceObject : MonoBehaviour
             Destroy(target);
             counter--;
         }
+        else {
+            Debug.LogWarning("Hull is null");
+        }
 
     }
 
@@ -102,16 +113,16 @@ public class SliceObject : MonoBehaviour
         if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
         {
             counter++;
+            Debug.Log($"Enter: {counter}");
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
-        {
+    private void OnTriggerExit(Collider other) {
+        if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0) {
+            Debug.Log(other);
             counter--;
-            if (counter == 0)
-            {
+            Debug.Log($"Exit: {counter}");
+            if (counter == 0) {
                 canSlice = true;
             }
         }

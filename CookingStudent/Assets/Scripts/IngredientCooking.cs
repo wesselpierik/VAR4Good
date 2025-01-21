@@ -18,6 +18,8 @@ public class IngredientCooking : MonoBehaviour
 
     private void Start()
     {
+        GetComponent<MeshFilter>().mesh.subMeshCount++;
+
         r = GetComponent<Renderer>();
 
         if (burningTime <= cookingTime)
@@ -70,8 +72,6 @@ public class IngredientCooking : MonoBehaviour
         if (item.CompareTag("Pan"))
         {
             isCooking = false;
-        } else {
-            Debug.LogWarning($"{item} does not have the Pan tag");
         }
     }
 }

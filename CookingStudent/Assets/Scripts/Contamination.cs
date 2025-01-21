@@ -8,8 +8,6 @@ public class Contamination : MonoBehaviour
 
     public bool mustBeWashed = false;
 
-    public bool showContamination = true; // this should be in a global settings scripts probably...
-
     // Hardcode
     private Color originalColor = Color.white;
     private Color washableColor = Color.blue;
@@ -17,13 +15,16 @@ public class Contamination : MonoBehaviour
     private Color washableCookableColor = new Color(0.75f, 0.0f, 1.0f);
 
     private bool isHand;
+    private bool showContamination; // this should be in a global settings scripts probably...
 
     void Start()
     {
         isHand = CompareTag("Hand");
+        showContamination = GlobalSettingsManager.Instance.GetShowContamination();
 
         if (IsContaminated())
             UpdateMaterial();
+
 
         // warn about missing outline component
         if (GetOutline() == null)

@@ -33,6 +33,13 @@ public class GlobalSettingsManager : MonoBehaviour
         settings.SetShowContamination(value);
     }
 
+    public bool GetShowContamination() {
+        if (settings == null) {
+            Debug.LogWarning("settings is null");
+        }
+        return settings.GetShowContamination();
+    }
+
     public void DisplaySettings() {
         Debug.Log(settings.GetShowContamination());
     }

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3766cac9af688ebebd1a110eb92cd12, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: 
-  showContamination: 0
+  showContamination: 1
