@@ -1,39 +1,39 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class StoveZone : MonoBehaviour
+public class StoveZone : XRSocketInteractor
 {
-    public Transform snapPoint;
-    private void OnTriggerEnter(Collider item)
-    {
-        if (item.CompareTag("Pan"))
-        {
-            item.transform.position = snapPoint.position;
-            item.transform.rotation = snapPoint.rotation;
+    protected override void OnSelectEntered(SelectEnterEventArgs args) {
+        if (args.interactable.transform.CompareTag("Pan")) {
+            XRBaseInteractable interactable = args.interactable;
 
-            item.GetComponent<XRGrabInteractable>().attachTransform = null;
+            interactable.GetComponent<CustomXRGrabInteractable>().attachTransform = interactable.transform.Find("SnapTransform");
 
-            PanLogic panLogic = item.GetComponent<PanLogic>();
-            if (panLogic != null)
-
-            {
+            PanLogic panLogic = interactable.GetComponent<PanLogic>();
+            if (panLogic != null) {
                 panLogic.SetPan(true);
+            } else {
+                Debug.LogWarning("The pan has no panLogic");
             }
+
+            base.OnSelectEntered(args);
         }
     }
 
-    private void OnTriggerExit(Collider item)
-    {
-        if (item.CompareTag("Pan"))
-        {
-            item.GetComponent<XRGrabInteractable>().attachTransform = transform.Find("GrabPoint");
+    protected override void OnSelectExited(SelectExitEventArgs args) {
+        if (args.interactable.transform.CompareTag("Pan")) {
+            XRBaseInteractable interactable = args.interactable;
 
-            PanLogic panLogic = item.GetComponent<PanLogic>();
+            interactable.GetComponent<CustomXRGrabInteractable>().attachTransform = interactable.transform.Find("GrabPoint");
 
-            if (panLogic != null)
-            {
+            PanLogic panLogic = interactable.GetComponent<PanLogic>();
+            if (panLogic != null) {
                 panLogic.SetPan(false);
+            } else {
+                Debug.LogWarning("The pan has no panLogic");
             }
+
+            base.OnSelectExited(args);
         }
     }
 }

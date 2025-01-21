@@ -1,5 +1,3 @@
-using UnityEditor.SpeedTree.Importer;
-using UnityEditor.UI;
 using UnityEngine;
 
 public class IngredientCooking : MonoBehaviour
@@ -57,7 +55,7 @@ public class IngredientCooking : MonoBehaviour
     {
         r.materials[1].color = doneColor;
         GlobalStateManager.Instance.CookObject(name);
-        // Debug.Log($"{gameObject.name} cooked");
+        Debug.Log($"{gameObject.name} cooked");
     }
 
     private void Burn()
@@ -66,7 +64,7 @@ public class IngredientCooking : MonoBehaviour
         r.materials[1].color = burntColor;
         GlobalStateManager.Instance.AddScore(-5);
         GlobalStateManager.Instance.DisplayScore();
-        // Debug.Log($"{gameObject.name} burnt");
+        Debug.Log($"{gameObject.name} burnt");
     }
 
     private void OnTriggerExit(Collider item)
@@ -74,7 +72,7 @@ public class IngredientCooking : MonoBehaviour
         if (item.CompareTag("Pan"))
         {
             isCooking = false;
-            // Debug.Log($"{gameObject.name} stopped cooking");
+            Debug.Log($"{gameObject.name} stopped cooking");
         }
     }
 }

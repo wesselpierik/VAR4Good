@@ -12,6 +12,8 @@ public class PanLogic : MonoBehaviour
 
     private void OnTriggerEnter(Collider item)
     {
+        Debug.Log(item);
+        Debug.Log(onStove);
         if (item.CompareTag("Ingredient"))
         {
             IngredientCooking ingredient = item.GetComponent<IngredientCooking>();
