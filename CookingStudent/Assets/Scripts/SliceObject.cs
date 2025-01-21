@@ -43,6 +43,8 @@ public class SliceObject : MonoBehaviour
         hull.name = target.name;
         hull.layer = target.layer;
 
+        if (targetContamination == null) return;
+
         hull.AddComponent<Contamination>();
         hull.GetComponent<Contamination>().isContaminatedCookable = targetContamination.isContaminatedCookable;
         hull.GetComponent<Contamination>().isContaminatedWashable = targetContamination.isContaminatedWashable;
@@ -63,6 +65,8 @@ public class SliceObject : MonoBehaviour
 
         SlicedHull hull = target.Slice(endSlicepoint.position, planeNormal);
 
+        Debug.Log(hull);
+
         if (hull != null)
         {
             Material crossSectionMaterial = target.GetComponent<Renderer>().material;
@@ -75,7 +79,8 @@ public class SliceObject : MonoBehaviour
             PrepareHull(target, lowerHull);
 
             GlobalStateManager.Instance.SliceObject(objectName);
-            if (GlobalStateManager.Instance.isRecipeComplete()) {
+            if (GlobalStateManager.Instance.isRecipeComplete())
+            {
                 Debug.Log("Recipe is complete");
             }
 
@@ -88,7 +93,7 @@ public class SliceObject : MonoBehaviour
 
     public void SetupSlicedComponent(GameObject slicedObject)
     {
-        Rigidbody rb = slicedObject.AddComponent<Rigidbody>();
+        slicedObject.AddComponent<Rigidbody>();
         MeshCollider collider = slicedObject.AddComponent<MeshCollider>();
         collider.convex = true;
 
@@ -108,7 +113,8 @@ public class SliceObject : MonoBehaviour
         if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
         {
             counter--;
-            if (counter == 0) {
+            if (counter == 0)
+            {
                 canSlice = true;
             }
         }
