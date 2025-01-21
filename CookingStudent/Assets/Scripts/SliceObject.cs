@@ -102,7 +102,6 @@ public class SliceObject : MonoBehaviour
         if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
         {
             counter++;
-            // Debug.Log(counter);
         }
     }
 
