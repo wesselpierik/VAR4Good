@@ -24,6 +24,12 @@ public class Contamination : MonoBehaviour
 
         if (IsContaminated())
             UpdateMaterial();
+
+        // warn about missing outline component
+        if (GetOutline() == null)
+        {
+            Debug.LogWarning($"Outline component not found for {gameObject}. Ignore this warning if this is intentional.");
+        }
     }
 
     public bool IsContaminated()
@@ -39,25 +45,27 @@ public class Contamination : MonoBehaviour
 
     void UpdateMaterial()
     {
-        if (!showContamination) return;
+        Outline outline = GetOutline();
+        if (!showContamination || outline == null) return;
 
-        GetOutline().OutlineMode = IsContaminated() ? Outline.Mode.OutlineVisible : Outline.Mode.OutlineHidden;
+
+        outline.OutlineMode = IsContaminated() ? Outline.Mode.OutlineVisible : Outline.Mode.OutlineHidden;
 
         if (isContaminatedWashable && isContaminatedCookable)
         {
-            GetOutline().OutlineColor = washableCookableColor;
+            outline.OutlineColor = washableCookableColor;
         }
         else if (isContaminatedWashable)
         {
-            GetOutline().OutlineColor = washableColor;
+            outline.OutlineColor = washableColor;
         }
         else if (isContaminatedCookable)
         {
-            GetOutline().OutlineColor = cookableColor;
+            outline.OutlineColor = cookableColor;
         }
         else
         {
-            GetOutline().OutlineColor = originalColor;
+            outline.OutlineColor = originalColor;
         }
 
     }
