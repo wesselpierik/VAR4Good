@@ -23,7 +23,7 @@ public class SliceObject : MonoBehaviour
         {
             bool hasHit = Physics.Linecast(startSlicepoint.position, endSlicepoint.position, out RaycastHit hit, sliceableLayer);
 
-            Debug.Log(hasHit);
+            // Debug.Log(hasHit);
 
             if (hasHit)
             {
@@ -38,30 +38,34 @@ public class SliceObject : MonoBehaviour
 
     private void PrepareHull(GameObject target, GameObject hull)
     {
-        Contamination targetContamination = target.GetComponent<Contamination>();
 
         SetupSlicedComponent(hull);
+        hull.AddComponent<XRGrabInteractable>();
         hull.name = target.name;
         hull.layer = target.layer;
         hull.tag = target.tag;
 
-        hull.AddComponent<XRGrabInteractable>();
 
         // TODO: should also copy fields
-        hull.AddComponent<IngredientCooking>();
+        IngredientCooking ingredientCooking = target.GetComponent<IngredientCooking>();
+        if (ingredientCooking != null)
+        {
+            hull.AddComponent<IngredientCooking>();
+        }
 
-        if (targetContamination == null) return;
-
-        hull.AddComponent<Contamination>();
-        hull.GetComponent<Contamination>().isContaminatedCookable = targetContamination.isContaminatedCookable;
-        hull.GetComponent<Contamination>().isContaminatedWashable = targetContamination.isContaminatedWashable;
-        hull.AddComponent<Outline>();
+        Contamination targetContamination = target.GetComponent<Contamination>();
+        if (targetContamination != null)
+        {
+            hull.AddComponent<Contamination>();
+            hull.GetComponent<Contamination>().isContaminatedCookable = targetContamination.isContaminatedCookable;
+            hull.GetComponent<Contamination>().isContaminatedWashable = targetContamination.isContaminatedWashable;
+            hull.AddComponent<Outline>();
+        }
     }
 
 
     public void Slice(GameObject target)
     {
-        Debug.Log("Slice");
         // destroy because it will break otherwise
         Destroy(target.GetComponent<Outline>());
 
@@ -94,7 +98,8 @@ public class SliceObject : MonoBehaviour
             Destroy(target);
             counter--;
         }
-        else {
+        else
+        {
             Debug.LogWarning("Hull is null");
         }
 
@@ -113,16 +118,16 @@ public class SliceObject : MonoBehaviour
         if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
         {
             counter++;
-            Debug.Log($"Enter: {counter}");
         }
     }
 
-    private void OnTriggerExit(Collider other) {
-        if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0) {
-            Debug.Log(other);
+    private void OnTriggerExit(Collider other)
+    {
+        if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
+        {
             counter--;
-            Debug.Log($"Exit: {counter}");
-            if (counter == 0) {
+            if (counter == 0)
+            {
                 canSlice = true;
             }
         }
