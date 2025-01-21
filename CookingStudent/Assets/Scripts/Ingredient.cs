@@ -7,10 +7,11 @@ public class Ingredient
     public string ObjectName; // Name of the object to slice
     public int TargetCount;  // Number required
     public int CurrentCount; // Current sliced count
-    public int TargetCookMinutes;
-    public int CurrentCookMinutes;
+    public float BurnCookMinutes;
+    public float TargetCookMinutes;
+    public float CurrentCookMinutes;
 
-    public void UpdateIngredientProgress(int action)
+    public void UpdateIngredientProgress(int action, float timer)
     {
         switch (action) {
             case 0: // Slice the ingredient
@@ -18,7 +19,7 @@ public class Ingredient
                 break;
 
             case 1: // Cook the ingredient
-                CurrentCookMinutes++;
+                CurrentCookMinutes = Math.Max(timer, CurrentCookMinutes);
                 break;
 
         }

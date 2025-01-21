@@ -44,14 +44,14 @@ public class GlobalStateManager : MonoBehaviour
     public void SliceObject(string objectName) {
         Ingredient ingredient = recipeList.FirstOrDefault(i => i.ObjectName == objectName);
         if (ingredient != null) {
-            ingredient.UpdateIngredientProgress(0);
+            ingredient.UpdateIngredientProgress(0, 0);
         }
     }
 
-    public void CookObject(string objectName) {
+    public void CookObject(string objectName, float timer) {
         Ingredient ingredient = recipeList.FirstOrDefault(i => i.ObjectName == objectName);
         if (ingredient != null) {
-            ingredient.UpdateIngredientProgress(1);
+            ingredient.UpdateIngredientProgress(1, timer);
         }
     }
 

@@ -54,7 +54,7 @@ public class IngredientCooking : MonoBehaviour
     private void Cook()
     {
         r.materials[1].color = doneColor;
-        GlobalStateManager.Instance.CookObject(name);
+        GlobalStateManager.Instance.CookObject(name, timer);
     }
 
     private void Burn()
@@ -70,6 +70,8 @@ public class IngredientCooking : MonoBehaviour
         if (item.CompareTag("Pan"))
         {
             isCooking = false;
+        } else {
+            Debug.LogWarning($"{item} does not have the Pan tag");
         }
     }
 }
