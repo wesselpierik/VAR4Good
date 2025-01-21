@@ -24,6 +24,12 @@ public class Contamination : MonoBehaviour
 
         if (IsContaminated())
             UpdateMaterial();
+
+        // warn about missing outline component
+        if (GetOutline() == null)
+        {
+            Debug.LogWarning($"Outline component not found for {gameObject}. Ignore this warning if this is intentional.");
+        }
     }
 
     public bool IsContaminated()

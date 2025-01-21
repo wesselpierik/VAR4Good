@@ -4591,6 +4591,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.000000059604645
       objectReference: {fileID: 0}
+    - target: {fileID: 5365940452116698550, guid: d893035dcedac4979a71576df53f9dd8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5435483023153272080, guid: d893035dcedac4979a71576df53f9dd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -7959,6 +7963,8 @@ GameObject:
   - component: {fileID: 1184305843}
   - component: {fileID: 1184305842}
   - component: {fileID: 1184305841}
+  - component: {fileID: 1184305844}
+  - component: {fileID: 1184305846}
   m_Layer: 0
   m_Name: FreeRoom
   m_TagString: Untagged
@@ -8034,6 +8040,44 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1249001611}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1184305844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184305840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6f2183699fc8341b685987b4f4b807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isContaminatedCookable: 0
+  isContaminatedWashable: 1
+  mustBeWashed: 0
+  showContamination: 1
+--- !u!64 &1184305846
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184305840}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1938180890505782798, guid: e44398b8debef4010a789dd58c1ae19a, type: 3}
 --- !u!1 &1219846675
 GameObject:
   m_ObjectHideFlags: 0
@@ -14605,6 +14649,10 @@ PrefabInstance:
     - target: {fileID: 7771735116787826456, guid: 6f89576732e5744ae89cf5fea5d03780, type: 3}
       propertyPath: m_Name
       value: FreePotSmall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7771735116787826456, guid: 6f89576732e5744ae89cf5fea5d03780, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

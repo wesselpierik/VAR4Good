@@ -65,8 +65,6 @@ public class SliceObject : MonoBehaviour
 
         SlicedHull hull = target.Slice(endSlicepoint.position, planeNormal);
 
-        Debug.Log(hull);
-
         if (hull != null)
         {
             Material crossSectionMaterial = target.GetComponent<Renderer>().material;
