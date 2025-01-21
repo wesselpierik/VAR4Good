@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 
 [Serializable]
@@ -11,7 +12,7 @@ public class Ingredient
     public int TargetCookMinutes;
     public int CurrentCookMinutes;
 
-    public void UpdateIngredientProgress(int action)
+    public string UpdateIngredientProgress(int action)
     {
         switch (action) {
             case 0: // Slice the ingredient
@@ -24,7 +25,9 @@ public class Ingredient
 
         }
 
-        Debug.Log($"{ObjectName}: {CurrentCount}/{TargetCount}");
+        string recipeStatus = $"{ObjectName}: {CurrentCount}/{TargetCount}";
+
+        return recipeStatus;
     }
 
     public bool IsIngredientComplete()

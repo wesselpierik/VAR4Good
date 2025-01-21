@@ -6,6 +6,7 @@ public class GlobalStateManager : MonoBehaviour
 {
     public GlobalScore globalScore;
     public List<Ingredient> recipeList;
+    public RecipeText recipeText;
 
     private static GlobalStateManager _instance;
 
@@ -41,18 +42,27 @@ public class GlobalStateManager : MonoBehaviour
         Debug.Log(globalScore.GetScore());
     }
 
-    public void SliceObject(string objectName) {
+    public string SliceObject(string objectName) {
         Ingredient ingredient = recipeList.FirstOrDefault(i => i.ObjectName == objectName);
         if (ingredient != null) {
-            ingredient.UpdateIngredientProgress(0);
+            string ret = ingredient.UpdateIngredientProgress(0);
+
+            recipeText.RecipeTextAdd();
+            
+            return ret;
         }
+
+        return null;
     }
 
-    public void CookObject(string objectName) {
+    public string CookObject(string objectName) {
         Ingredient ingredient = recipeList.FirstOrDefault(i => i.ObjectName == objectName);
         if (ingredient != null) {
-            ingredient.UpdateIngredientProgress(1);
+            string ret = ingredient.UpdateIngredientProgress(1);
+            return ret;
         }
+
+        return null;
     }
 
     public bool isRecipeComplete() {
