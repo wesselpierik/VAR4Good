@@ -59,9 +59,9 @@ public class IngredientCooking : MonoBehaviour
 
     private void Burn()
     {
+        if (!isBurnt) GlobalStateManager.Instance.AddScore(-5);
         isBurnt = true;
         r.materials[1].color = burntColor;
-        GlobalStateManager.Instance.AddScore(-5);
         GlobalStateManager.Instance.DisplayScore();
     }
 
