@@ -7,6 +7,7 @@ TagManager:
   - Hand
   - Ingredient
   - Pan
+  - Knife
   layers:
   - Default
   - TransparentFX
