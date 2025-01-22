@@ -47,18 +47,22 @@ public class SliceObject : MonoBehaviour
 
 
         // TODO: should also copy fields
-        IngredientCooking ingredientCooking = target.GetComponent<IngredientCooking>();
-        if (ingredientCooking != null)
+        IngredientCooking targetIngredientCooking = target.GetComponent<IngredientCooking>();
+        if (targetIngredientCooking != null)
         {
             hull.AddComponent<IngredientCooking>();
+            IngredientCooking i = hull.GetComponent<IngredientCooking>();
+            i.cookingTime = targetIngredientCooking.cookingTime;
+            i.burningTime = targetIngredientCooking.burningTime;
         }
 
         Contamination targetContamination = target.GetComponent<Contamination>();
         if (targetContamination != null)
         {
             hull.AddComponent<Contamination>();
-            hull.GetComponent<Contamination>().isContaminatedCookable = targetContamination.isContaminatedCookable;
-            hull.GetComponent<Contamination>().isContaminatedWashable = targetContamination.isContaminatedWashable;
+            Contamination c = hull.GetComponent<Contamination>();
+            c.isContaminatedCookable = targetContamination.isContaminatedCookable;
+            c.isContaminatedWashable = targetContamination.isContaminatedWashable;
             hull.AddComponent<Outline>();
         }
     }
