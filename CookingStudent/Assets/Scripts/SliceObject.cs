@@ -23,6 +23,8 @@ public class SliceObject : MonoBehaviour
         {
             bool hasHit = Physics.Linecast(startSlicepoint.position, endSlicepoint.position, out RaycastHit hit, sliceableLayer);
 
+            // Debug.Log(hasHit);
+
             if (hasHit)
             {
                 canSlice = false;
@@ -36,19 +38,33 @@ public class SliceObject : MonoBehaviour
 
     private void PrepareHull(GameObject target, GameObject hull)
     {
-        Contamination targetContamination = target.GetComponent<Contamination>();
 
         SetupSlicedComponent(hull);
         hull.AddComponent<XRGrabInteractable>();
         hull.name = target.name;
         hull.layer = target.layer;
+        hull.tag = target.tag;
 
-        if (targetContamination == null) return;
 
-        hull.AddComponent<Contamination>();
-        hull.GetComponent<Contamination>().isContaminatedCookable = targetContamination.isContaminatedCookable;
-        hull.GetComponent<Contamination>().isContaminatedWashable = targetContamination.isContaminatedWashable;
-        hull.AddComponent<Outline>();
+        // TODO: should also copy fields
+        IngredientCooking targetIngredientCooking = target.GetComponent<IngredientCooking>();
+        if (targetIngredientCooking != null)
+        {
+            hull.AddComponent<IngredientCooking>();
+            IngredientCooking i = hull.GetComponent<IngredientCooking>();
+            i.cookingTime = targetIngredientCooking.cookingTime;
+            i.burningTime = targetIngredientCooking.burningTime;
+        }
+
+        Contamination targetContamination = target.GetComponent<Contamination>();
+        if (targetContamination != null)
+        {
+            hull.AddComponent<Contamination>();
+            Contamination c = hull.GetComponent<Contamination>();
+            c.isContaminatedCookable = targetContamination.isContaminatedCookable;
+            c.isContaminatedWashable = targetContamination.isContaminatedWashable;
+            hull.AddComponent<Outline>();
+        }
     }
 
 
@@ -85,6 +101,10 @@ public class SliceObject : MonoBehaviour
             Destroy(target);
             counter--;
         }
+        else
+        {
+            Debug.LogWarning("Hull is null");
+        }
 
     }
 
@@ -102,6 +122,7 @@ public class SliceObject : MonoBehaviour
         {
             counter++;
         }
+        Debug.Log(counter);
     }
 
     private void OnTriggerExit(Collider other)
@@ -114,5 +135,6 @@ public class SliceObject : MonoBehaviour
                 canSlice = true;
             }
         }
+        Debug.Log(counter);
     }
 }
