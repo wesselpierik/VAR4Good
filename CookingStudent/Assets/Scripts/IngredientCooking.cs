@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Linq;
 
 public class IngredientCooking : MonoBehaviour
 {
@@ -16,16 +17,22 @@ public class IngredientCooking : MonoBehaviour
 
     private Renderer r;
 
-    private void Start()
+    private void Awake()
     {
-        GetComponent<MeshFilter>().mesh.subMeshCount++;
-
         r = GetComponent<Renderer>();
+
+        /* Add material */
+        GetComponent<MeshFilter>().mesh.subMeshCount++; // fix the submesh count
+        var materials = r.sharedMaterials.ToList();
+        Material m = Instantiate(Resources.Load("M_Cook", typeof(Material)) as Material);
+        materials.Add(m);
+        r.materials = materials.ToArray();
 
         if (burningTime <= cookingTime)
         {
             Debug.LogWarning($"Burning time ({burningTime}s) should be greater than cooking time ({cookingTime}s) on {gameObject.name}!");
         }
+
     }
 
     public void StartCooking()
