@@ -8,6 +8,8 @@ public class Contamination : MonoBehaviour
 
     public bool mustBeWashed = false;
 
+    [SerializeField] private bool forceHideContamination = false;
+
     // Hardcode
     private Color originalColor = Color.white;
     private Color washableColor = Color.blue;
@@ -23,7 +25,7 @@ public class Contamination : MonoBehaviour
         showContamination = GlobalSettingsManager.Instance.GetShowContamination();
 
         // add outline realtime, but hands have them baked into the prefab
-        if (GetOutline() == null && !isHand)
+        if (GetOutline() == null && !isHand && !forceHideContamination)
         {
             gameObject.AddComponent<Outline>();
         }
