@@ -22,8 +22,8 @@ public class RecipeText : MonoBehaviour
             string name = ingredient.ObjectName;
             int currentCount = ingredient.CurrentCount;
             int targetCount = ingredient.TargetCount;
-            int currentCookMinutes = ingredient.CurrentCookMinutes;
-            int targetCookMinutes = ingredient.TargetCookMinutes;
+            float currentCookMinutes = ingredient.CurrentCookMinutes;
+            float targetCookMinutes = ingredient.TargetCookMinutes;
 
             string ingredientLine = "";
 
