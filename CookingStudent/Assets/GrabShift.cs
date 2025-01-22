@@ -15,4 +15,12 @@ public class CustomXRGrabInteractable : XRGrabInteractable
 
         return base.GetAttachTransform(interactor);
     }
+
+    protected override void OnSelectExited(SelectExitEventArgs args) {
+        IXRSelectInteractable obj = args.interactableObject;
+        Rigidbody rb = obj.transform.GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+
+        base.OnSelectExited(args);
+    }
 }
