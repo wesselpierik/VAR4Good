@@ -1,8 +1,11 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 
 public class GlobalStateManager : MonoBehaviour
 {
     public GlobalScore globalScore;
+    public List<Ingredient> recipeList;
 
     private static GlobalStateManager _instance;
 
@@ -36,5 +39,29 @@ public class GlobalStateManager : MonoBehaviour
 
     public void DisplayScore() {
         Debug.Log(globalScore.GetScore());
+    }
+
+    public void SliceObject(string objectName) {
+        Ingredient ingredient = recipeList.FirstOrDefault(i => i.ObjectName == objectName);
+        if (ingredient != null) {
+            ingredient.UpdateIngredientProgress(0, 0);
+        }
+    }
+
+    public void CookObject(string objectName, float timer) {
+        Ingredient ingredient = recipeList.FirstOrDefault(i => i.ObjectName == objectName);
+        if (ingredient != null) {
+            ingredient.UpdateIngredientProgress(1, timer);
+        }
+    }
+
+    public bool isRecipeComplete() {
+        foreach (Ingredient ingredient in recipeList) {
+            if (!ingredient.IsIngredientComplete()) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
