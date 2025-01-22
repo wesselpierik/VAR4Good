@@ -22,15 +22,14 @@ public class Contamination : MonoBehaviour
         isHand = CompareTag("Hand");
         showContamination = GlobalSettingsManager.Instance.GetShowContamination();
 
+        // add outline realtime, but hands have them baked into the prefab
+        if (GetOutline() == null && !isHand)
+        {
+            gameObject.AddComponent<Outline>();
+        }
+
         if (IsContaminated())
             UpdateMaterial();
-
-
-        // warn about missing outline component
-        if (GetOutline() == null)
-        {
-            Debug.LogWarning($"Outline component not found for {gameObject}. Ignore this warning if this is intentional.");
-        }
     }
 
     public bool IsContaminated()
@@ -48,7 +47,7 @@ public class Contamination : MonoBehaviour
     {
         Outline outline = GetOutline();
         if (!showContamination || outline == null) return;
-
+        Debug.Log(outline);
 
         outline.OutlineMode = IsContaminated() ? Outline.Mode.OutlineVisible : Outline.Mode.OutlineHidden;
 
