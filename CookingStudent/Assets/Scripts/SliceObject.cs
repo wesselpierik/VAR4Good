@@ -98,7 +98,6 @@ public class SliceObject : MonoBehaviour
                 Debug.Log("Recipe is complete");
             }
 
-
             Destroy(target);
             counter--;
         }
