@@ -27,12 +27,12 @@ AudioRandomContainer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Wood
-  m_Volume: 0
-  m_Pitch: 50
+  m_Volume: -13
+  m_Pitch: 0
   m_AutomaticTriggerTime: 0
   m_LoopCount: 1
   m_VolumeRandomizationRange: {x: 0, y: 0}
-  m_PitchRandomizationRange: {x: 0, y: 0}
+  m_PitchRandomizationRange: {x: -25, y: 25}
   m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
   m_LoopCountRandomizationRange: {x: 0, y: 0}
   m_Elements:
@@ -45,7 +45,7 @@ AudioRandomContainer:
   m_AutomaticTriggerMode: 1
   m_LoopMode: 2
   m_VolumeRandomizationEnabled: 0
-  m_PitchRandomizationEnabled: 0
+  m_PitchRandomizationEnabled: 1
   m_AutomaticTriggerTimeRandomizationEnabled: 0
   m_LoopCountRandomizationEnabled: 0
 --- !u!1233149941 &9038597294165220329

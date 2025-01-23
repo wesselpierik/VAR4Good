@@ -1,33 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1233149941 &-8327295075243833133
+--- !u!1233149941 &-7000162198076154198
 AudioContainerElement:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wood3_{-8327295075243833133}
-  m_AudioClip: {fileID: 8300000, guid: 7bdfb7ad9b354df489a7c0c23a6d997b, type: 3}
+  m_Name: Footstep1_{-7000162198076154198}
+  m_AudioClip: {fileID: 8300000, guid: 1923ba20dd2c72c4a8e858467d8304a2, type: 3}
   m_Volume: 0
   m_Enabled: 1
---- !u!1233149941 &-2835483299157224044
+--- !u!1233149941 &-1040672631792213232
 AudioContainerElement:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wood1_{-2835483299157224044}
-  m_AudioClip: {fileID: 8300000, guid: e49f2f61ad051ff4c87bfd3329707667, type: 3}
-  m_Volume: 0
-  m_Enabled: 1
---- !u!1233149941 &3466511234964800890
-AudioContainerElement:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Wood1_{3466511234964800890}
-  m_AudioClip: {fileID: 8300000, guid: e49f2f61ad051ff4c87bfd3329707667, type: 3}
+  m_Name: Footstep2_{-1040672631792213232}
+  m_AudioClip: {fileID: 8300000, guid: 508960c37333f3141ae4571963519bae, type: 3}
   m_Volume: 0
   m_Enabled: 1
 --- !u!1307931743 &6418180475301049370
@@ -42,19 +32,18 @@ AudioRandomContainer:
   m_AutomaticTriggerTime: 0
   m_LoopCount: 1
   m_VolumeRandomizationRange: {x: 0, y: 0}
-  m_PitchRandomizationRange: {x: 0, y: 0}
+  m_PitchRandomizationRange: {x: -25, y: 25}
   m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
   m_LoopCountRandomizationRange: {x: 0, y: 0}
   m_Elements:
-  - {fileID: 3466511234964800890}
-  - {fileID: -2835483299157224044}
-  - {fileID: -8327295075243833133}
+  - {fileID: -7000162198076154198}
+  - {fileID: -1040672631792213232}
   m_AvoidRepeatingLast: 0
-  m_PlaybackMode: 2
+  m_PlaybackMode: 0
   m_TriggerMode: 0
   m_AutomaticTriggerMode: 1
   m_LoopMode: 2
   m_VolumeRandomizationEnabled: 0
-  m_PitchRandomizationEnabled: 0
+  m_PitchRandomizationEnabled: 1
   m_AutomaticTriggerTimeRandomizationEnabled: 0
   m_LoopCountRandomizationEnabled: 0
