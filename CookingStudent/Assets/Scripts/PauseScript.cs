@@ -7,43 +7,33 @@ using System.Collections.Generic;
 public class PauseScript : MonoBehaviour
 {
     public GameObject wristUI;
+    public GameObject globalVolume;
 
-    public bool activeWristUI = true;
+    public bool activeWristUI = false;
 
-    void Start()
-    {
+    void Start() {
         DisplayWristUI();
     }
 
-    public void PauseButtonPressed(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        DisplayWristUI();
-
-    }
-    public void DisplayWristUI()
-    {
-        if (activeWristUI)
-        {
-            wristUI.SetActive(false);
-            activeWristUI = false;
-            Time.timeScale = 1;
-        }
-        else if (!activeWristUI)
-        {
-            wristUI.SetActive(true);
-            activeWristUI = true;
-            Time.timeScale = 0;        
+    public void PauseButtonPressed(InputAction.CallbackContext context) {
+        if (context.performed) {
+            DisplayWristUI();
         }
     }
 
-    public void RestartGame()
-    {
+    public void DisplayWristUI() {
+        activeWristUI = !activeWristUI;
+        wristUI.SetActive(activeWristUI);
+        globalVolume.SetActive(activeWristUI);
+        Time.timeScale = activeWristUI ? 0 : 1;
+
+    }
+
+    public void RestartGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void QuitGame()
-    {
+    public void QuitGame() {
         Application.Quit();
     }
 }
