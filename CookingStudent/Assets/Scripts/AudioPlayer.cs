@@ -29,4 +29,9 @@ public class AudioPlayer : MonoBehaviour
             timer -= Time.deltaTime;
         }
     }
+
+    public void Stop()
+    {
+        audioSource.Stop();
+    }
 }
