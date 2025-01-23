@@ -44,6 +44,7 @@ public class SliceObject : MonoBehaviour
         hull.name = target.name;
         hull.layer = target.layer;
         hull.tag = target.tag;
+        hull.GetComponent<Rigidbody>().mass = 100;
 
 
         // TODO: should also copy fields
@@ -75,6 +76,15 @@ public class SliceObject : MonoBehaviour
 
         string objectName = target.name;
 
+        // Create parent node for sliced children.
+        GameObject parentNode = GameObject.Find(objectName + "Parent");
+        if (parentNode == null)
+        {
+            parentNode = new GameObject(objectName + "Parent");
+            parentNode.transform.position = target.transform.position;
+            parentNode.transform.rotation = target.transform.rotation;
+        }
+
         Vector3 velocity = velocityEstimator.GetVelocityEstimate();
         Vector3 planeNormal = Vector3.Cross(endSlicepoint.position - startSlicepoint.position, velocity);
         planeNormal.Normalize();
@@ -91,6 +101,9 @@ public class SliceObject : MonoBehaviour
 
             PrepareHull(target, upperHull);
             PrepareHull(target, lowerHull);
+
+            upperHull.transform.SetParent(parentNode.transform);
+            lowerHull.transform.SetParent(parentNode.transform);
 
             GlobalStateManager.Instance.SliceObject(objectName);
             if (GlobalStateManager.Instance.isRecipeComplete())
