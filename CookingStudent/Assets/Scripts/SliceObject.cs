@@ -135,7 +135,7 @@ public class SliceObject : MonoBehaviour
         {
             counter++;
         }
-        Debug.Log(counter);
+        // Debug.Log(counter);
     }
 
     private void OnTriggerExit(Collider other)
@@ -148,6 +148,6 @@ public class SliceObject : MonoBehaviour
                 canSlice = true;
             }
         }
-        Debug.Log(counter);
+        // Debug.Log(counter);
     }
 }

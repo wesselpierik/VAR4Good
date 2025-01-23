@@ -3,7 +3,7 @@ using System.Linq;
 
 public class IngredientCooking : MonoBehaviour
 {
-    public Stove stove;
+    private AudioPlayer audioPlayer;
 
     private bool isCooking = false;
     private bool isBurnt = false;
@@ -24,6 +24,11 @@ public class IngredientCooking : MonoBehaviour
     private void Awake()
     {
         r = GetComponent<Renderer>();
+        audioPlayer = GetComponent<AudioPlayer>();
+        if (audioPlayer == null)
+        {
+            Debug.LogError("AudioPlayer not found!");
+        }
 
         /* Add material */
         GetComponent<MeshFilter>().mesh.subMeshCount++; // fix the submesh count
@@ -46,7 +51,7 @@ public class IngredientCooking : MonoBehaviour
             isCooking = true;
             timer = 0f;
 
-            stove.addCount();
+            audioPlayer.Play(0);
         }
     }
 
@@ -78,7 +83,8 @@ public class IngredientCooking : MonoBehaviour
             c.Decontaminate(false, true);
         }
 
-        stove.removeCount();
+        audioPlayer.Play(1);
+
     }
 
     private void Burn()
@@ -89,7 +95,8 @@ public class IngredientCooking : MonoBehaviour
         r.materials[1].color = burntColor;
         GlobalStateManager.Instance.DisplayScore();
 
-        stove.removeCount();
+        audioPlayer.Stop();
+        audioPlayer.Play(2);
     }
 
     private void OnTriggerExit(Collider item)
@@ -97,11 +104,7 @@ public class IngredientCooking : MonoBehaviour
         if (item.CompareTag("Pan"))
         {
             isCooking = false;
-        }
-
-        if (!isDone && !isBurnt)
-        {
-            stove.removeCount();
+            audioPlayer.Stop();
         }
     }
 }
