@@ -15,6 +15,7 @@ MonoBehaviour:
   m_LayerNames:
   - Default
   - interactable
+  - pans
   - 
   - 
   - 
@@ -44,4 +45,3 @@ MonoBehaviour:
   - 
   - 
   - 
-  - Teleport

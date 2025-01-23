@@ -7,7 +7,7 @@ public class Decontamination : MonoBehaviour
     public bool decontaminateCookable = false;
 
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         Contamination c = other.gameObject.GetComponent<Contamination>();
         if (c != null && c.IsContaminated())

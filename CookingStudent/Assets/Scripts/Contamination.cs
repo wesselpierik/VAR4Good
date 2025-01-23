@@ -8,22 +8,29 @@ public class Contamination : MonoBehaviour
 
     public bool mustBeWashed = false;
 
-    public bool showContamination = true; // this should be in a global settings scripts probably...
-
     // Hardcode
     private Color originalColor = Color.white;
     private Color washableColor = Color.blue;
     private Color cookableColor = Color.red;
-    private Color washableCookableColor = new Color(0.5f, 0.0f, 1.0f);
+    private Color washableCookableColor = new Color(0.75f, 0.0f, 1.0f);
 
     private bool isHand;
+    private bool showContamination; // this should be in a global settings scripts probably...
 
     void Start()
     {
         isHand = CompareTag("Hand");
+        showContamination = GlobalSettingsManager.Instance.GetShowContamination();
 
         if (IsContaminated())
             UpdateMaterial();
+
+
+        // warn about missing outline component
+        if (GetOutline() == null)
+        {
+            Debug.LogWarning($"Outline component not found for {gameObject}. Ignore this warning if this is intentional.");
+        }
     }
 
     public bool IsContaminated()
@@ -39,25 +46,27 @@ public class Contamination : MonoBehaviour
 
     void UpdateMaterial()
     {
-        if (!showContamination) return;
+        Outline outline = GetOutline();
+        if (!showContamination || outline == null) return;
 
-        GetOutline().OutlineMode = IsContaminated() ? Outline.Mode.OutlineVisible : Outline.Mode.OutlineHidden;
+
+        outline.OutlineMode = IsContaminated() ? Outline.Mode.OutlineVisible : Outline.Mode.OutlineHidden;
 
         if (isContaminatedWashable && isContaminatedCookable)
         {
-            GetOutline().OutlineColor = washableCookableColor;
+            outline.OutlineColor = washableCookableColor;
         }
         else if (isContaminatedWashable)
         {
-            GetOutline().OutlineColor = washableColor;
+            outline.OutlineColor = washableColor;
         }
         else if (isContaminatedCookable)
         {
-            GetOutline().OutlineColor = cookableColor;
+            outline.OutlineColor = cookableColor;
         }
         else
         {
-            GetOutline().OutlineColor = originalColor;
+            outline.OutlineColor = originalColor;
         }
 
     }

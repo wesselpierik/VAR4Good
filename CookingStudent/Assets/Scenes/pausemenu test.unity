@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 56320335}
   - component: {fileID: 56320334}
   - component: {fileID: 56320333}
+  - component: {fileID: 56320337}
   m_Layer: 0
   m_Name: XR Origin (XR Rig)
   m_TagString: Untagged
@@ -211,6 +212,22 @@ Transform:
   - {fileID: 876880160}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &56320337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56320332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78acbd95eeb131b4fa8eb0425ddcea2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wristUI: {fileID: 638420168}
+  globalVolume: {fileID: 1959021705}
+  openMenu: {fileID: -3248104496793587116, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  activeWristUI: 0
 --- !u!1 &59476809
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +395,6 @@ GameObject:
   - component: {fileID: 314365597}
   - component: {fileID: 314365596}
   - component: {fileID: 314365595}
-  - component: {fileID: 314365600}
   - component: {fileID: 314365601}
   m_Layer: 0
   m_Name: Left Controller
@@ -444,7 +460,6 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 1
-  showContamination: 1
 --- !u!135 &314365597
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -782,21 +797,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: -1636515391019944688, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_ButtonPressPoint: 0.5
---- !u!114 &314365600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 314365593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78acbd95eeb131b4fa8eb0425ddcea2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wristUI: {fileID: 638420168}
-  globalVolume: {fileID: 1959021705}
-  activeWristUI: 1
 --- !u!114 &314365601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,7 +824,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 314365600}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
         m_MethodName: PauseButtonPressed
         m_Mode: 0
@@ -1446,7 +1446,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 314365600}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -1579,7 +1579,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 314365600}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
@@ -1743,7 +1743,6 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 1
-  showContamination: 1
 --- !u!135 &1253416838
 SphereCollider:
   m_ObjectHideFlags: 0
