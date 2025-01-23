@@ -8,17 +8,16 @@ public class PauseScript : MonoBehaviour
 {
     public GameObject wristUI;
     public GameObject globalVolume;
+    public InputActionReference openMenu;
 
     public bool activeWristUI = false;
 
     void Start() {
-        DisplayWristUI();
+        openMenu.action.started += PauseButtonPressed;
     }
 
-    public void PauseButtonPressed(InputAction.CallbackContext context) {
-        if (context.performed) {
-            DisplayWristUI();
-        }
+    void PauseButtonPressed(InputAction.CallbackContext context) {
+        DisplayWristUI();
     }
 
     public void DisplayWristUI() {
@@ -26,7 +25,6 @@ public class PauseScript : MonoBehaviour
         wristUI.SetActive(activeWristUI);
         globalVolume.SetActive(activeWristUI);
         Time.timeScale = activeWristUI ? 0 : 1;
-
     }
 
     public void RestartGame() {
