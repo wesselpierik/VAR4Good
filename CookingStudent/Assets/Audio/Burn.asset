@@ -27,7 +27,7 @@ AudioRandomContainer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Burn
-  m_Volume: -18
+  m_Volume: -8
   m_Pitch: 0
   m_AutomaticTriggerTime: 0
   m_LoopCount: 1

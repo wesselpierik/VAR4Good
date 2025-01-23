@@ -83,7 +83,7 @@ public class IngredientCooking : MonoBehaviour
             c.Decontaminate(false, true);
         }
 
-        audioPlayer.Play(1);
+        audioPlayer.PlayOneShot(1);
 
     }
 
@@ -95,7 +95,6 @@ public class IngredientCooking : MonoBehaviour
         r.materials[1].color = burntColor;
         GlobalStateManager.Instance.DisplayScore();
 
-        audioPlayer.Stop();
         audioPlayer.Play(2);
     }
 

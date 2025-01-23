@@ -4,9 +4,11 @@ using UnityEngine.Audio;
 public class AudioPlayer : MonoBehaviour
 {
     public AudioResource[] resources;
-
     [Range(0f, 1f)] public float[] resourceVolumes;
 
+    // public AudioClip[] clips;
+
+    // [Range(0f, 1f)] public float[] clipVolumes;
 
     private AudioSource audioSource;
 
@@ -40,16 +42,23 @@ public class AudioPlayer : MonoBehaviour
     {
         if (timer <= 0f)
         {
-
             if (resources.Length != 0)
             {
                 audioSource.resource = resources[resourceNumber];
                 audioSource.volume = resourceVolumes[resourceNumber];
             }
 
-
             timer = delay;
             audioSource.Play();
+        }
+    }
+
+    public void PlayOneShot(int resourceNumber = 0)
+    {
+        if (timer <= 0f)
+        {
+            timer = delay;
+            audioSource.PlayOneShot(resources[resourceNumber] as AudioClip, resourceVolumes[resourceNumber]);
         }
     }
 
