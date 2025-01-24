@@ -22,13 +22,14 @@ public class PauseScript : MonoBehaviour
 
     public void DisplayWristUI() {
         activeWristUI = !activeWristUI;
+        if (wristUI == null) {return; }
         wristUI.SetActive(activeWristUI);
         globalVolume.SetActive(activeWristUI);
         Time.timeScale = activeWristUI ? 0 : 1;
     }
 
     public void RestartGame() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void QuitGame() {
