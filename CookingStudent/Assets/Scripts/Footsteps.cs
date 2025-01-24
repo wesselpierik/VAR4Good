@@ -5,30 +5,22 @@ public class Footsteps : MonoBehaviour
     private AudioPlayer audioPlayer;
     private Vector3 lastPosition;
 
-    private CharacterController controller;
-
     void Start()
     {
         audioPlayer = GetComponent<AudioPlayer>();
-        controller = GetComponent<CharacterController>();
 
         if (audioPlayer == null)
         {
             Debug.LogError("AudioPlayer not found!");
         }
 
-        if (controller == null)
-        {
-            Debug.LogError("CharacterController not found!");
-        }
-
         // prevent audio from playing at the start
-        lastPosition = controller.center;
+        lastPosition = transform.position;
     }
 
     void Update()
     {
-        Vector3 currentPosition = controller.center;
+        Vector3 currentPosition = transform.position;
         if (currentPosition != lastPosition)
         {
             audioPlayer.Play();
