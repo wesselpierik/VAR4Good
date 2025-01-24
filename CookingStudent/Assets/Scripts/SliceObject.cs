@@ -16,6 +16,7 @@ public class SliceObject : MonoBehaviour
     public Transform endSlicepoint;
     public VelocityEstimator velocityEstimator;
     public LayerMask sliceableLayer;
+    public CuttingBoard cuttingBoard;
 
     void FixedUpdate()
     {
@@ -106,12 +107,16 @@ public class SliceObject : MonoBehaviour
             lowerHull.transform.SetParent(parentNode.transform);
 
             GlobalStateManager.Instance.SliceObject(objectName);
+            
+
             if (GlobalStateManager.Instance.isRecipeComplete())
             {
                 Debug.Log("Recipe is complete");
             }
 
+           
             Destroy(target);
+            
             counter--;
         }
         else
@@ -135,7 +140,7 @@ public class SliceObject : MonoBehaviour
         {
             counter++;
         }
-        Debug.Log(counter);
+        //Debug.Log(counter);
     }
 
     private void OnTriggerExit(Collider other)
@@ -148,6 +153,6 @@ public class SliceObject : MonoBehaviour
                 canSlice = true;
             }
         }
-        Debug.Log(counter);
+        //Debug.Log(counter);
     }
 }
