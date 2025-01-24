@@ -65,7 +65,8 @@ public class IngredientCooking : MonoBehaviour
     private void Cook()
     {
         isDone = true;
-        r.materials[1].color = doneColor;
+
+        r.sharedMaterials[1].SetColor("_BaseColor", doneColor);
         GlobalStateManager.Instance.CookObject(name, timer);
 
         Contamination c = GetComponent<Contamination>();
@@ -78,9 +79,11 @@ public class IngredientCooking : MonoBehaviour
     private void Burn()
     {
         isCooking = false;
-        GlobalStateManager.Instance.AddScore(-5);
         isBurnt = true;
-        r.materials[1].color = burntColor;
+
+        r.sharedMaterials[1].SetColor("_BaseColor", burntColor);
+
+        GlobalStateManager.Instance.AddScore(-5);
         GlobalStateManager.Instance.DisplayScore();
     }
 

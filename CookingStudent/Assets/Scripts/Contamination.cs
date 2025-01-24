@@ -54,7 +54,6 @@ public class Contamination : MonoBehaviour
     {
         Outline outline = GetOutline();
         if (!showContamination || outline == null) return;
-        Debug.Log(outline);
 
         outline.OutlineMode = IsContaminated() ? Outline.Mode.OutlineVisible : Outline.Mode.OutlineHidden;
 
