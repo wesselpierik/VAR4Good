@@ -10,6 +10,11 @@ public class Contamination : MonoBehaviour
 
     [SerializeField] private bool forceHideContamination = false;
 
+    public bool canSpreadContamination = true;
+    public bool canReceiveContamination = true;
+
+
+
     // Hardcode
     private Color originalColor = Color.white;
     private Color washableColor = Color.blue;
@@ -74,6 +79,8 @@ public class Contamination : MonoBehaviour
 
     void Contaminate(bool contaminateWashable, bool contaminateCookable)
     {
+        if (!canReceiveContamination) return;
+
         // update contamination status
         isContaminatedWashable = isContaminatedWashable || contaminateWashable;
         isContaminatedCookable = isContaminatedCookable || contaminateCookable;
@@ -122,7 +129,7 @@ public class Contamination : MonoBehaviour
 
     void AttemptContamination(Contamination c)
     {
-        if (IsContaminated() && c != null)
+        if (canSpreadContamination && IsContaminated() && c != null)
         {
             c.Contaminate(isContaminatedWashable, isContaminatedCookable);
         }

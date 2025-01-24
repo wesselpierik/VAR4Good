@@ -1106,6 +1106,9 @@ MonoBehaviour:
   isContaminatedCookable: 1
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &155441494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2497,6 +2500,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &316884194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3353,6 +3359,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 1
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!1 &581297201
 GameObject:
   m_ObjectHideFlags: 0
@@ -3730,6 +3739,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 1
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!1 &629852469
 GameObject:
   m_ObjectHideFlags: 0
@@ -5085,6 +5097,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!1 &723408272
 GameObject:
   m_ObjectHideFlags: 0
@@ -5501,6 +5516,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 1
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!54 &766006502
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5889,6 +5907,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 1
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!54 &788059140
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6722,6 +6743,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &992783362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7506,6 +7530,9 @@ MonoBehaviour:
   isContaminatedCookable: 1
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!1 &1074310557
 GameObject:
   m_ObjectHideFlags: 0
@@ -7803,6 +7830,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &1162046969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8159,6 +8189,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 1
   mustBeWashed: 0
+  forceHideContamination: 1
+  canSpreadContamination: 1
+  canReceiveContamination: 0
 --- !u!64 &1184305845
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8587,6 +8620,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 1
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &1228446570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8996,6 +9032,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &1341835099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12199,6 +12238,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &1612706062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13604,6 +13646,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 1
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!1 &1878430283
 GameObject:
   m_ObjectHideFlags: 0
@@ -14544,6 +14589,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 1
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!1 &2050509852
 GameObject:
   m_ObjectHideFlags: 0
@@ -14905,6 +14953,9 @@ MonoBehaviour:
   isContaminatedCookable: 1
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!4 &2092965545 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1656672522745943681, guid: 062fa67609d464b08bea3b3ea97bd365, type: 3}
