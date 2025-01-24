@@ -74,7 +74,19 @@ public class IngredientCooking : MonoBehaviour
     private void Cook()
     {
         isDone = true;
+<<<<<<< HEAD
         r.materials[1].color = doneColor;
+=======
+
+        r.sharedMaterials[1].SetColor("_BaseColor", doneColor);
+
+        Contamination c = GetComponent<Contamination>();
+        if (c != null && c.IsContaminated())
+        {
+            c.Decontaminate(false, true);
+        }
+
+>>>>>>> dev
         GlobalStateManager.Instance.CookObject(name, timer);
 
         Contamination c = GetComponent<Contamination>();
@@ -90,9 +102,21 @@ public class IngredientCooking : MonoBehaviour
     private void Burn()
     {
         isCooking = false;
+<<<<<<< HEAD
         GlobalStateManager.Instance.AddScore(-5);
+=======
+>>>>>>> dev
         isBurnt = true;
-        r.materials[1].color = burntColor;
+
+        r.sharedMaterials[1].SetColor("_BaseColor", burntColor);
+
+        Contamination c = GetComponent<Contamination>();
+        if (c != null && c.IsContaminated())
+        {
+            c.Decontaminate(false, true);
+        }
+
+        GlobalStateManager.Instance.AddScore(-5);
         GlobalStateManager.Instance.DisplayScore();
 
         audioPlayer.Play(2);
