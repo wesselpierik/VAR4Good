@@ -17,6 +17,18 @@ public class SliceObject : MonoBehaviour
     public VelocityEstimator velocityEstimator;
     public LayerMask sliceableLayer;
 
+    private AudioPlayer audioPlayer;
+
+    void Start()
+    {
+        audioPlayer = GetComponent<AudioPlayer>();
+
+        if (audioPlayer == null)
+        {
+            Debug.LogError("AudioPlayer not found!");
+        }
+    }
+
     void FixedUpdate()
     {
         if (canSlice)
@@ -27,6 +39,7 @@ public class SliceObject : MonoBehaviour
 
             if (hasHit)
             {
+                audioPlayer.Play();
                 canSlice = false;
                 GameObject target = hit.transform.gameObject;
                 Slice(target);
@@ -122,7 +135,7 @@ public class SliceObject : MonoBehaviour
         {
             counter++;
         }
-        Debug.Log(counter);
+        // Debug.Log(counter);
     }
 
     private void OnTriggerExit(Collider other)
@@ -135,6 +148,6 @@ public class SliceObject : MonoBehaviour
                 canSlice = true;
             }
         }
-        Debug.Log(counter);
+        // Debug.Log(counter);
     }
 }
