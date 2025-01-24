@@ -1,0 +1,34 @@
+{
+    "name": "Custom input",
+    "maps": [
+        {
+            "name": "Menu",
+            "id": "e91bf736-c631-4415-82ab-868241f4cf00",
+            "actions": [
+                {
+                    "name": "MenuPressed",
+                    "type": "Button",
+                    "id": "66cbc2fa-b150-4c8b-b97c-0f2a1f09f232",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "80ce0302-835c-4e87-b0c2-e0c7f902c221",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

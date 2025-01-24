@@ -6,14 +6,19 @@ public class GlobalStateManager : MonoBehaviour
 {
     public GlobalScore globalScore;
     public List<Ingredient> recipeList;
+    public RecipeText recipeText;
 
     private static GlobalStateManager _instance;
 
-    public static GlobalStateManager Instance {
-        get {
-            if (_instance == null) {
+    public static GlobalStateManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
                 _instance = FindAnyObjectByType<GlobalStateManager>();
-                if (_instance == null) {
+                if (_instance == null)
+                {
                     Debug.LogError("There is no GlobalStateManager found");
                 }
             }
@@ -24,40 +29,60 @@ public class GlobalStateManager : MonoBehaviour
 
     private void Start()
     {
-        if (globalScore == null) {
+        if (globalScore == null)
+        {
             Debug.LogWarning("globalScore is null");
         }
         globalScore.ResetScore();
     }
 
-    public void AddScore(int amount) {
-        if (globalScore == null) {
+    public void AddScore(int amount)
+    {
+        if (globalScore == null)
+        {
             Debug.LogWarning("globalScore is null");
         }
         globalScore.AddScore(amount);
     }
 
-    public void DisplayScore() {
+    public void DisplayScore()
+    {
         Debug.Log(globalScore.GetScore());
     }
 
-    public void SliceObject(string objectName) {
+    public string SliceObject(string objectName)
+    {
         Ingredient ingredient = recipeList.FirstOrDefault(i => i.ObjectName == objectName);
-        if (ingredient != null) {
-            ingredient.UpdateIngredientProgress(0, 0);
+        if (ingredient != null)
+        {
+            string ret = ingredient.UpdateIngredientProgress(0, 0);
+
+            recipeText.RecipeTextAdd();
+
+            return ret;
         }
+
+        return null;
     }
 
-    public void CookObject(string objectName, float timer) {
+    public string CookObject(string objectName, float timer)
+    {
         Ingredient ingredient = recipeList.FirstOrDefault(i => i.ObjectName == objectName);
-        if (ingredient != null) {
-            ingredient.UpdateIngredientProgress(1, timer);
+        if (ingredient != null)
+        {
+            string ret = ingredient.UpdateIngredientProgress(1, timer);
+            return ret;
         }
+
+        return null;
     }
 
-    public bool isRecipeComplete() {
-        foreach (Ingredient ingredient in recipeList) {
-            if (!ingredient.IsIngredientComplete()) {
+    public bool isRecipeComplete()
+    {
+        foreach (Ingredient ingredient in recipeList)
+        {
+            if (!ingredient.IsIngredientComplete())
+            {
                 return false;
             }
         }

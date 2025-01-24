@@ -8,7 +8,12 @@ public class Contamination : MonoBehaviour
 
     public bool mustBeWashed = false;
 
-    public bool showContamination = true; // this should be in a global settings scripts probably...
+    [SerializeField] private bool forceHideContamination = false;
+
+    public bool canSpreadContamination = true;
+    public bool canReceiveContamination = true;
+
+
 
     // Hardcode
     private Color originalColor = Color.white;
@@ -17,19 +22,21 @@ public class Contamination : MonoBehaviour
     private Color washableCookableColor = new Color(0.75f, 0.0f, 1.0f);
 
     private bool isHand;
+    private bool showContamination; // this should be in a global settings scripts probably...
 
     void Start()
     {
         isHand = CompareTag("Hand");
+        showContamination = GlobalSettingsManager.Instance.GetShowContamination();
+
+        // add outline realtime, but hands have them baked into the prefab
+        if (GetOutline() == null && !isHand && !forceHideContamination)
+        {
+            gameObject.AddComponent<Outline>();
+        }
 
         if (IsContaminated())
             UpdateMaterial();
-
-        // warn about missing outline component
-        if (GetOutline() == null)
-        {
-            Debug.LogWarning($"Outline component not found for {gameObject}. Ignore this warning if this is intentional.");
-        }
     }
 
     public bool IsContaminated()
@@ -47,7 +54,6 @@ public class Contamination : MonoBehaviour
     {
         Outline outline = GetOutline();
         if (!showContamination || outline == null) return;
-
 
         outline.OutlineMode = IsContaminated() ? Outline.Mode.OutlineVisible : Outline.Mode.OutlineHidden;
 
@@ -72,6 +78,8 @@ public class Contamination : MonoBehaviour
 
     void Contaminate(bool contaminateWashable, bool contaminateCookable)
     {
+        if (!canReceiveContamination) return;
+
         // update contamination status
         isContaminatedWashable = isContaminatedWashable || contaminateWashable;
         isContaminatedCookable = isContaminatedCookable || contaminateCookable;
@@ -120,7 +128,7 @@ public class Contamination : MonoBehaviour
 
     void AttemptContamination(Contamination c)
     {
-        if (IsContaminated() && c != null)
+        if (canSpreadContamination && IsContaminated() && c != null)
         {
             c.Contaminate(isContaminatedWashable, isContaminatedCookable);
         }
