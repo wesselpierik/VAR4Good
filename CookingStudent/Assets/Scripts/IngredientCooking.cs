@@ -6,6 +6,8 @@ public class IngredientCooking : MonoBehaviour
     private bool isCooking = false;
     private bool isBurnt = false;
 
+    private bool isDone = false;
+
     private Color doneColor = new Color(0.0f, 1.0f, 0.0f, 0.75f);
     private Color burntColor = new Color(0.2f, 0.2f, 0.0f, 0.975f);
 
@@ -49,11 +51,11 @@ public class IngredientCooking : MonoBehaviour
         if (isCooking)
         {
             timer += Time.deltaTime;
-            if (timer >= burningTime)
+            if (timer >= burningTime && !isBurnt)
             {
                 Burn();
             }
-            else if (timer >= cookingTime)
+            else if (timer >= cookingTime && !isDone)
             {
                 Cook();
             }
@@ -62,15 +64,33 @@ public class IngredientCooking : MonoBehaviour
 
     private void Cook()
     {
-        r.materials[1].color = doneColor;
+        isDone = true;
+
+        r.sharedMaterials[1].SetColor("_BaseColor", doneColor);
+
+        Contamination c = GetComponent<Contamination>();
+        if (c != null && c.IsContaminated())
+        {
+            c.Decontaminate(false, true);
+        }
+
         GlobalStateManager.Instance.CookObject(name, timer);
     }
 
     private void Burn()
     {
-        if (!isBurnt) GlobalStateManager.Instance.AddScore(-5);
+        isCooking = false;
         isBurnt = true;
-        r.materials[1].color = burntColor;
+
+        r.sharedMaterials[1].SetColor("_BaseColor", burntColor);
+
+        Contamination c = GetComponent<Contamination>();
+        if (c != null && c.IsContaminated())
+        {
+            c.Decontaminate(false, true);
+        }
+
+        GlobalStateManager.Instance.AddScore(-5);
         GlobalStateManager.Instance.DisplayScore();
     }
 
