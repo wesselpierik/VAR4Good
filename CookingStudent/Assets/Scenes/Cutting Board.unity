@@ -5036,7 +5036,7 @@ MonoBehaviour:
   sliceableLayer:
     serializedVersion: 2
     m_Bits: 64
-  cuttingBoard: {fileID: 0}
+  cuttingBoard: {fileID: 187426377}
 --- !u!65 &592457914
 BoxCollider:
   m_ObjectHideFlags: 0

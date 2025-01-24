@@ -18,6 +18,13 @@ public class SliceObject : MonoBehaviour
     public LayerMask sliceableLayer;
     public CuttingBoard cuttingBoard;
 
+    private void Awake()
+    {
+        if (cuttingBoard == null) {
+            Debug.LogWarning("NO CUTTINGBOARD ATTACHED!");
+        }
+    }
+
     void FixedUpdate()
     {
         if (canSlice)
@@ -48,7 +55,6 @@ public class SliceObject : MonoBehaviour
         hull.GetComponent<Rigidbody>().mass = 100;
 
 
-        // TODO: should also copy fields
         IngredientCooking targetIngredientCooking = target.GetComponent<IngredientCooking>();
         if (targetIngredientCooking != null)
         {
@@ -78,10 +84,10 @@ public class SliceObject : MonoBehaviour
         string objectName = target.name;
 
         // Create parent node for sliced children.
-        GameObject parentNode = GameObject.Find(objectName + "Parent");
-        if (parentNode == null)
+        GameObject parentNode = target.transform.parent.gameObject;
+        if (parentNode == null || parentNode.name != objectName)
         {
-            parentNode = new GameObject(objectName + "Parent");
+            parentNode = new GameObject(objectName);
             parentNode.transform.position = target.transform.position;
             parentNode.transform.rotation = target.transform.rotation;
         }
@@ -118,6 +124,10 @@ public class SliceObject : MonoBehaviour
             Destroy(target);
             
             counter--;
+
+            // tell the cuttingboard we sliced a specific ingredient
+            cuttingBoard.Cut(parentNode);
+
         }
         else
         {
