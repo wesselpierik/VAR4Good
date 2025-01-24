@@ -11,22 +11,35 @@ public class CuttingBoard : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(isCutting);
+        Debug.Log("==================");
+        Debug.Log($"Touched! Cutting: {isCutting}");
 
         // check if collision is not null and check if target has ingredient tag
         GameObject ob = collision.gameObject;
         if (isCutting || collision == null || !ob.CompareTag("Ingredient")) return;
 
+        Debug.Log($"Object: {ob.name}");
+
         // get the ingredient class from the global list
         // check if target count is 0
         Ingredient ingredient = GetIngredient(ob);
-        if (ingredient == null || ingredient.TargetCount == 0) return;
+        if (ingredient == null || ingredient.TargetCount == 0 || ingredient.CurrentCount == ingredient.TargetCount) return;
+
+        Debug.Log($"Ingredient target count: {ingredient.TargetCount}");
+        Debug.Log("Set isCuttin to true");
 
         isCutting = true;
 
         // attach the sliceable layer and remove the interactable
         Destroy(ob.GetComponent<UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable>());
         ob.layer = 6; // Layer number of Sliceable.
+    }
+
+
+    private void OnCollisionExit(Collision collision)
+    {
+        // re-add the interactable
+        // disable slice.
     }
 
 
