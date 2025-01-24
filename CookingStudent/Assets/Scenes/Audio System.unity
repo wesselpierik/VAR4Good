@@ -15910,7 +15910,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8fce2400eb66e914994931bfdb1c07d5, type: 3}
   - {fileID: 6418180475301049370, guid: ea91d377f016b304d8c18d9c8087279b, type: 2}
   resourceVolumes:
-  - 1
+  - 0.5
   - 0.1
   - 1
   delay: 0
