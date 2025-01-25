@@ -20,7 +20,8 @@ public class SliceObject : MonoBehaviour
 
     private void Awake()
     {
-        if (cuttingBoard == null) {
+        if (cuttingBoard == null)
+        {
             Debug.LogWarning("NO CUTTINGBOARD ATTACHED!");
         }
     }
@@ -113,26 +114,24 @@ public class SliceObject : MonoBehaviour
             lowerHull.transform.SetParent(parentNode.transform);
 
             GlobalStateManager.Instance.SliceObject(objectName);
-            
+
 
             if (GlobalStateManager.Instance.isRecipeComplete())
-            {
                 Debug.Log("Recipe is complete");
-            }
 
-           
             Destroy(target);
-            
+
             counter--;
 
             // tell the cuttingboard we sliced a specific ingredient
-            cuttingBoard.Cut(parentNode);
+            bool isDone = cuttingBoard.Cut(parentNode);
+
+            if (isDone)
+                counter -= 2;
 
         }
         else
-        {
             Debug.LogWarning("Hull is null");
-        }
 
     }
 
@@ -147,10 +146,10 @@ public class SliceObject : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
-        {
             counter++;
-        }
-        //Debug.Log(counter);
+
+        // Debug.Log($"Enter: {counter}");
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -159,10 +158,9 @@ public class SliceObject : MonoBehaviour
         {
             counter--;
             if (counter == 0)
-            {
                 canSlice = true;
-            }
         }
-        //Debug.Log(counter);
+
+        // Debug.Log($"Exit: {counter}");
     }
 }

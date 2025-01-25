@@ -11,22 +11,22 @@ public class CuttingBoard : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("==================");
-        Debug.Log($"Touched! Cutting: {isCutting}");
+        // Debug.Log("==================");
+        // Debug.Log($"Touched! Cutting: {isCutting}");
 
         // check if collision is not null and check if target has ingredient tag
         GameObject ob = collision.gameObject;
         if (isCutting || collision == null || !ob.CompareTag("Ingredient")) return;
 
-        Debug.Log($"Object: {ob.name}");
+        // Debug.Log($"Object: {ob.name}");
 
         // get the ingredient class from the global list
         // check if target count is 0
         Ingredient ingredient = GetIngredient(ob);
         if (ingredient == null || ingredient.TargetCount == 0 || ingredient.CurrentCount == ingredient.TargetCount) return;
 
-        Debug.Log($"Ingredient target count: {ingredient.TargetCount}");
-        Debug.Log("Set isCuttin to true");
+        // Debug.Log($"Ingredient target count: {ingredient.TargetCount}");
+        // Debug.Log("Set isCuttin to true");
 
         isCutting = true;
 
@@ -55,17 +55,19 @@ public class CuttingBoard : MonoBehaviour
 
         return ingredient;
     }
-    public void Cut(GameObject parent)
+
+    // returns true if cutting is done, false otherwise
+    public bool Cut(GameObject parent)
     {
-        if (!isCutting) return;
+        if (!isCutting) return false;
 
         Ingredient ingredient = GetIngredient(parent);
 
 
         // return if not an ingredient in the list or not done
-        if (ingredient == null || ingredient.CurrentCount < ingredient.TargetCount) return;
+        if (ingredient == null || ingredient.CurrentCount < ingredient.TargetCount) return false;
 
-        Debug.Log("cutting done, deleting now");
+        // Debug.Log("cutting done, deleting now");
 
         isCutting = false;
         Destroy(parent);
@@ -78,7 +80,7 @@ public class CuttingBoard : MonoBehaviour
         if (assetPrefab == null)
         {
             Debug.LogWarning($"Can't find {parent.name} slice prefab.");
-            return;
+            return false;
         }
 
         // spawn prefab
@@ -95,95 +97,7 @@ public class CuttingBoard : MonoBehaviour
         slicedIngredient.AddComponent<UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable>().movementType = UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable.MovementType.VelocityTracking;
 
         slicedIngredient.tag = "Ingredient";
+
+        return true;
     }
 }
-     
-
-//void OnCollisionEnter(Collision collision)
-//    {
-//        if (collision != null)
-//        {
-//            Debug.Log("second collision");
-//            Debug.Log($"collision name {collision.gameObject.name}");
-//            Debug.Log($"cutting ingredient 1 {cuttingIngredient}");
-//            List<Ingredient> ingredientList = GlobalStateManager.Instance.recipeList;
-
-//            foreach (Ingredient i in ingredientList) {
-//                Debug.Log($"ingredientlist item: {i.ObjectName}");
-//            }
-
-
-//            Ingredient ingredient = ingredientList.Find(i => i.ObjectName == collision.gameObject.name);
-
-//            Debug.Log($"ingredient {ingredient.ObjectName}");
-            
-
-//            if (ingredient != null)
-//            {
-//                int currentCount = ingredient.CurrentCount;
-//                int targetCount = ingredient.TargetCount;
-//                string objectName = ingredient.ObjectName;
-
-//                if (collision.gameObject.tag == "Ingredient" && targetCount > 0)
-//                {
-//                    Debug.Log($"cutting ingredient 2 {cuttingIngredient}");
-
-//                    cuttingIngredient = collision.gameObject;
-//                    Destroy(collision.gameObject.GetComponent<UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable>());
-//                    // Layer number of Sliceable.
-//                    Debug.Log($"layer1 {collision.gameObject.layer}");
-//                    collision.gameObject.layer = 6;
-//                    Debug.Log($"layer2 {collision.gameObject.layer}");
-//                    Debug.Log($"cutting ingredient 3 {cuttingIngredient}");
-
-//                }
-//            }
-//        }
-//    }
-
-//    public void SpawnNewObjectWhenFinished(string ingredientName)
-//    {
-//        List<Ingredient> ingredientList = GlobalStateManager.Instance.recipeList;
-
-//        Ingredient ingredient = ingredientList.Find(i => i.ObjectName == ingredientName);
-
-//        int currentCount = ingredient.CurrentCount;
-//        int targetCount = ingredient.TargetCount;
-//        string objectName = ingredient.ObjectName;
-
-
-//        //Debug.Log($"currentcount{currentCount}");
-//        //Debug.Log($"targetcount {targetCount}");
-
-//        if (currentCount >= targetCount)
-//        {
-//            GameObject parentNode = GameObject.Find(objectName + "Parent");
-//            Destroy(parentNode);
-
-//            string assetPath = $"{assetFolderPath}/{objectName}_slice";
-//            GameObject assetPrefab = Resources.Load<GameObject>(assetPath);
-
-//            if (assetPrefab != null)
-//            {
-//                GameObject slicedIngredient = Instantiate(assetPrefab);
-                
-//                slicedIngredient.transform.parent = this.gameObject.transform;
-
-//                //Debug.Log(this);
-//                //Debug.Log(this.transform.position);
-
-//                // Should be in in but breaks it so fix this.
-//                MeshCollider meshCollider = slicedIngredient.AddComponent<MeshCollider>();
-//                meshCollider.convex = true;
-//                slicedIngredient.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
-//                slicedIngredient.transform.localPosition = new Vector3(0, 0, 0);
-//                slicedIngredient.AddComponent<UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable>().movementType= UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable.MovementType.VelocityTracking;
-//                slicedIngredient.tag = "Ingredient";
-
-                
-                
-//            }
-//        }
-//    }
-//}
-
