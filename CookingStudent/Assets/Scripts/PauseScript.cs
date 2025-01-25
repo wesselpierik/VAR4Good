@@ -34,5 +34,7 @@ public class PauseScript : MonoBehaviour
 
     public void QuitGame() {
         Application.Quit();
+        // Instead of quit game, maybe "main menu" button or both
+        // SceneManager.LoadScene("Main Menu");
     }
 }
