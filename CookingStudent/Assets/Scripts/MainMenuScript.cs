@@ -1,16 +1,26 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class MainMenuScript : MonoBehaviour
 {
     public Toggle contaminationToggle;
+    public LocomotionProvider move;
+    public LocomotionProvider turn;
+
+    void Start()
+    {
+        move.enabled = false;
+        turn.enabled = false;
+    }
+
     public void StartGame()
     {
-        // SceneManager.LoadScene("Main Scene");
         Debug.Log("Start");
-
-
+        move.enabled = true;
+        turn.enabled = true;
+        SceneManager.LoadScene("Main Scene");
     }
 
     public void Toggle()
@@ -27,7 +37,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void Exit()
     {
-        // Application.Quit();
+        Application.Quit();
         Debug.Log("Quit");
     }
 }
