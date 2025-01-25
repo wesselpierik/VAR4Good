@@ -3,6 +3,8 @@ using System.Linq;
 
 public class IngredientCooking : MonoBehaviour
 {
+    private AudioPlayer audioPlayer;
+
     private bool isCooking = false;
     private bool isBurnt = false;
 
@@ -22,6 +24,11 @@ public class IngredientCooking : MonoBehaviour
     private void Awake()
     {
         r = GetComponent<Renderer>();
+        audioPlayer = GetComponent<AudioPlayer>();
+        if (audioPlayer == null)
+        {
+            Debug.LogError("AudioPlayer not found!");
+        }
 
         /* Add material */
         GetComponent<MeshFilter>().mesh.subMeshCount++; // fix the submesh count
@@ -43,6 +50,8 @@ public class IngredientCooking : MonoBehaviour
         {
             isCooking = true;
             timer = 0f;
+
+            audioPlayer.Play(0);
         }
     }
 
@@ -75,6 +84,8 @@ public class IngredientCooking : MonoBehaviour
         }
 
         GlobalStateManager.Instance.CookObject(name, timer);
+
+        audioPlayer.PlayOneShot(1);
     }
 
     private void Burn()
@@ -92,6 +103,8 @@ public class IngredientCooking : MonoBehaviour
 
         GlobalStateManager.Instance.AddScore(-5);
         GlobalStateManager.Instance.DisplayScore();
+
+        audioPlayer.Play(2);
     }
 
     private void OnTriggerExit(Collider item)
@@ -99,6 +112,7 @@ public class IngredientCooking : MonoBehaviour
         if (item.CompareTag("Pan"))
         {
             isCooking = false;
+            audioPlayer.Stop();
         }
     }
 }
