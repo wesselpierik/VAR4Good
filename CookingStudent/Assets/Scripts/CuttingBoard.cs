@@ -14,18 +14,18 @@ public class CuttingBoard : MonoBehaviour
         // Debug.Log("==================");
         // Debug.Log($"Touched! Cutting: {isCutting}");
 
-        // check if collision is not null and check if target has ingredient tag
+        // check if collision is not null and check if parent has ingredient tag
         GameObject ob = collision.gameObject;
         if (collision == null || !ob.CompareTag("Ingredient")) return;
 
         // Debug.Log($"Object: {ob.name}");
 
         // get the ingredient class from the global list
-        // check if target count is 0
+        // check if parent count is 0
         Ingredient ingredient = GetIngredient(ob);
         if (ingredient == null || ingredient.TargetCount == 0 || ingredient.CurrentCount == ingredient.TargetCount) return;
 
-        // Debug.Log($"Ingredient target count: {ingredient.TargetCount}");
+        // Debug.Log($"Ingredient parent count: {ingredient.parentCount}");
         // Debug.Log("Set isCuttin to true");
 
         // isCutting = true;
@@ -40,6 +40,12 @@ public class CuttingBoard : MonoBehaviour
     {
         // re-add the interactable
         // disable slice.
+
+        GameObject ob = collision.gameObject;
+        if (collision == null || !ob.CompareTag("Ingredient")) return;
+
+        ob.AddComponent<UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable>().movementType = UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable.MovementType.VelocityTracking;
+        ob.layer = 0;
     }
 
 
@@ -70,7 +76,6 @@ public class CuttingBoard : MonoBehaviour
         // Debug.Log("cutting done, deleting now");
 
         // isCutting = false;
-        Destroy(parent);
 
 
         // Get prefab
@@ -101,6 +106,28 @@ public class CuttingBoard : MonoBehaviour
         slicedIngredient.AddComponent<UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable>().movementType = UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable.MovementType.VelocityTracking;
 
         slicedIngredient.tag = "Ingredient";
+
+
+        IngredientCooking parentIngredientCooking = parent.GetComponent<IngredientCooking>();
+        if (parentIngredientCooking != null)
+        {
+            slicedIngredient.AddComponent<IngredientCooking>();
+            IngredientCooking i = slicedIngredient.GetComponent<IngredientCooking>();
+            i.cookingTime = parentIngredientCooking.cookingTime;
+            i.burningTime = parentIngredientCooking.burningTime;
+        }
+
+        Contamination parentContamination = parent.GetComponent<Contamination>();
+        if (parentContamination != null)
+        {
+            slicedIngredient.AddComponent<Contamination>();
+            Contamination c = slicedIngredient.GetComponent<Contamination>();
+            c.isContaminatedCookable = parentContamination.isContaminatedCookable;
+            c.isContaminatedWashable = parentContamination.isContaminatedWashable;
+            slicedIngredient.AddComponent<Outline>();
+        }
+
+        Destroy(parent);
 
         return true;
     }

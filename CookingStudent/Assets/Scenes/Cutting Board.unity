@@ -812,6 +812,24 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+--- !u!114 &135696846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135696836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 2
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 6
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &139202432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11658,6 +11676,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0ecd5e8fc5583cb48b2c4c8a5e1f9484, type: 3}
       insertIndex: -1
       addedObject: {fileID: 135696843}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0ecd5e8fc5583cb48b2c4c8a5e1f9484, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 135696846}
   m_SourcePrefab: {fileID: 100100000, guid: 0ecd5e8fc5583cb48b2c4c8a5e1f9484, type: 3}
 --- !u!1 &1249001610
 GameObject:
