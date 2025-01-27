@@ -86,20 +86,20 @@ public class SliceObject : MonoBehaviour
         }
     }
 
-    private Color InsideColor(GameObject target)
+    private Color32 InsideColor(string target)
     {
-        switch ("food_ingredient_" + target.name)
+        switch (target)
         {
-            case "lettuce":
-                return new Color(0.0f, 1.0f, 0.0f);
-            case "tomato":
-                return new Color(1.0f, 0.0f, 0.0f);
-            case "onion":
-                return new Color(0.5f, 0.5f, 0.5f);
-            case "cheese":
-                return new Color(1.0f, 1.0f, 0.0f);
+            case "food_ingredient_lettuce":
+                return new Color32(173, 172, 66, 255);
+            case "food_ingredient_tomato":
+                return new Color32(192, 73, 59, 255);
+            case "food_ingredient_onion":
+                return new Color32(88, 81, 71, 255);
+            case "food_ingredient_cheese":
+                return new Color32(202, 173, 107, 255);
             default:
-                return new Color(0.5f, 0.5f, 0.5f);
+                return new Color32(128, 128, 128, 255);
         }
     }
 
@@ -128,7 +128,7 @@ public class SliceObject : MonoBehaviour
         if (hull != null)
         {
             Material m = Instantiate(Resources.Load("M_IngredientInside", typeof(Material)) as Material);
-            m.color = InsideColor(target);
+            m.color = InsideColor(target.name);
             Material crossSectionMaterial = m;
 
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
