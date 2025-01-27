@@ -45,7 +45,11 @@ public class SliceObject : MonoBehaviour
 
             if (hasHit)
             {
-                //audioPlayer.Play();
+                if (audioPlayer != null)
+                {
+                    audioPlayer.Play();
+                }
+
                 canSlice = false;
                 GameObject target = hit.transform.gameObject;
                 Slice(target);
@@ -149,6 +153,8 @@ public class SliceObject : MonoBehaviour
             Destroy(target);
 
             counter--;
+
+            if (cuttingBoard == null) return;
 
             // tell the cuttingboard we sliced a specific ingredient
             bool isDone = cuttingBoard.Cut(parentNode);
