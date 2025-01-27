@@ -12741,13 +12741,13 @@ MonoBehaviour:
     TargetCookMinutes: 0
     CurrentCookMinutes: 0
   - ObjectName: food_ingredient_tomato
-    TargetCount: 1
+    TargetCount: 2
     CurrentCount: 0
     BurnCookMinutes: 0
     TargetCookMinutes: 0
     CurrentCookMinutes: 0
   - ObjectName: food_ingredient_lettuce
-    TargetCount: 1
+    TargetCount: 2
     CurrentCount: 0
     BurnCookMinutes: 0
     TargetCookMinutes: 0
@@ -12770,8 +12770,8 @@ MonoBehaviour:
     BurnCookMinutes: 0
     TargetCookMinutes: 0
     CurrentCookMinutes: 0
-  - ObjectName: food_ingredient_bun_top
-    TargetCount: 0
+  - ObjectName: food_ingredient_onion
+    TargetCount: 2
     CurrentCount: 0
     BurnCookMinutes: 0
     TargetCookMinutes: 0
