@@ -8,6 +8,7 @@ public class MainMenuScript : MonoBehaviour
     public Toggle contaminationToggle;
     public LocomotionProvider move;
     public LocomotionProvider turn;
+    public GlobalSettingsManager gsm;
 
     void Start()
     {
@@ -28,10 +29,12 @@ public class MainMenuScript : MonoBehaviour
         if (contaminationToggle.isOn)
         {
             Debug.Log("Contamination enabled.");
+            gsm.SetShowContamination(true);
         }
         else
         {
             Debug.Log("Contamination disabled.");
+            gsm.SetShowContamination(false);
         }
     }
 
