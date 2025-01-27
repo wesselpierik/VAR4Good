@@ -63,7 +63,7 @@ public class SliceObject : MonoBehaviour
         hull.name = target.name;
         hull.layer = target.layer;
         hull.tag = target.tag;
-        hull.GetComponent<Rigidbody>().mass = 100;
+        // hull.GetComponent<Rigidbody>().mass = 100;
 
 
         IngredientCooking targetIngredientCooking = target.GetComponent<IngredientCooking>();
@@ -86,6 +86,22 @@ public class SliceObject : MonoBehaviour
         }
     }
 
+    private Color InsideColor(GameObject target)
+    {
+        switch ("food_ingredient_" + target.name)
+        {
+            case "lettuce":
+                return new Color(0.0f, 1.0f, 0.0f);
+            case "tomato":
+                return new Color(1.0f, 0.0f, 0.0f);
+            case "onion":
+                return new Color(0.5f, 0.5f, 0.5f);
+            case "cheese":
+                return new Color(1.0f, 1.0f, 0.0f);
+            default:
+                return new Color(0.5f, 0.5f, 0.5f);
+        }
+    }
 
     public void Slice(GameObject target)
     {
@@ -111,8 +127,9 @@ public class SliceObject : MonoBehaviour
 
         if (hull != null)
         {
-            Material crossSectionMaterial = target.GetComponent<Renderer>().material;
-
+            Material m = Instantiate(Resources.Load("M_IngredientInside", typeof(Material)) as Material);
+            m.color = new Color(1f, 0f, 0f);
+            Material crossSectionMaterial = m;
 
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
             GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
