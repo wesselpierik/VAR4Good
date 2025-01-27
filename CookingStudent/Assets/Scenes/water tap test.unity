@@ -931,7 +931,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &658429764
 Transform:
   m_ObjectHideFlags: 0
@@ -954,7 +954,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658429763}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1478,7 +1478,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.035
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1083527934
 MonoBehaviour:
@@ -1493,7 +1493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaterStream: {fileID: 658429763}
-  TapButton: {fileID: -3599823989380923159, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
+  TapButton: {fileID: 1238321461868500107, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &1124300925
 GameObject:
   m_ObjectHideFlags: 0
@@ -2914,7 +2914,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2113650262}
-  - component: {fileID: 2113650264}
+  - component: {fileID: 2113650266}
   - component: {fileID: 2113650265}
   m_Layer: 0
   m_Name: Tap button 2
@@ -2938,7 +2938,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2105157419}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &2113650264
+--- !u!114 &2113650265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113650261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16333589325ea4a4dbe7f084669634d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WaterStream: {fileID: 658429763}
+  TapButton: {fileID: -3599823989380923159, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
+--- !u!135 &2113650266
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2957,22 +2971,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.035
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2113650265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2113650261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16333589325ea4a4dbe7f084669634d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WaterStream: {fileID: 658429763}
-  TapButton: {fileID: -3599823989380923159, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
