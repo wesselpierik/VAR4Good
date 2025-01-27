@@ -128,7 +128,7 @@ public class SliceObject : MonoBehaviour
         if (hull != null)
         {
             Material m = Instantiate(Resources.Load("M_IngredientInside", typeof(Material)) as Material);
-            m.color = new Color(1f, 0f, 0f);
+            m.color = InsideColor(target);
             Material crossSectionMaterial = m;
 
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
