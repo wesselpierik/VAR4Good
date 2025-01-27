@@ -57,7 +57,7 @@ public class GlobalStateManager : MonoBehaviour
         {
             string ret = ingredient.UpdateIngredientProgress(0, 0);
 
-            recipeText.RecipeTextAdd();
+            //recipeText.RecipeTextAdd();
 
             return ret;
         }
