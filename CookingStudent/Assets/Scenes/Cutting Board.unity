@@ -812,6 +812,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &135696846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1364,6 +1367,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &155441493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1505,6 +1511,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &193049010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1717,6 +1726,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!1 &196261021
 GameObject:
   m_ObjectHideFlags: 0
@@ -2334,15 +2346,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f3998ff28efe1aa4e995370c35da71b6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f3998ff28efe1aa4e995370c35da71b6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f3998ff28efe1aa4e995370c35da71b6, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f3998ff28efe1aa4e995370c35da71b6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3180,6 +3192,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &316884193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3520,15 +3535,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f5ca55f90c47f2b48b14239e3fa626d3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5ca55f90c47f2b48b14239e3fa626d3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5ca55f90c47f2b48b14239e3fa626d3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5ca55f90c47f2b48b14239e3fa626d3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4235,6 +4250,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 1
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &468780471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5130,6 +5148,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 1
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!1 &629852469
 GameObject:
   m_ObjectHideFlags: 0
@@ -5222,6 +5243,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &643517100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5773,6 +5797,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &658996221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6276,15 +6303,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 77b4a016f342dfd4f8f399f731f02935, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 77b4a016f342dfd4f8f399f731f02935, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 77b4a016f342dfd4f8f399f731f02935, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 77b4a016f342dfd4f8f399f731f02935, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7023,6 +7050,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &718265006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7348,6 +7378,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 1
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!54 &766006502
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7406,15 +7439,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 833bb0d47fd3ed943bb61f05344636bc, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 833bb0d47fd3ed943bb61f05344636bc, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 833bb0d47fd3ed943bb61f05344636bc, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 833bb0d47fd3ed943bb61f05344636bc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7821,6 +7854,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 1
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!54 &788059140
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8786,6 +8822,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &973244336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9023,6 +9062,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &992783362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9826,6 +9868,9 @@ MonoBehaviour:
   isContaminatedCookable: 1
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &1066253237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10542,6 +10587,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &1162046969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10916,6 +10964,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 1
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!64 &1184305845
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11016,6 +11067,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &1211768234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11570,6 +11624,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 1
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &1228446570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11598,15 +11655,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 0ecd5e8fc5583cb48b2c4c8a5e1f9484, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0ecd5e8fc5583cb48b2c4c8a5e1f9484, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0ecd5e8fc5583cb48b2c4c8a5e1f9484, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0ecd5e8fc5583cb48b2c4c8a5e1f9484, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12399,6 +12456,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &1341835099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14842,15 +14902,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3c710700f32d3514a8915ee65e067b65, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3c710700f32d3514a8915ee65e067b65, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3c710700f32d3514a8915ee65e067b65, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3c710700f32d3514a8915ee65e067b65, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15737,6 +15797,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &1612706061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16708,6 +16771,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &1722542372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17386,6 +17452,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 1
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!1 &1878430283
 GameObject:
   m_ObjectHideFlags: 0
@@ -17487,15 +17556,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c1474c7135604f141a84126120ddc7d5, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c1474c7135604f141a84126120ddc7d5, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c1474c7135604f141a84126120ddc7d5, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c1474c7135604f141a84126120ddc7d5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18495,6 +18564,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 1
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!1 &2050509852
 GameObject:
   m_ObjectHideFlags: 0
@@ -18857,6 +18929,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!4 &2092965545 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1656672522745943681, guid: 062fa67609d464b08bea3b3ea97bd365, type: 3}

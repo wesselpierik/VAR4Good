@@ -45,7 +45,7 @@ public class SliceObject : MonoBehaviour
 
             if (hasHit)
             {
-                audioPlayer.Play();
+                //audioPlayer.Play();
                 canSlice = false;
                 GameObject target = hit.transform.gameObject;
                 Slice(target);

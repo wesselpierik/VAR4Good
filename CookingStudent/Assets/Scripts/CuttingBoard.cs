@@ -91,15 +91,16 @@ public class CuttingBoard : MonoBehaviour
         // spawn prefab
         GameObject slicedIngredient = Instantiate(assetPrefab);
 
-        slicedIngredient.transform.parent = gameObject.transform;
+        //slicedIngredient.transform.parent = gameObject.transform;
 
         MeshCollider meshCollider = slicedIngredient.AddComponent<MeshCollider>();
         meshCollider.convex = true;
 
-        slicedIngredient.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
-        slicedIngredient.transform.localPosition = new Vector3(0, 0, 0);
+        //slicedIngredient.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
 
-        Vector3 p = slicedIngredient.transform.position;
+        //slicedIngredient.transform.localPosition = new Vector3(0, 0, 0);
+
+        Vector3 p = transform.position;
         p.y += 0.1f;
         slicedIngredient.transform.position = p;
 
