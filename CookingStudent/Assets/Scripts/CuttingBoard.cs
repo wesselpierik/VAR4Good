@@ -6,7 +6,7 @@ using UnityEditor;
 public class CuttingBoard : MonoBehaviour
 {
     //private GameObject ingredientParent;
-    private bool isCutting = false;
+    // private bool isCutting = false;
     public string assetFolderPath = "Ingredients";
 
     void OnCollisionEnter(Collision collision)
@@ -16,7 +16,7 @@ public class CuttingBoard : MonoBehaviour
 
         // check if collision is not null and check if target has ingredient tag
         GameObject ob = collision.gameObject;
-        if (isCutting || collision == null || !ob.CompareTag("Ingredient")) return;
+        if (collision == null || !ob.CompareTag("Ingredient")) return;
 
         // Debug.Log($"Object: {ob.name}");
 
@@ -28,7 +28,7 @@ public class CuttingBoard : MonoBehaviour
         // Debug.Log($"Ingredient target count: {ingredient.TargetCount}");
         // Debug.Log("Set isCuttin to true");
 
-        isCutting = true;
+        // isCutting = true;
 
         // attach the sliceable layer and remove the interactable
         Destroy(ob.GetComponent<UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable>());
@@ -59,7 +59,7 @@ public class CuttingBoard : MonoBehaviour
     // returns true if cutting is done, false otherwise
     public bool Cut(GameObject parent)
     {
-        if (!isCutting) return false;
+        // if (!isCutting) return false;
 
         Ingredient ingredient = GetIngredient(parent);
 
@@ -69,7 +69,7 @@ public class CuttingBoard : MonoBehaviour
 
         // Debug.Log("cutting done, deleting now");
 
-        isCutting = false;
+        // isCutting = false;
         Destroy(parent);
 
 
@@ -86,13 +86,13 @@ public class CuttingBoard : MonoBehaviour
         // spawn prefab
         GameObject slicedIngredient = Instantiate(assetPrefab);
 
-        slicedIngredient.transform.parent = this.gameObject.transform;
+        slicedIngredient.transform.parent = gameObject.transform;
 
         MeshCollider meshCollider = slicedIngredient.AddComponent<MeshCollider>();
         meshCollider.convex = true;
 
         slicedIngredient.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
-        slicedIngredient.transform.localPosition = new Vector3(0, 0, 0);
+        slicedIngredient.transform.localPosition = new Vector3(0, 0.05f, 0);
 
         slicedIngredient.AddComponent<UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable>().movementType = UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable.MovementType.VelocityTracking;
 
