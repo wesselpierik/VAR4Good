@@ -92,7 +92,11 @@ public class CuttingBoard : MonoBehaviour
         meshCollider.convex = true;
 
         slicedIngredient.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
-        slicedIngredient.transform.localPosition = new Vector3(0, 0.05f, 0);
+        slicedIngredient.transform.localPosition = new Vector3(0, 0, 0);
+
+        Vector3 p = slicedIngredient.transform.position;
+        p.y += 0.1f;
+        slicedIngredient.transform.position = p;
 
         slicedIngredient.AddComponent<UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable>().movementType = UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable.MovementType.VelocityTracking;
 
