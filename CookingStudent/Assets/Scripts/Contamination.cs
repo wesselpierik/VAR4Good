@@ -8,6 +8,13 @@ public class Contamination : MonoBehaviour
 
     public bool mustBeWashed = false;
 
+    [SerializeField] private bool forceHideContamination = false;
+
+    public bool canSpreadContamination = true;
+    public bool canReceiveContamination = true;
+
+
+
     // Hardcode
     private Color originalColor = Color.white;
     private Color washableColor = Color.blue;
@@ -22,15 +29,14 @@ public class Contamination : MonoBehaviour
         isHand = CompareTag("Hand");
         showContamination = GlobalSettingsManager.Instance.GetShowContamination();
 
+        // add outline realtime, but hands have them baked into the prefab
+        if (GetOutline() == null && !isHand && !forceHideContamination)
+        {
+            gameObject.AddComponent<Outline>();
+        }
+
         if (IsContaminated())
             UpdateMaterial();
-
-
-        // warn about missing outline component
-        if (GetOutline() == null)
-        {
-            Debug.LogWarning($"Outline component not found for {gameObject}. Ignore this warning if this is intentional.");
-        }
     }
 
     public bool IsContaminated()
@@ -48,7 +54,6 @@ public class Contamination : MonoBehaviour
     {
         Outline outline = GetOutline();
         if (!showContamination || outline == null) return;
-
 
         outline.OutlineMode = IsContaminated() ? Outline.Mode.OutlineVisible : Outline.Mode.OutlineHidden;
 
@@ -73,6 +78,8 @@ public class Contamination : MonoBehaviour
 
     void Contaminate(bool contaminateWashable, bool contaminateCookable)
     {
+        if (!canReceiveContamination) return;
+
         // update contamination status
         isContaminatedWashable = isContaminatedWashable || contaminateWashable;
         isContaminatedCookable = isContaminatedCookable || contaminateCookable;
@@ -121,7 +128,7 @@ public class Contamination : MonoBehaviour
 
     void AttemptContamination(Contamination c)
     {
-        if (IsContaminated() && c != null)
+        if (canSpreadContamination && IsContaminated() && c != null)
         {
             c.Contaminate(isContaminatedWashable, isContaminatedCookable);
         }

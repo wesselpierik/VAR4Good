@@ -3,8 +3,12 @@ using System.Linq;
 
 public class IngredientCooking : MonoBehaviour
 {
+    private AudioPlayer audioPlayer;
+
     private bool isCooking = false;
     private bool isBurnt = false;
+
+    private bool isDone = false;
 
     private Color doneColor = new Color(0.0f, 1.0f, 0.0f, 0.75f);
     private Color burntColor = new Color(0.2f, 0.2f, 0.0f, 0.975f);
@@ -20,6 +24,11 @@ public class IngredientCooking : MonoBehaviour
     private void Awake()
     {
         r = GetComponent<Renderer>();
+        audioPlayer = GetComponent<AudioPlayer>();
+        if (audioPlayer == null)
+        {
+            Debug.LogError("AudioPlayer not found!");
+        }
 
         /* Add material */
         GetComponent<MeshFilter>().mesh.subMeshCount++; // fix the submesh count
@@ -41,6 +50,8 @@ public class IngredientCooking : MonoBehaviour
         {
             isCooking = true;
             timer = 0f;
+
+            audioPlayer.Play(0);
         }
     }
 
@@ -49,11 +60,11 @@ public class IngredientCooking : MonoBehaviour
         if (isCooking)
         {
             timer += Time.deltaTime;
-            if (timer >= burningTime)
+            if (timer >= burningTime && !isBurnt)
             {
                 Burn();
             }
-            else if (timer >= cookingTime)
+            else if (timer >= cookingTime && !isDone)
             {
                 Cook();
             }
@@ -62,16 +73,38 @@ public class IngredientCooking : MonoBehaviour
 
     private void Cook()
     {
-        r.materials[1].color = doneColor;
+        isDone = true;
+
+        r.sharedMaterials[1].SetColor("_BaseColor", doneColor);
+
+        Contamination c = GetComponent<Contamination>();
+        if (c != null && c.IsContaminated())
+        {
+            c.Decontaminate(false, true);
+        }
+
         GlobalStateManager.Instance.CookObject(name, timer);
+
+        audioPlayer.PlayOneShot(1);
     }
 
     private void Burn()
     {
-        if (!isBurnt) GlobalStateManager.Instance.AddScore(-5);
+        isCooking = false;
         isBurnt = true;
-        r.materials[1].color = burntColor;
+
+        r.sharedMaterials[1].SetColor("_BaseColor", burntColor);
+
+        Contamination c = GetComponent<Contamination>();
+        if (c != null && c.IsContaminated())
+        {
+            c.Decontaminate(false, true);
+        }
+
+        GlobalStateManager.Instance.AddScore(-5);
         GlobalStateManager.Instance.DisplayScore();
+
+        audioPlayer.Play(2);
     }
 
     private void OnTriggerExit(Collider item)
@@ -79,6 +112,7 @@ public class IngredientCooking : MonoBehaviour
         if (item.CompareTag("Pan"))
         {
             isCooking = false;
+            audioPlayer.Stop();
         }
     }
 }

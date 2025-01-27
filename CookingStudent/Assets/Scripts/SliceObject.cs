@@ -18,8 +18,17 @@ public class SliceObject : MonoBehaviour
     public LayerMask sliceableLayer;
     public CuttingBoard cuttingBoard;
 
-    private void Awake()
+    private AudioPlayer audioPlayer;
+
+    void Awake()
     {
+        audioPlayer = GetComponent<AudioPlayer>();
+
+        if (audioPlayer == null)
+        {
+            Debug.LogError("AudioPlayer not found!");
+        }
+
         if (cuttingBoard == null)
         {
             Debug.LogWarning("NO CUTTINGBOARD ATTACHED!");
@@ -36,6 +45,7 @@ public class SliceObject : MonoBehaviour
 
             if (hasHit)
             {
+                audioPlayer.Play();
                 canSlice = false;
                 GameObject target = hit.transform.gameObject;
                 Slice(target);
@@ -147,10 +157,9 @@ public class SliceObject : MonoBehaviour
     {
         if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
             counter++;
-
-        Debug.Log($"Enter: {counter}");
-
+        // Debug.Log($"Enter: {counter}");
     }
+
 
     private void OnTriggerExit(Collider other)
     {
@@ -161,6 +170,6 @@ public class SliceObject : MonoBehaviour
                 canSlice = true;
         }
 
-        Debug.Log($"Exit: {counter}");
+        // Debug.Log($"Exit: {counter}");
     }
 }
