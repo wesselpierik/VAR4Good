@@ -108,25 +108,31 @@ public class CuttingBoard : MonoBehaviour
 
         slicedIngredient.tag = "Ingredient";
 
+        bool parentIsContaminatedCookable = false;
+        bool parentIsContaminatedWashable = false;
 
-        IngredientCooking parentIngredientCooking = parent.GetComponent<IngredientCooking>();
-        if (parentIngredientCooking != null)
+
+
+        foreach (Transform child in parent.transform)
         {
-            slicedIngredient.AddComponent<IngredientCooking>();
-            IngredientCooking i = slicedIngredient.GetComponent<IngredientCooking>();
-            i.cookingTime = parentIngredientCooking.cookingTime;
-            i.burningTime = parentIngredientCooking.burningTime;
+            GameObject ob = child.gameObject;
+
+            Contamination childContamination = GetComponent<Contamination>();
+
+            if (childContamination != null)
+            {
+                parentIsContaminatedCookable = parentIsContaminatedCookable || childContamination.isContaminatedCookable;
+                parentIsContaminatedWashable = parentIsContaminatedWashable || childContamination.isContaminatedWashable;
+            }
         }
 
-        Contamination parentContamination = parent.GetComponent<Contamination>();
-        if (parentContamination != null)
-        {
-            slicedIngredient.AddComponent<Contamination>();
-            Contamination c = slicedIngredient.GetComponent<Contamination>();
-            c.isContaminatedCookable = parentContamination.isContaminatedCookable;
-            c.isContaminatedWashable = parentContamination.isContaminatedWashable;
-            slicedIngredient.AddComponent<Outline>();
-        }
+
+        slicedIngredient.AddComponent<Contamination>();
+        Contamination c = slicedIngredient.GetComponent<Contamination>();
+        c.isContaminatedCookable = parentIsContaminatedCookable;
+        c.isContaminatedWashable = parentIsContaminatedWashable;
+        slicedIngredient.AddComponent<Outline>();
+     
 
         Destroy(parent);
 
