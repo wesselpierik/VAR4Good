@@ -16,16 +16,22 @@ public class SliceObject : MonoBehaviour
     public Transform endSlicepoint;
     public VelocityEstimator velocityEstimator;
     public LayerMask sliceableLayer;
+    public CuttingBoard cuttingBoard;
 
     private AudioPlayer audioPlayer;
 
-    void Start()
+    void Awake()
     {
         audioPlayer = GetComponent<AudioPlayer>();
 
         if (audioPlayer == null)
         {
             Debug.LogError("AudioPlayer not found!");
+        }
+
+        if (cuttingBoard == null)
+        {
+            Debug.LogWarning("NO CUTTINGBOARD ATTACHED!");
         }
     }
 
@@ -39,7 +45,7 @@ public class SliceObject : MonoBehaviour
 
             if (hasHit)
             {
-                audioPlayer.Play();
+                //audioPlayer.Play();
                 canSlice = false;
                 GameObject target = hit.transform.gameObject;
                 Slice(target);
@@ -57,9 +63,9 @@ public class SliceObject : MonoBehaviour
         hull.name = target.name;
         hull.layer = target.layer;
         hull.tag = target.tag;
+        hull.GetComponent<Rigidbody>().mass = 100;
 
 
-        // TODO: should also copy fields
         IngredientCooking targetIngredientCooking = target.GetComponent<IngredientCooking>();
         if (targetIngredientCooking != null)
         {
@@ -88,6 +94,15 @@ public class SliceObject : MonoBehaviour
 
         string objectName = target.name;
 
+        // Create parent node for sliced children.
+        GameObject parentNode = target.transform.parent.gameObject;
+        if (parentNode == null || parentNode.name != objectName)
+        {
+            parentNode = new GameObject(objectName);
+            parentNode.transform.position = target.transform.position;
+            parentNode.transform.rotation = target.transform.rotation;
+        }
+
         Vector3 velocity = velocityEstimator.GetVelocityEstimate();
         Vector3 planeNormal = Vector3.Cross(endSlicepoint.position - startSlicepoint.position, velocity);
         planeNormal.Normalize();
@@ -105,19 +120,28 @@ public class SliceObject : MonoBehaviour
             PrepareHull(target, upperHull);
             PrepareHull(target, lowerHull);
 
+            upperHull.transform.SetParent(parentNode.transform);
+            lowerHull.transform.SetParent(parentNode.transform);
+
             GlobalStateManager.Instance.SliceObject(objectName);
+
+
             if (GlobalStateManager.Instance.isRecipeComplete())
-            {
                 Debug.Log("Recipe is complete");
-            }
 
             Destroy(target);
+
             counter--;
+
+            // tell the cuttingboard we sliced a specific ingredient
+            bool isDone = cuttingBoard.Cut(parentNode);
+
+            if (isDone)
+                counter -= 2;
+
         }
         else
-        {
             Debug.LogWarning("Hull is null");
-        }
 
     }
 
@@ -132,11 +156,10 @@ public class SliceObject : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
-        {
             counter++;
-        }
-        // Debug.Log(counter);
+        // Debug.Log($"Enter: {counter}");
     }
+
 
     private void OnTriggerExit(Collider other)
     {
@@ -144,10 +167,9 @@ public class SliceObject : MonoBehaviour
         {
             counter--;
             if (counter == 0)
-            {
                 canSlice = true;
-            }
         }
-        // Debug.Log(counter);
+
+        // Debug.Log($"Exit: {counter}");
     }
 }

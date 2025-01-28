@@ -4363,16 +4363,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 1999267235}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 0ecd5e8fc5583cb48b2c4c8a5e1f9484, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0ecd5e8fc5583cb48b2c4c8a5e1f9484, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0ecd5e8fc5583cb48b2c4c8a5e1f9484, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0ecd5e8fc5583cb48b2c4c8a5e1f9484, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.7785907
+      value: 3.608
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0ecd5e8fc5583cb48b2c4c8a5e1f9484, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.218
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0ecd5e8fc5583cb48b2c4c8a5e1f9484, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.0308645
+      value: 3.431
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0ecd5e8fc5583cb48b2c4c8a5e1f9484, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4405,6 +4417,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0ecd5e8fc5583cb48b2c4c8a5e1f9484, type: 3}
       propertyPath: m_Name
       value: food_ingredient_tomato
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0ecd5e8fc5583cb48b2c4c8a5e1f9484, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4446,63 +4462,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5321038836818693795, guid: 0ecd5e8fc5583cb48b2c4c8a5e1f9484, type: 3}
---- !u!1001 &1952719017
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: d48145bb6e2e2964e86b96503a6db101, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.3320296
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d48145bb6e2e2964e86b96503a6db101, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.009
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d48145bb6e2e2964e86b96503a6db101, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.68
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d48145bb6e2e2964e86b96503a6db101, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d48145bb6e2e2964e86b96503a6db101, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d48145bb6e2e2964e86b96503a6db101, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d48145bb6e2e2964e86b96503a6db101, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d48145bb6e2e2964e86b96503a6db101, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d48145bb6e2e2964e86b96503a6db101, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d48145bb6e2e2964e86b96503a6db101, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: d48145bb6e2e2964e86b96503a6db101, type: 3}
-      propertyPath: m_Name
-      value: cutting board
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d48145bb6e2e2964e86b96503a6db101, type: 3}
 --- !u!1 &1999267234
 GameObject:
   m_ObjectHideFlags: 0
@@ -4555,4 +4514,3 @@ SceneRoots:
   - {fileID: 646125396}
   - {fileID: 723408276}
   - {fileID: 1999267235}
-  - {fileID: 1952719017}
