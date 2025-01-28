@@ -81,7 +81,7 @@
                     "name": "Sprint",
                     "type": "Button",
                     "id": "641cd816-40e6-41b4-8c3d-04687c349290",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -484,11 +484,11 @@
                 },
                 {
                     "name": "",
-                    "id": "03d4f36f-7213-4a16-9004-3b2a783774c9",
-                    "path": "<XRController>{RightHand}/{SecondaryButton}",
+                    "id": "a0cfdb92-9748-4041-bc84-564f1f9020c2",
+                    "path": "<XRController>/trigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";XR",
+                    "groups": "XR",
                     "action": "Water tap",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -512,7 +512,7 @@
                     "name": "Submit",
                     "type": "Button",
                     "id": "7607c7b6-cd76-4816-beef-bd0341cfe950",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -521,7 +521,7 @@
                     "name": "Cancel",
                     "type": "Button",
                     "id": "15cef263-9014-4fd5-94d9-4e4a6234a6ef",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
