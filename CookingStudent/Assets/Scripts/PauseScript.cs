@@ -12,6 +12,8 @@ public class PauseScript : MonoBehaviour
 
     public bool activeWristUI = false;
 
+    public PostcardUI postcardUI;
+
     void Start()
     {
         openMenu.action.started += PauseButtonPressed;
@@ -19,13 +21,15 @@ public class PauseScript : MonoBehaviour
 
     void PauseButtonPressed(InputAction.CallbackContext context)
     {
+
         DisplayWristUI();
     }
 
     public void DisplayWristUI()
     {
+        // only toggle if postcard has been dismissed.
+        if (wristUI == null || postcardUI == null || postcardUI.active) { return; }
         activeWristUI = !activeWristUI;
-        if (wristUI == null) { return; }
         wristUI.SetActive(activeWristUI);
         globalVolume.SetActive(activeWristUI);
         Time.timeScale = activeWristUI ? 0 : 1;
