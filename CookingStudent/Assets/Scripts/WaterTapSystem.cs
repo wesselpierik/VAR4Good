@@ -3,9 +3,10 @@ using UnityEngine.InputSystem;
 
 public class WaterTapInteraction : MonoBehaviour
 {
-    public GameObject WaterStream; 
-    public InputActionReference TapButton; 
-    private bool playerInReach = false;
+    public GameObject WaterStream;
+    public InputActionReference TapButton;
+
+    private int playerInReach = 0;
     private bool activeWaterTap = false;
 
     void Start() {
@@ -16,17 +17,21 @@ public class WaterTapInteraction : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        playerInReach = true;
-        TapButton.action.Enable();
+        if (other.CompareTag("Hand")) {
+            playerInReach++;
+            TapButton.action.Enable();
+        }
     }
 
     void OnTriggerExit(Collider other) {
-        playerInReach = false;
-        TapButton.action.Disable();
+        if (other.CompareTag("Hand")) {
+            playerInReach--;
+            TapButton.action.Disable();
+        }
     }
 
     void ToggleWaterStream(InputAction.CallbackContext context) {
-        if (playerInReach && WaterStream != null) {
+        if (playerInReach > 0 && WaterStream != null) {
             activeWaterTap = !activeWaterTap;
             WaterStream.SetActive(activeWaterTap);
         }
