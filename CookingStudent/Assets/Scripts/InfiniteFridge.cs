@@ -22,7 +22,7 @@ public class InfiniteFridge : MonoBehaviour
                 return onion;
             case "food_ingredient_cheese":
                 return cheese;
-            case "food_ingredient_burger":
+            case "food_ingredient_burger_uncooked":
                 return burger;
             case "food_ingredient_bun_top":
                 return bunTop;
@@ -34,20 +34,24 @@ public class InfiniteFridge : MonoBehaviour
         }
     }
 
+    Transform GetSpawnPoint(string name)
+    {
+        Debug.Log(name);
+        return GameObject.Find($"{name}_spawnPoint").transform;
+    }
+
 
     void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Ingredient")) return;
 
-        Transform spawnPoint = other.gameObject.transform.Find("spawnPoint");
-        Vector3 newPos = spawnPoint.localPosition + transform.position;
-        GameObject newObject = Instantiate(GetNewObject(other.name), newPos, Quaternion.identity);
+        Transform spawnPoint = GetSpawnPoint(other.gameObject.name);
+        Vector3 newPos = spawnPoint.position;
 
-        Contamination targetContamination = other.GetComponent<Contamination>();
-        if (targetContamination != null)
-        {
-            targetContamination.canReceiveContamination = true;
-        }
+        GameObject newObject = Instantiate(GetNewObject(other.name), newPos, Quaternion.identity);
+        newObject.name = other.name;
+
+        other.GetComponent<Contamination>().canReceiveContamination = true;
 
         other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         other.gameObject.layer = 6;
