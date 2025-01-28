@@ -1,16 +1,18 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FadeUI : MonoBehaviour
 {
     public bool fadeOnStart = true;
     public float fadeDuration = 2.0f;
     public Color fadeColor;
+    private Image image;
 
     void Start()
     {
-        fadeColor = GetComponent<Image>();
-        r = GetComponent<Renderer>();
+        image = GetComponent<Image>();
+        fadeColor = image.color;
         if (fadeOnStart) FadeIn();
     }
 
@@ -32,16 +34,17 @@ public class FadeUI : MonoBehaviour
     public IEnumerator FadeRoutine(float alphaIn, float alphaOut)
     {
         float timer = 0;
+
         while (timer <= fadeDuration)
         {
             Color newColor = fadeColor;
             newColor.a = Mathf.Lerp(alphaIn, alphaOut, timer / fadeDuration);
-            r.material.SetColor("_Color", newColor);
+            image.color = newColor;
             timer += Time.deltaTime;
             yield return null;
         }
         Color newColor2 = fadeColor;
         newColor2.a = alphaOut;
-        r.material.SetColor("_Color", newColor2);
+        image.color = newColor2;
     }
 }
