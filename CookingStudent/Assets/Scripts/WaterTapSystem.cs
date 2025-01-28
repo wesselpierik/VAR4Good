@@ -4,17 +4,32 @@ using UnityEngine.InputSystem;
 public class WaterTapInteraction : MonoBehaviour
 {
     public GameObject WaterStream;
+    public GameObject WaterPool;
+
     public InputActionReference TapButton;
+
+    public AudioPlayer audioPlayer;
 
     private int playerInReach = 0;
     private bool activeWaterTap = false;
 
     void Start()
     {
-        if (WaterStream != null)
+        if (WaterStream == null || WaterPool == null)
         {
-            WaterStream.SetActive(false);
-            TapButton.action.started += ToggleWaterStream;
+            Debug.LogError("WaterStream or WaterPool not found!");
+        }
+
+        WaterStream.SetActive(false);
+        WaterPool.SetActive(false);
+
+        TapButton.action.started += ToggleWaterStream;
+
+        audioPlayer = GetComponent<AudioPlayer>();
+
+        if (audioPlayer == null)
+        {
+            Debug.LogError("AudioPlayer not found!");
         }
     }
 
@@ -47,6 +62,19 @@ public class WaterTapInteraction : MonoBehaviour
         {
             activeWaterTap = !activeWaterTap;
             WaterStream.SetActive(activeWaterTap);
+            WaterPool.SetActive(activeWaterTap);
+
+
+            if (activeWaterTap)
+            {
+                audioPlayer.Play(0);
+                audioPlayer.PlayOneShot(1);
+            }
+            else
+            {
+                audioPlayer.Stop();
+                audioPlayer.PlayOneShot(1);
+            }
         }
     }
 }

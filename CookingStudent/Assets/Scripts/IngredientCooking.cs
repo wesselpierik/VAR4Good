@@ -10,7 +10,7 @@ public class IngredientCooking : MonoBehaviour
 
     private bool isDone = false;
 
-    private Color doneColor = new Color(0.0f, 1.0f, 0.0f, 0.75f);
+    private Color doneColor = new Color32(54, 39, 36, 200);
     private Color burntColor = new Color(0.2f, 0.2f, 0.0f, 0.975f);
 
     [SerializeField]
