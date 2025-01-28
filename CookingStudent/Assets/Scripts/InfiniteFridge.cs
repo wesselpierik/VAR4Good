@@ -54,6 +54,5 @@ public class InfiniteFridge : MonoBehaviour
         other.GetComponent<Contamination>().canReceiveContamination = true;
 
         other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-        other.gameObject.layer = 6;
     }
 }
