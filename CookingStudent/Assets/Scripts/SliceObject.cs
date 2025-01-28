@@ -45,7 +45,11 @@ public class SliceObject : MonoBehaviour
 
             if (hasHit)
             {
-                //audioPlayer.Play();
+                if (audioPlayer != null)
+                {
+                    audioPlayer.Play();
+                }
+
                 canSlice = false;
                 GameObject target = hit.transform.gameObject;
                 Slice(target);
@@ -63,7 +67,7 @@ public class SliceObject : MonoBehaviour
         hull.name = target.name;
         hull.layer = target.layer;
         hull.tag = target.tag;
-        hull.GetComponent<Rigidbody>().mass = 100;
+        // hull.GetComponent<Rigidbody>().mass = 100;
 
 
         IngredientCooking targetIngredientCooking = target.GetComponent<IngredientCooking>();
@@ -86,6 +90,22 @@ public class SliceObject : MonoBehaviour
         }
     }
 
+    private Color32 InsideColor(string target)
+    {
+        switch (target)
+        {
+            case "food_ingredient_lettuce":
+                return new Color32(173, 172, 66, 255);
+            case "food_ingredient_tomato":
+                return new Color32(192, 73, 59, 255);
+            case "food_ingredient_onion":
+                return new Color32(88, 81, 71, 255);
+            case "food_ingredient_cheese":
+                return new Color32(202, 173, 107, 255);
+            default:
+                return new Color32(128, 128, 128, 255);
+        }
+    }
 
     public void Slice(GameObject target)
     {
@@ -111,8 +131,9 @@ public class SliceObject : MonoBehaviour
 
         if (hull != null)
         {
-            Material crossSectionMaterial = target.GetComponent<Renderer>().material;
-
+            Material m = Instantiate(Resources.Load("M_IngredientInside", typeof(Material)) as Material);
+            m.color = InsideColor(target.name);
+            Material crossSectionMaterial = m;
 
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
             GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
@@ -132,6 +153,8 @@ public class SliceObject : MonoBehaviour
             Destroy(target);
 
             counter--;
+
+            if (cuttingBoard == null) return;
 
             // tell the cuttingboard we sliced a specific ingredient
             bool isDone = cuttingBoard.Cut(parentNode);
