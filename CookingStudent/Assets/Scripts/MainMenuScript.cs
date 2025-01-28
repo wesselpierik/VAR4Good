@@ -9,6 +9,8 @@ public class MainMenuScript : MonoBehaviour
     public LocomotionProvider move;
     public LocomotionProvider turn;
 
+
+
     void Start()
     {
         move.enabled = false;
@@ -20,7 +22,8 @@ public class MainMenuScript : MonoBehaviour
         Debug.Log("Start");
         move.enabled = true;
         turn.enabled = true;
-        SceneManager.LoadScene("Main Scene");
+
+        // SceneManager.LoadScene("Main Scene");
     }
 
     public void Toggle()

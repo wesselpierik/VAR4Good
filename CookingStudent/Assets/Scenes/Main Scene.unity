@@ -1107,6 +1107,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &155441493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2517,6 +2520,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &316884193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2745,6 +2751,68 @@ PrefabInstance:
       addedObject: {fileID: 1780440038}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 062fa67609d464b08bea3b3ea97bd365, type: 3}
+--- !u!1001 &386542078
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1441567925}
+    m_Modifications:
+    - target: {fileID: 1311655435416089232, guid: 56b684184c5f99b48876c953c775566c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311655435416089232, guid: 56b684184c5f99b48876c953c775566c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311655435416089232, guid: 56b684184c5f99b48876c953c775566c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311655435416089232, guid: 56b684184c5f99b48876c953c775566c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311655435416089232, guid: 56b684184c5f99b48876c953c775566c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311655435416089232, guid: 56b684184c5f99b48876c953c775566c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311655435416089232, guid: 56b684184c5f99b48876c953c775566c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311655435416089232, guid: 56b684184c5f99b48876c953c775566c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311655435416089232, guid: 56b684184c5f99b48876c953c775566c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311655435416089232, guid: 56b684184c5f99b48876c953c775566c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746846302000304102, guid: 56b684184c5f99b48876c953c775566c, type: 3}
+      propertyPath: m_Name
+      value: 'Fader Screen '
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 56b684184c5f99b48876c953c775566c, type: 3}
+--- !u!4 &386542079 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1311655435416089232, guid: 56b684184c5f99b48876c953c775566c, type: 3}
+  m_PrefabInstance: {fileID: 386542078}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &386703072
 GameObject:
   m_ObjectHideFlags: 0
@@ -3392,6 +3460,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 1
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &468780471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3712,6 +3783,7 @@ MonoBehaviour:
   sliceableLayer:
     serializedVersion: 2
     m_Bits: 64
+  cuttingBoard: {fileID: 0}
 --- !u!65 &592457914
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3787,6 +3859,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 1
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!1 &629852469
 GameObject:
   m_ObjectHideFlags: 0
@@ -5143,6 +5218,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &718265006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5577,6 +5655,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 1
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!54 &766006502
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5965,6 +6046,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 1
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!54 &788059140
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6023,6 +6107,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6699098400104526748, guid: 3083017f4fc1f4f95a3b2bb80eabe71b, type: 3}
   m_PrefabInstance: {fileID: 1412290659}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &826272901
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5570714229277704, guid: 03b90847bd4975f48baa818508266c9e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 23.03951
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570714229277704, guid: 03b90847bd4975f48baa818508266c9e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -16.07535
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570714229277704, guid: 03b90847bd4975f48baa818508266c9e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.8705993
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570714229277704, guid: 03b90847bd4975f48baa818508266c9e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570714229277704, guid: 03b90847bd4975f48baa818508266c9e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570714229277704, guid: 03b90847bd4975f48baa818508266c9e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570714229277704, guid: 03b90847bd4975f48baa818508266c9e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570714229277704, guid: 03b90847bd4975f48baa818508266c9e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570714229277704, guid: 03b90847bd4975f48baa818508266c9e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570714229277704, guid: 03b90847bd4975f48baa818508266c9e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3552355662866821438, guid: 03b90847bd4975f48baa818508266c9e, type: 3}
+      propertyPath: m_Name
+      value: 'Scene Transition Manager '
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 03b90847bd4975f48baa818508266c9e, type: 3}
 --- !u!4 &863488874 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1155636191258099681, guid: 718fddb8ad2c843218bcc12cbfac939c, type: 3}
@@ -6799,6 +6940,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &992783362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7602,6 +7746,9 @@ MonoBehaviour:
   isContaminatedCookable: 1
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &1066253237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7918,6 +8065,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &1162046969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8292,6 +8442,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 1
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!64 &1184305845
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8720,6 +8873,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 1
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &1228446570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9457,6 +9613,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &1341835099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9824,6 +9983,7 @@ MonoBehaviour:
     BurnCookMinutes: 0
     TargetCookMinutes: 0
     CurrentCookMinutes: 0
+  recipeText: {fileID: 0}
 --- !u!4 &1404326427
 Transform:
   m_ObjectHideFlags: 0
@@ -10040,7 +10200,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 386542079}
   m_Father: {fileID: 1552269060}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1441567926
@@ -12679,6 +12840,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!114 &1612706061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14102,6 +14266,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 1
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!1 &1878430283
 GameObject:
   m_ObjectHideFlags: 0
@@ -15042,6 +15209,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 1
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!1 &2050509852
 GameObject:
   m_ObjectHideFlags: 0
@@ -15404,6 +15574,9 @@ MonoBehaviour:
   isContaminatedCookable: 0
   isContaminatedWashable: 0
   mustBeWashed: 0
+  forceHideContamination: 0
+  canSpreadContamination: 1
+  canReceiveContamination: 1
 --- !u!4 &2092965545 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1656672522745943681, guid: 062fa67609d464b08bea3b3ea97bd365, type: 3}
@@ -15923,6 +16096,7 @@ SceneRoots:
   - {fileID: 254040669}
   - {fileID: 1404326427}
   - {fileID: 629852470}
+  - {fileID: 826272901}
   - {fileID: 1787858319}
   - {fileID: 2050509858}
   - {fileID: 1255288197}
