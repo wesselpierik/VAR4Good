@@ -12,7 +12,7 @@ public class AudioPlayer : MonoBehaviour
 
     private AudioSource audioSource;
 
-    public float delay = 0.6f; //delay in seconds
+    public float delay = 0f; //delay in seconds
     private float timer = 0f;
 
     void Start()

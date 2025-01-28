@@ -16,6 +16,14 @@ public class InfiniteFridge : MonoBehaviour {
         rb.useGravity = true;
         rb.isKinematic = true;
 
+        Contamination contamination = other.gameObject.GetComponent<Contamination>();
+        contamination.canReceiveContamination = true;
+
+        Renderer r = newObject.GetComponent<Renderer>();
+        Material[] materials = r.materials;
+
+        r.materials = materials[..3];
+
         other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
     }
 }
