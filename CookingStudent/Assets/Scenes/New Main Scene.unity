@@ -14703,6 +14703,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96cd9faf292a8dc5fb6778b94b8134a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lettuce: {fileID: 3187748271333455670, guid: f93759d85f6c3d54d9aa34dc0d8c44f1, type: 3}
+  tomato: {fileID: 1155957964819023027, guid: 07fdd63834acf4b4cb65b5fae7dd0791, type: 3}
+  onion: {fileID: 6300396575699525909, guid: 54b420bcac23c534eb50a2ebcb845802, type: 3}
+  cheese: {fileID: 2668226090003384590, guid: 5052269cdab524b4f820ae1b7659f878, type: 3}
+  burger: {fileID: 8650787205232037345, guid: 15c82533079705844bb15c42eb0b5e3c, type: 3}
+  bunTop: {fileID: 4392132875292053399, guid: ad3ed05e4b05d8c40bb5253cb58ae37c, type: 3}
+  bunBottom: {fileID: 4342137568955251015, guid: 9d12af1715e9e354283bbb52d6be751d, type: 3}
 --- !u!65 &1998707788
 BoxCollider:
   m_ObjectHideFlags: 0
