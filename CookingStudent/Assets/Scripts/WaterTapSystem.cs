@@ -10,6 +10,7 @@ public class WaterTapInteraction : MonoBehaviour
 
     public AudioPlayer audioPlayer;
 
+
     private int playerInReach = 0;
     private bool activeWaterTap = false;
 
@@ -68,12 +69,12 @@ public class WaterTapInteraction : MonoBehaviour
             if (activeWaterTap)
             {
                 audioPlayer.Play(0);
-                audioPlayer.PlayOneShot(1);
+                audioPlayer.Play2(1);
             }
             else
             {
                 audioPlayer.Stop();
-                audioPlayer.PlayOneShot(1);
+                audioPlayer.Play2(1);
             }
         }
     }

@@ -11,17 +11,22 @@ public class AudioPlayer : MonoBehaviour
     // [Range(0f, 1f)] public float[] clipVolumes;
 
     private AudioSource audioSource;
+    private AudioSource audioSource2;
+
 
     public float delay = 0f; //delay in seconds
     private float timer = 0f;
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-
-        if (audioSource == null)
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        if (audioSources.Length > 0)
         {
-            Debug.LogError("AudioSource not found!");
+            audioSource = audioSources[0];
+        }
+        if (audioSources.Length > 1)
+        {
+            audioSource2 = audioSources[1];
         }
 
         if (resources.Length != resourceVolumes.Length)
@@ -50,6 +55,21 @@ public class AudioPlayer : MonoBehaviour
 
             timer = delay;
             audioSource.Play();
+        }
+    }
+
+    public void Play2(int resourceNumber = 0)
+    {
+        if (timer <= 0f)
+        {
+            if (resources.Length != 0)
+            {
+                audioSource2.resource = resources[resourceNumber];
+                audioSource2.volume = resourceVolumes[resourceNumber];
+            }
+
+            timer = delay;
+            audioSource2.Play();
         }
     }
 
