@@ -8099,12 +8099,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 2
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 6
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &1249001610
 GameObject:
   m_ObjectHideFlags: 0
@@ -12616,12 +12610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 2
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 6
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &1855219084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13548,6 +13536,95 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &2030215481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2030215483}
+  - component: {fileID: 2030215482}
+  m_Layer: 0
+  m_Name: Global State Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2030215482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030215481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 077992ebadc05b504b1b54efecb66db1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalScore: {fileID: 11400000, guid: 24c08e953e130ac07a85edb6b2418308, type: 2}
+  recipeList:
+  - ObjectName: food_ingredient_bun_bottom
+    TargetCount: 0
+    CurrentCount: 0
+    BurnCookMinutes: 0
+    TargetCookMinutes: 0
+    CurrentCookMinutes: 0
+  - ObjectName: food_ingredient_tomato
+    TargetCount: 2
+    CurrentCount: 0
+    BurnCookMinutes: 0
+    TargetCookMinutes: 0
+    CurrentCookMinutes: 0
+  - ObjectName: food_ingredient_lettuce
+    TargetCount: 2
+    CurrentCount: 0
+    BurnCookMinutes: 0
+    TargetCookMinutes: 0
+    CurrentCookMinutes: 0
+  - ObjectName: food_ingredient_burger_cooked
+    TargetCount: 0
+    CurrentCount: 0
+    BurnCookMinutes: 2
+    TargetCookMinutes: 0
+    CurrentCookMinutes: 0
+  - ObjectName: food_ingredient_bun_top
+    TargetCount: 0
+    CurrentCount: 0
+    BurnCookMinutes: 0
+    TargetCookMinutes: 0
+    CurrentCookMinutes: 0
+  - ObjectName: food_ingredient_cheese
+    TargetCount: 2
+    CurrentCount: 0
+    BurnCookMinutes: 0
+    TargetCookMinutes: 0
+    CurrentCookMinutes: 0
+  - ObjectName: food_ingredient_onion
+    TargetCount: 2
+    CurrentCount: 0
+    BurnCookMinutes: 0
+    TargetCookMinutes: 0
+    CurrentCookMinutes: 0
+  recipeText: {fileID: 0}
+--- !u!4 &2030215483
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030215481}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2030544028
 GameObject:
   m_ObjectHideFlags: 0
@@ -14170,6 +14247,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1652692370}
   - {fileID: 646125396}
+  - {fileID: 2030215483}
   - {fileID: 1889030139}
   - {fileID: 885038645}
   - {fileID: 76535964}
