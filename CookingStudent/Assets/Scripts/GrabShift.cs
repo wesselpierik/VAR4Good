@@ -32,18 +32,24 @@ public class CustomXRGrabInteractable : XRGrabInteractable
         Rigidbody rb = obj.transform.GetComponent<Rigidbody>();
         rb.isKinematic = false;
 
-        // Debug.Log("Removing something");
-
         if (obj.transform.CompareTag("Ingredient") && pan)
         {
             PanTrigger(false);
             obj.transform.parent = null;
             obj.transform.GetComponent<Collider>().excludeLayers = 0;
+        }
 
+        base.OnSelectExited(args);
+    }
+
+    protected override void OnSelectEntered(SelectEnterEventArgs args) {
+        IXRSelectInteractable obj = args.interactableObject;
+
+        if (obj.transform.CompareTag("Ingredient") && pan) {
             IngredientCooking ingredient = obj.transform.GetComponent<IngredientCooking>();
             ingredient.StopCooking();
         }
 
-        base.OnSelectExited(args);
+        base.OnSelectEntered(args);
     }
 }
