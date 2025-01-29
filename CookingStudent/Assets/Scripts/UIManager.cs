@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     public Camera cam;
     private Image fadeImage;
 
+    public AudioSource musicSource;
 
     private Color fadeColor;
 
@@ -34,19 +35,23 @@ public class UIManager : MonoBehaviour
     {
         openMenu.action.started += PauseButtonPressed;
 
+        // fade
         fadeUI.SetActive(true);
         fadeImage = fadeUI.GetComponentInChildren<Image>();
         fadeColor = fadeImage.color;
-
         ToggleFade();
+
+        // postcard
         TogglePostcard();
     }
 
     void PauseButtonPressed(InputAction.CallbackContext context)
     {
+        // if postcard is active, close it and ignore the rest
         if (postcardActive)
         {
             TogglePostcard();
+            if (musicSource != null) musicSource.Play();
             return;
         }
 
