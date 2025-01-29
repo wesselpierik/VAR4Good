@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,7 +10,7 @@ public class UIManager : MonoBehaviour
     public GameObject globalVolume;
     public InputActionReference openMenu;
 
-    public bool postcardActive = false;
+    private bool postcardActive = false;
     private bool pauseActive = false;
 
 
@@ -16,48 +18,58 @@ public class UIManager : MonoBehaviour
     {
         openMenu.action.started += PauseButtonPressed;
 
-        if (postcardActive)
-        {
-            postcardUI.SetActive(true);
-            Pause();
-            return;
-        }
+        TogglePostcard();
     }
 
     void PauseButtonPressed(InputAction.CallbackContext context)
     {
         if (postcardActive)
         {
-            postcardActive = false;
-            postcardUI.SetActive(false);
-            Unpause();
+            TogglePostcard();
             return;
         }
 
-        if (pauseActive)
-        {
-            pauseActive = false;
-            pauseUI.SetActive(false);
-            Unpause();
-        }
-        else
-        {
-            pauseActive = true;
-            pauseUI.SetActive(true);
-            Pause();
-        }
+        ToggleMenu();
     }
 
-    void Pause()
+    void TogglePostcard()
     {
-        globalVolume.SetActive(true);
-        Time.timeScale = 0;
+        postcardActive = !postcardActive;
+        postcardUI.SetActive(postcardActive);
+        ToggleUI(postcardActive);
     }
 
-    void Unpause()
+    void ToggleMenu()
     {
-        globalVolume.SetActive(false);
-        Time.timeScale = 1;
+        pauseActive = !pauseActive;
+        pauseUI.SetActive(pauseActive);
+        ToggleUI(pauseActive);
+    }
+
+    void ToggleUI(bool active)
+    {
+        globalVolume.SetActive(active);
+        Time.timeScale = active ? 0 : 1;
+    }
+
+    public void ContinueGame()
+    {
+        ToggleMenu();
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
 }
