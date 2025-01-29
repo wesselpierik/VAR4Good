@@ -44,8 +44,8 @@ public class IngredientCooking : MonoBehaviour
 
     }
 
-    public void StopCooking() {
-        Debug.Log("We exit the pan");
+    public void StopCooking()
+    {
         isCooking = false;
         audioPlayer.Stop();
     }
@@ -65,7 +65,6 @@ public class IngredientCooking : MonoBehaviour
     {
         if (isCooking)
         {
-            Debug.Log("We are cooking");
             timer += Time.deltaTime;
             if (timer >= burningTime && !isBurnt)
             {
@@ -111,6 +110,6 @@ public class IngredientCooking : MonoBehaviour
         GlobalStateManager.Instance.AddScore(-5);
         GlobalStateManager.Instance.DisplayScore();
 
-        audioPlayer.Play(2);
+        audioPlayer.Play2(2);
     }
 }
