@@ -6,9 +6,9 @@ public class IngredientCooking : MonoBehaviour
     private AudioPlayer audioPlayer;
 
     public bool isCooking = false;
-    private bool isBurnt = false;
+    public bool isBurnt = false;
 
-    private bool isDone = false;
+    public bool isDone = false;
 
     private Color doneColor = new Color32(54, 39, 36, 200);
     private Color burntColor = new Color(0.2f, 0.2f, 0.0f, 0.975f);
@@ -67,6 +67,10 @@ public class IngredientCooking : MonoBehaviour
         {
             Debug.Log("We are cooking");
             timer += Time.deltaTime;
+
+            Debug.Log($"timer {timer}");
+            Debug.Log($"burning time {burningTime}");
+            Debug.Log($"cooking time {cookingTime}");
             if (timer >= burningTime && !isBurnt)
             {
                 Burn();
@@ -108,6 +112,7 @@ public class IngredientCooking : MonoBehaviour
             c.Decontaminate(false, true);
         }
 
+        GlobalStateManager.Instance.BurnObject();
         GlobalStateManager.Instance.AddScore(-5);
         GlobalStateManager.Instance.DisplayScore();
 
