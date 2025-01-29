@@ -4,13 +4,18 @@ using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 
-public class PauseScript : MonoBehaviour
+public class PauseUI : MonoBehaviour
 {
-    public GameObject wristUI;
+    public GameObject UI;
     public GameObject globalVolume;
     public InputActionReference openMenu;
 
-    public bool activeWristUI = false;
+    // public bool activeWristUI = false;
+
+    public bool active = false;
+
+
+    public PostcardUI postcardUI;
 
     void Start()
     {
@@ -19,17 +24,38 @@ public class PauseScript : MonoBehaviour
 
     void PauseButtonPressed(InputAction.CallbackContext context)
     {
-        DisplayWristUI();
+        if (active)
+        {
+            Deactivate();
+            active = false;
+        }
+        else
+        {
+            Activate();
+            active = true;
+        }
     }
 
-    public void DisplayWristUI()
+    void Activate()
     {
-        activeWristUI = !activeWristUI;
-        if (wristUI == null) { return; }
-        wristUI.SetActive(activeWristUI);
-        globalVolume.SetActive(activeWristUI);
-        Time.timeScale = activeWristUI ? 0 : 1;
+        if (UI == null || postcardUI == null || postcardUI.active) { return; }
+
+        UI.SetActive(true);
+        globalVolume.SetActive(true);
+        Time.timeScale = 0;
+
+        active = true;
     }
+
+    void Deactivate()
+    {
+        UI.SetActive(false);
+        globalVolume.SetActive(false);
+        Time.timeScale = 1;
+
+        active = false;
+    }
+
 
     public void RestartGame()
     {
