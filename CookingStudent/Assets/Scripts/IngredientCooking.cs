@@ -6,9 +6,9 @@ public class IngredientCooking : MonoBehaviour
     private AudioPlayer audioPlayer;
 
     public bool isCooking = false;
-    private bool isBurnt = false;
+    public bool isBurnt = false;
 
-    private bool isDone = false;
+    public bool isDone = false;
 
     private Color doneColor = new Color32(54, 39, 36, 200);
     private Color burntColor = new Color(0.2f, 0.2f, 0.0f, 0.975f);

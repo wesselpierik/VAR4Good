@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class CuttingBoard : MonoBehaviour
 {
@@ -31,7 +31,7 @@ public class CuttingBoard : MonoBehaviour
         // isCutting = true;
 
         // attach the sliceable layer and remove the interactable
-        Destroy(ob.GetComponent<UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable>());
+        Destroy(ob.GetComponent<XRGrabInteractable>());
         ob.layer = 6; // Layer number of Sliceable.
     }
 
@@ -44,7 +44,8 @@ public class CuttingBoard : MonoBehaviour
         GameObject ob = collision.gameObject;
         if (collision == null || !ob.CompareTag("Ingredient")) return;
 
-        ob.AddComponent<UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable>().movementType = UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable.MovementType.VelocityTracking;
+        ob.AddComponent<XRGrabInteractable>().movementType = XRGrabInteractable.MovementType.VelocityTracking;
+        ob.GetComponent<XRGrabInteractable>().interactionLayers = 1 << 1;
         ob.layer = 0;
     }
 
@@ -104,29 +105,36 @@ public class CuttingBoard : MonoBehaviour
         p.y += 0.1f;
         slicedIngredient.transform.position = p;
 
-        slicedIngredient.AddComponent<UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable>().movementType = UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable.MovementType.VelocityTracking;
+        slicedIngredient.AddComponent<XRGrabInteractable>().movementType = XRGrabInteractable.MovementType.VelocityTracking;
+        slicedIngredient.GetComponent<XRGrabInteractable>().interactionLayers = 1 << 1;
 
         slicedIngredient.tag = "Ingredient";
 
+        bool parentIsContaminatedCookable = false;
+        bool parentIsContaminatedWashable = false;
 
-        IngredientCooking parentIngredientCooking = parent.GetComponent<IngredientCooking>();
-        if (parentIngredientCooking != null)
+
+
+        foreach (Transform child in parent.transform)
         {
-            slicedIngredient.AddComponent<IngredientCooking>();
-            IngredientCooking i = slicedIngredient.GetComponent<IngredientCooking>();
-            i.cookingTime = parentIngredientCooking.cookingTime;
-            i.burningTime = parentIngredientCooking.burningTime;
+            GameObject ob = child.gameObject;
+
+            Contamination childContamination = GetComponent<Contamination>();
+
+            if (childContamination != null)
+            {
+                parentIsContaminatedCookable = parentIsContaminatedCookable || childContamination.isContaminatedCookable;
+                parentIsContaminatedWashable = parentIsContaminatedWashable || childContamination.isContaminatedWashable;
+            }
         }
 
-        Contamination parentContamination = parent.GetComponent<Contamination>();
-        if (parentContamination != null)
-        {
-            slicedIngredient.AddComponent<Contamination>();
-            Contamination c = slicedIngredient.GetComponent<Contamination>();
-            c.isContaminatedCookable = parentContamination.isContaminatedCookable;
-            c.isContaminatedWashable = parentContamination.isContaminatedWashable;
-            slicedIngredient.AddComponent<Outline>();
-        }
+
+        slicedIngredient.AddComponent<Contamination>();
+        Contamination c = slicedIngredient.GetComponent<Contamination>();
+        c.isContaminatedCookable = parentIsContaminatedCookable;
+        c.isContaminatedWashable = parentIsContaminatedWashable;
+        slicedIngredient.AddComponent<Outline>();
+     
 
         Destroy(parent);
 
