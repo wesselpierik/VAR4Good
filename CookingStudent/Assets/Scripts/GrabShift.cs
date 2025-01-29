@@ -40,7 +40,8 @@ public class CustomXRGrabInteractable : XRGrabInteractable
             obj.transform.parent = null;
             obj.transform.GetComponent<Collider>().excludeLayers = 0;
 
-            // obj.transform.gameObject.AddComponent<Rigidbody>();
+            IngredientCooking ingredient = obj.transform.GetComponent<IngredientCooking>();
+            ingredient.StopCooking();
         }
 
         base.OnSelectExited(args);

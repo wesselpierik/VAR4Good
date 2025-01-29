@@ -5,7 +5,7 @@ public class IngredientCooking : MonoBehaviour
 {
     private AudioPlayer audioPlayer;
 
-    private bool isCooking = false;
+    public bool isCooking = false;
     private bool isBurnt = false;
 
     private bool isDone = false;
@@ -44,6 +44,12 @@ public class IngredientCooking : MonoBehaviour
 
     }
 
+    public void StopCooking() {
+        Debug.Log("We exit the pan");
+        isCooking = false;
+        audioPlayer.Stop();
+    }
+
     public void StartCooking()
     {
         if (!isCooking && !isBurnt)
@@ -59,6 +65,7 @@ public class IngredientCooking : MonoBehaviour
     {
         if (isCooking)
         {
+            Debug.Log("We are cooking");
             timer += Time.deltaTime;
             if (timer >= burningTime && !isBurnt)
             {
@@ -105,14 +112,5 @@ public class IngredientCooking : MonoBehaviour
         GlobalStateManager.Instance.DisplayScore();
 
         audioPlayer.Play(2);
-    }
-
-    private void OnTriggerExit(Collider item)
-    {
-        if (item.CompareTag("Pan"))
-        {
-            isCooking = false;
-            audioPlayer.Stop();
-        }
     }
 }

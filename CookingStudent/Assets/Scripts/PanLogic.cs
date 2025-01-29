@@ -28,8 +28,17 @@ public class PanLogic : MonoBehaviour
 
             if (ingredient && onStove)
             {
+                Debug.Log("Starting cooking");
                 ingredient.StartCooking();
             }
+        }
+    }
+
+    private void OnTriggerExit(Collider item) {
+        if (item.transform.CompareTag("Ingredient")) {
+            IngredientCooking ingredient = item.GetComponent<IngredientCooking>();
+
+            // ingredient.StopCooking();
         }
     }
 }

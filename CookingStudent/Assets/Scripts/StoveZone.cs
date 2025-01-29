@@ -4,10 +4,13 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class StoveZone : XRSocketInteractor
 {
     protected override void OnSelectEntered(SelectEnterEventArgs args) {
+        Debug.Log(args.interactable);
         if (args.interactable.transform.CompareTag("Pan")) {
             XRBaseInteractable interactable = args.interactable;
 
             interactable.GetComponent<CustomXRGrabInteractable>().attachTransform = interactable.transform.Find("SnapTransform");
+            Debug.Log($"{interactable.GetComponent<CustomXRGrabInteractable>().attachTransform.localPosition}");
+
 
             PanLogic panLogic = interactable.GetComponent<PanLogic>();
             if (panLogic != null) {
