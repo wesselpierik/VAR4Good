@@ -17,14 +17,42 @@ public class PostcardUI : MonoBehaviour
     {
         openMenu.action.started += PauseButtonPressed;
         Time.timeScale = 0;
+
+        if (active)
+        {
+            Activate();
+        }
     }
 
     void PauseButtonPressed(InputAction.CallbackContext context)
     {
-        if (active || UI == null) return;
+        if (active)
+        {
+            Deactivate();
+            active = false;
+        }
+        // else
+        // {
+        //     Activate();
+        //     active = true;
+        // }
 
+    }
+
+
+    void Activate()
+    {
+        UI.SetActive(true);
+        globalVolume.SetActive(true);
+        Time.timeScale = 0;
+        active = true;
+    }
+
+    void Deactivate()
+    {
         UI.SetActive(false);
         globalVolume.SetActive(false);
         Time.timeScale = 1;
+        active = false;
     }
 }
