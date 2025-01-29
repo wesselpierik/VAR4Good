@@ -21,6 +21,7 @@ public class MainMenuScript : MonoBehaviour
         move.enabled = true;
         turn.enabled = true;
         SceneManager.LoadScene("Main Scene");
+
     }
 
     public void Toggle()
