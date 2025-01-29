@@ -4,26 +4,35 @@ using UnityEngine.UI;
 
 public class FadeUI : MonoBehaviour
 {
-    public bool fadeOnStart = true;
+    // public bool fadeOnStart = true;
     public float fadeDuration = 2.0f;
-    public Color fadeColor;
+    private Color fadeColor;
     private Image image;
 
-    void Start()
+    private bool fadeActive = true;
+
+    void Awake()
     {
-        image = GetComponent<Image>();
+        image = GetComponentInChildren<Image>();
+        if (image == null)
+        {
+            Debug.LogError("No Image component found in children of FadeUI");
+            return;
+        }
         fadeColor = image.color;
-        if (fadeOnStart) FadeIn();
+        // if (fadeOnStart) FadeIn();
     }
 
     public void FadeIn()
     {
         Fade(1, 0);
+        fadeActive = false;
     }
 
     public void FadeOut()
     {
         Fade(0, 1);
+        fadeActive = true;
     }
 
     public void Fade(float alphaIn, float alphaOut)
