@@ -14741,7 +14741,7 @@ MonoBehaviour:
   postcardUI: {fileID: 754259949}
   pauseUI: {fileID: 678710324}
   fadeUI: {fileID: 670733043}
-  resultUI: {fileID: 0}
+  resultUI: {fileID: 1095760613}
   cam: {fileID: 1077623584}
   musicSource: {fileID: 638269778}
   globalVolume: {fileID: 1091672299}

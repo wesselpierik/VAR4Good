@@ -8,6 +8,8 @@ public class HamburgerSpawn : MonoBehaviour
     HashSet<string> objectsOnPlate = new HashSet<string>();
     HashSet<string> hamburgerIngredients = new HashSet<string>();
 
+    bool isDone = false;
+
     void Start()
     {
         HamburgerIngredients();
@@ -26,7 +28,7 @@ public class HamburgerSpawn : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (!other.transform.CompareTag("Ingredient")) return;
+        if (!other.transform.CompareTag("Ingredient") || isDone) return;
 
         Debug.Log($"collsion name {other.gameObject.name}");
 
@@ -60,6 +62,7 @@ public class HamburgerSpawn : MonoBehaviour
         {
             DeleteIngredients();
             SpawnBurger();
+            isDone = true;
         }
     }
 
@@ -85,7 +88,7 @@ public class HamburgerSpawn : MonoBehaviour
 
     private void SpawnBurger()
     {
-        string assetPath = "Ingredients/food_burger";
+        string assetPath = "IngredientPrefabs/food_burger";
         GameObject assetPrefab = Resources.Load<GameObject>(assetPath);
 
         if (assetPrefab == null)
