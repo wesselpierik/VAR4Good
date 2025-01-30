@@ -78,10 +78,6 @@ public class CuttingBoard : MonoBehaviour
         // return if not an ingredient in the list or not done
         if (ingredient == null || ingredient.CurrentCount < ingredient.TargetCount) return false;
 
-        // Debug.Log("cutting done, deleting now");
-
-        // isCutting = false;
-
 
         // Get prefab
         string assetPath = $"{assetFolderPath}/{parent.name}_slice";
@@ -96,14 +92,12 @@ public class CuttingBoard : MonoBehaviour
         // spawn prefab
         GameObject slicedIngredient = Instantiate(assetPrefab);
 
-        //slicedIngredient.transform.parent = gameObject.transform;
+ 
+        // MeshCollider meshCollider = slicedIngredient.AddComponent<MeshCollider>();
+        // meshCollider.convex = true;
 
-        MeshCollider meshCollider = slicedIngredient.AddComponent<MeshCollider>();
-        meshCollider.convex = true;
+        slicedIngredient.AddComponent<BoxCollider>();
 
-        //slicedIngredient.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
-
-        //slicedIngredient.transform.localPosition = new Vector3(0, 0, 0);
 
         Vector3 p = transform.position;
         p.y += 0.1f;
