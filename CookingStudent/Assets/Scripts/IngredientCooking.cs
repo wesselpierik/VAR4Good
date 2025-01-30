@@ -3,7 +3,7 @@ using System.Linq;
 
 public class IngredientCooking : MonoBehaviour
 {
-    private AudioPlayer audioPlayer;
+    public AudioPlayer audioPlayer;
 
     public bool isCooking = false;
     public bool isBurnt = false;

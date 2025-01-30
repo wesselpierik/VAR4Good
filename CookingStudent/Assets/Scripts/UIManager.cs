@@ -57,6 +57,8 @@ public class UIManager : MonoBehaviour
             return;
         }
 
+        if (resultActive) return;
+
         ToggleMenu();
     }
 

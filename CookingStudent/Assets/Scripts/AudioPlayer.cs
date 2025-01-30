@@ -85,5 +85,9 @@ public class AudioPlayer : MonoBehaviour
     public void Stop()
     {
         audioSource.Stop();
+        if (audioSource2 != null)
+        {
+            audioSource2.Stop();
+        }
     }
 }

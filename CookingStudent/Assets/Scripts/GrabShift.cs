@@ -42,12 +42,15 @@ public class CustomXRGrabInteractable : XRGrabInteractable
         base.OnSelectExited(args);
     }
 
-    protected override void OnSelectEntered(SelectEnterEventArgs args) {
+    protected override void OnSelectEntered(SelectEnterEventArgs args)
+    {
         IXRSelectInteractable obj = args.interactableObject;
 
-        if (obj.transform.CompareTag("Ingredient") && pan) {
+        if (obj.transform.CompareTag("Ingredient") && pan)
+        {
             IngredientCooking ingredient = obj.transform.GetComponent<IngredientCooking>();
             ingredient.StopCooking();
+            ingredient.audioPlayer.Stop();
         }
 
         base.OnSelectEntered(args);
