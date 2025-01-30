@@ -1,25 +1,21 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.XR.Interaction.Toolkit;
 
 public class MainMenuScript : MonoBehaviour
 {
     public Toggle contaminationToggle;
-    public LocomotionProvider move;
-    public LocomotionProvider turn;
+    public GameObject globalVolume;
 
     void Start()
     {
-        move.enabled = false;
-        turn.enabled = false;
+        globalVolume.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void StartGame()
     {
         Debug.Log("Start");
-        move.enabled = true;
-        turn.enabled = true;
         SceneManager.LoadScene("Main Scene");
     }
 

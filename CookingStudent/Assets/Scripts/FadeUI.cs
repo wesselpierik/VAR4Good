@@ -4,13 +4,12 @@ using UnityEngine.UI;
 
 public class FadeUI : MonoBehaviour
 {
-    // public bool fadeOnStart = true;
+    public bool fadeOnStart = true;
     public float fadeDuration = 2.0f;
     private Color fadeColor;
     private Image image;
 
-
-    void Awake()
+    void Start()
     {
         image = GetComponentInChildren<Image>();
         if (image == null)
@@ -19,7 +18,7 @@ public class FadeUI : MonoBehaviour
             return;
         }
         fadeColor = image.color;
-        // if (fadeOnStart) FadeIn();
+        if (fadeOnStart) FadeIn();
     }
 
     public void FadeIn()
@@ -46,7 +45,7 @@ public class FadeUI : MonoBehaviour
             Color newColor = fadeColor;
             newColor.a = Mathf.Lerp(alphaIn, alphaOut, timer / fadeDuration);
             image.color = newColor;
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
             yield return null;
         }
         Color newColor2 = fadeColor;
