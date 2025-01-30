@@ -42,7 +42,11 @@ public class SliceObject : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        isEmpty = false;
+        if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
+        {
+            isEmpty = false;
+        }
+
     }
 
     void Update()
