@@ -75,7 +75,7 @@ public class UIManager : MonoBehaviour
         PauseUI(pauseActive);
     }
 
-    void ToggleResult() {
+    public void ToggleResult() {
         resultActive = !resultActive;
         resultUI.SetActive(resultActive);
         resultUI.GetComponent<FinalScoreUI>().Show();

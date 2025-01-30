@@ -16,13 +16,16 @@ public class CuttingBoard : MonoBehaviour
 
         // check if collision is not null and check if parent has ingredient tag
         GameObject ob = collision.gameObject;
-        if (collision == null || !ob.CompareTag("Ingredient")) return;
+        if (!ob.CompareTag("Ingredient")) return;
 
         // Debug.Log($"Object: {ob.name}");
 
         // get the ingredient class from the global list
         // check if parent count is 0
         Ingredient ingredient = GetIngredient(ob);
+
+        Debug.Log(ingredient);
+
         if (ingredient == null || ingredient.TargetCount == 0 || ingredient.CurrentCount == ingredient.TargetCount) return;
 
         // Debug.Log($"Ingredient parent count: {ingredient.parentCount}");
@@ -31,7 +34,7 @@ public class CuttingBoard : MonoBehaviour
         // isCutting = true;
 
         // attach the sliceable layer and remove the interactable
-        Destroy(ob.GetComponent<XRGrabInteractable>());
+        Destroy(ob.GetComponent<CustomXRGrabInteractable>());
         ob.layer = 6; // Layer number of Sliceable.
     }
 
@@ -44,7 +47,8 @@ public class CuttingBoard : MonoBehaviour
         GameObject ob = collision.gameObject;
         if (collision == null || !ob.CompareTag("Ingredient")) return;
 
-        ob.AddComponent<XRGrabInteractable>().movementType = XRGrabInteractable.MovementType.VelocityTracking;
+        ob.AddComponent<CustomXRGrabInteractable>();
+        ob.GetComponent<XRGrabInteractable>().movementType = XRGrabInteractable.MovementType.VelocityTracking;
         ob.GetComponent<XRGrabInteractable>().interactionLayers = 1 << 1;
         ob.layer = 0;
     }
@@ -105,8 +109,8 @@ public class CuttingBoard : MonoBehaviour
         p.y += 0.1f;
         slicedIngredient.transform.position = p;
 
-        slicedIngredient.AddComponent<XRGrabInteractable>().movementType = XRGrabInteractable.MovementType.VelocityTracking;
-        slicedIngredient.GetComponent<XRGrabInteractable>().interactionLayers = 1 << 1;
+        slicedIngredient.AddComponent<CustomXRGrabInteractable>().movementType = XRGrabInteractable.MovementType.VelocityTracking;
+        slicedIngredient.GetComponent<CustomXRGrabInteractable>().interactionLayers = 1 << 1;
 
         slicedIngredient.tag = "Ingredient";
 

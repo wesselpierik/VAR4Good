@@ -9,7 +9,6 @@ public class FadeUI : MonoBehaviour
     private Color fadeColor;
     private Image image;
 
-    private bool fadeActive = true;
 
     void Awake()
     {
@@ -26,13 +25,11 @@ public class FadeUI : MonoBehaviour
     public void FadeIn()
     {
         Fade(1, 0);
-        fadeActive = false;
     }
 
     public void FadeOut()
     {
         Fade(0, 1);
-        fadeActive = true;
     }
 
     public void Fade(float alphaIn, float alphaOut)

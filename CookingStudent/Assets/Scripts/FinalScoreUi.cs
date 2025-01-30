@@ -10,8 +10,7 @@ public class FinalScoreUI : MonoBehaviour
     public TextMeshProUGUI feedbackText;
     public GlobalScore globalScore;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Show()
+    public void Show()
     {
         ContaminateText();
         BurnText();

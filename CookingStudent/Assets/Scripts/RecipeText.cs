@@ -24,15 +24,15 @@ public class RecipeText : MonoBehaviour
 
             float targetCookMinutes = ingredient.TargetCookMinutes;
 
-            Debug.Log($"target cook minutes {targetCookMinutes}");
-            Debug.Log($"slice current count {currentCount}");
+            // Debug.Log($"target cook minutes {targetCookMinutes}");
+            // Debug.Log($"slice current count {currentCount}");
 
             string ingredientLine = "";
 
             string[] ingNameArray = name.Split('_');
             int index = 2;
             string ingName = ingNameArray[index];
-            Debug.Log(ingName);
+            // Debug.Log(ingName);
 
             if (targetCookMinutes > 0)
             {
@@ -41,8 +41,8 @@ public class RecipeText : MonoBehaviour
                 bool isDone = obj.GetComponent<IngredientCooking>().isDone;
                 bool isBurnt = obj.GetComponent<IngredientCooking>().isBurnt;
 
-                Debug.Log($"is done {isDone}");
-                Debug.Log($"is burnt {isBurnt}");
+                // Debug.Log($"is done {isDone}");
+                // Debug.Log($"is burnt {isBurnt}");
 
                 ingredientLine += $"Cook the {ingName}";
 

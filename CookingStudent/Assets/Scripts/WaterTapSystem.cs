@@ -24,7 +24,7 @@ public class WaterTapInteraction : MonoBehaviour
         WaterStream.SetActive(false);
         WaterPool.SetActive(false);
 
-        TapButton.action.started += ToggleWaterStream;
+        TapButton.action.performed += ToggleWaterStream;
 
         audioPlayer = GetComponent<AudioPlayer>();
 
