@@ -66,7 +66,7 @@ public class UIManager : MonoBehaviour
         postcardUI.SetActive(postcardActive);
         ShowHands(!postcardActive);
         // PauseUI(postcardActive);
-        BlurUI(pauseActive);
+        BlurUI(postcardActive);
     }
 
     void ToggleMenu()
