@@ -14,7 +14,7 @@ public class FinalScoreUI : MonoBehaviour
     {
         ContaminateText();
         BurnText();
-        TrashText();
+        // TrashText();
         FinalScore();
         Feedback();
     }

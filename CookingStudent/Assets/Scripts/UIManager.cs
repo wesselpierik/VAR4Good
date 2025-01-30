@@ -65,7 +65,8 @@ public class UIManager : MonoBehaviour
         postcardActive = !postcardActive;
         postcardUI.SetActive(postcardActive);
         ShowHands(!postcardActive);
-        PauseUI(postcardActive);
+        // PauseUI(postcardActive);
+        BlurUI(postcardActive);
     }
 
     void ToggleMenu()
@@ -73,14 +74,17 @@ public class UIManager : MonoBehaviour
         pauseActive = !pauseActive;
         pauseUI.SetActive(pauseActive);
         PauseUI(pauseActive);
+        BlurUI(pauseActive);
     }
 
-    public void ToggleResult() {
+    public void ToggleResult()
+    {
         resultActive = !resultActive;
         resultUI.SetActive(resultActive);
         resultUI.GetComponent<FinalScoreUI>().Show();
 
         PauseUI(resultActive);
+        BlurUI(resultActive);
     }
 
     void ToggleFade()
@@ -97,9 +101,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void PauseUI(bool active)
+    void BlurUI(bool active)
     {
         globalVolume.SetActive(active);
+    }
+
+    void PauseUI(bool active)
+    {
         Time.timeScale = active ? 0 : 1;
     }
 
@@ -140,7 +148,7 @@ public class UIManager : MonoBehaviour
             Color newColor = fadeColor;
             newColor.a = Mathf.Lerp(alphaIn, alphaOut, timer / fadeDuration);
             fadeImage.color = newColor;
-            timer += Time.unscaledDeltaTime;
+            timer += Time.deltaTime;
             yield return null;
         }
         Color newColor2 = fadeColor;
