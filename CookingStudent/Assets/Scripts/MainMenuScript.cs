@@ -17,6 +17,7 @@ public class MainMenuScript : MonoBehaviour
     {
         Debug.Log("Start");
         SceneManager.LoadScene("Main Scene");
+        Time.timeScale = 1;
     }
 
     public void Toggle()
