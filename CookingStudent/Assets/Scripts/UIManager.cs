@@ -18,13 +18,11 @@ public class UIManager : MonoBehaviour
 
     private Color fadeColor;
 
-
     public GameObject globalVolume;
     public InputActionReference openMenu;
 
     private bool postcardActive = false;
     private bool pauseActive = false;
-
     private bool fadeActive = true;
 
     public float fadeDuration = 2.0f;
@@ -63,6 +61,7 @@ public class UIManager : MonoBehaviour
         postcardActive = !postcardActive;
         postcardUI.SetActive(postcardActive);
         ShowHands(!postcardActive);
+        PauseUI(postcardActive);
     }
 
     void ToggleMenu()

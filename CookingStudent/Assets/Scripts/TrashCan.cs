@@ -14,6 +14,7 @@ public class TrashCan : MonoBehaviour
         Debug.Log($"Object Thrown Away: {objectName}");
         GlobalStateManager.Instance.AddScore(-1);
         GlobalStateManager.Instance.DisplayScore();
+        GlobalStateManager.Instance.TrashCount();
         Destroy(collision.gameObject);
     }
 }

@@ -85,6 +85,8 @@ public class Contamination : MonoBehaviour
         isContaminatedCookable = isContaminatedCookable || contaminateCookable;
 
         UpdateMaterial();
+        GlobalStateManager.Instance.AddScore(-5);
+        GlobalStateManager.Instance.ContaminationCount();
     }
 
     public void Decontaminate(bool decontaminateWashable, bool decontaminateCookable)

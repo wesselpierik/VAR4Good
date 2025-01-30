@@ -109,6 +109,7 @@ public class IngredientCooking : MonoBehaviour
 
         GlobalStateManager.Instance.AddScore(-5);
         GlobalStateManager.Instance.DisplayScore();
+        GlobalStateManager.Instance.BurnCount();
 
         audioPlayer.Play2(2);
     }

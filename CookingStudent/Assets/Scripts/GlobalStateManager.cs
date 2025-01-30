@@ -57,7 +57,7 @@ public class GlobalStateManager : MonoBehaviour
         {
             string ret = ingredient.UpdateIngredientProgress(0, 0);
 
-            //recipeText.RecipeTextAdd();
+            recipeText.RecipeTextAdd();
 
             return ret;
         }
@@ -71,10 +71,16 @@ public class GlobalStateManager : MonoBehaviour
         if (ingredient != null)
         {
             string ret = ingredient.UpdateIngredientProgress(1, timer);
+            recipeText.RecipeTextAdd();
             return ret;
         }
 
         return null;
+    }
+
+    public void BurnObject()
+    {
+        recipeText.RecipeTextAdd();
     }
 
     public bool isRecipeComplete()
@@ -88,5 +94,20 @@ public class GlobalStateManager : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void TrashCount()
+    {
+        globalScore.TrashCount();
+    }
+
+    public void ContaminationCount()
+    {
+        globalScore.ContaminationCount();
+    }
+
+    public void BurnCount()
+    {
+        globalScore.BurnCount();
     }
 }

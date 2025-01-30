@@ -239,8 +239,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCooking: 0
-  cookingTime: 100
-  burningTime: 120
+  isBurnt: 0
+  isDone: 0
+  cookingTime: 30
+  burningTime: 40
 --- !u!54 &7872336992266860627
 Rigidbody:
   m_ObjectHideFlags: 0
