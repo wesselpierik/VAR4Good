@@ -134,7 +134,7 @@ public class CuttingBoard : MonoBehaviour
         c.isContaminatedCookable = parentIsContaminatedCookable;
         c.isContaminatedWashable = parentIsContaminatedWashable;
         slicedIngredient.AddComponent<Outline>();
-     
+
 
         Destroy(parent);
 

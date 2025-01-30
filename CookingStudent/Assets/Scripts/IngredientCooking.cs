@@ -41,7 +41,6 @@ public class IngredientCooking : MonoBehaviour
         {
             Debug.LogWarning($"Burning time ({burningTime}s) should be greater than cooking time ({cookingTime}s) on {gameObject.name}!");
         }
-
     }
 
     public void StopCooking()

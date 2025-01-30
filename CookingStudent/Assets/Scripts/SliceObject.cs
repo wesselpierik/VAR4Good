@@ -10,7 +10,7 @@ using JetBrains.Annotations;
 public class SliceObject : MonoBehaviour
 {
     private bool canSlice = true;
-    private int counter = 0;
+    private bool isEmpty = true;
 
     public Transform startSlicepoint;
     public Transform endSlicepoint;
@@ -37,6 +37,21 @@ public class SliceObject : MonoBehaviour
 
     void FixedUpdate()
     {
+        isEmpty = true;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        isEmpty = false;
+    }
+
+    void Update()
+    {
+        if (isEmpty && !canSlice)
+        {
+            canSlice = true;
+        }
+
         if (canSlice)
         {
             bool hasHit = Physics.Linecast(startSlicepoint.position, endSlicepoint.position, out RaycastHit hit, sliceableLayer);
@@ -55,6 +70,7 @@ public class SliceObject : MonoBehaviour
                 Slice(target);
             }
         }
+
     }
 
 
@@ -152,15 +168,15 @@ public class SliceObject : MonoBehaviour
 
             Destroy(target);
 
-            counter--;
+            // counter--;
 
             if (cuttingBoard == null) return;
 
             // tell the cuttingboard we sliced a specific ingredient
             bool isDone = cuttingBoard.Cut(parentNode);
 
-            if (isDone)
-                counter -= 2;
+            // if (isDone)
+            // counter -= 2;
 
         }
         else
@@ -176,23 +192,24 @@ public class SliceObject : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
-            counter++;
-        // Debug.Log($"Enter: {counter}");
-    }
+
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
+    //         counter++;
+    //     // Debug.Log($"Enter: {counter}");
+    // }
 
 
-    private void OnTriggerExit(Collider other)
-    {
-        if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
-        {
-            counter--;
-            if (counter == 0)
-                canSlice = true;
-        }
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
+    //     {
+    //         counter--;
+    //         if (counter == 0)
+    //             canSlice = true;
+    //     }
 
-        // Debug.Log($"Exit: {counter}");
-    }
+    //     // Debug.Log($"Exit: {counter}");
+    // }
 }
