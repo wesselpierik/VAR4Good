@@ -88,7 +88,7 @@ public class GlobalStateManager : MonoBehaviour
         int action = -1;
 
         if (objectName.Substring(objectName.Length - 13) == "_slice(Clone)") {
-            objectName = objectName.Substring(objectName.Length - 13);
+            objectName = objectName.Substring(0, objectName.Length - 13);
             action = -2;
         }
 
