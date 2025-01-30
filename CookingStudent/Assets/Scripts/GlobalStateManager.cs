@@ -83,6 +83,24 @@ public class GlobalStateManager : MonoBehaviour
         recipeText.RecipeTextAdd();
     }
 
+    public void TrashObject(string objectName) {
+        // food_ingredient_lettuce_slice(Clone)
+        int action = -1;
+
+        if (objectName.Substring(objectName.Length - 13) == "_slice(Clone)") {
+            objectName = objectName.Substring(objectName.Length - 13);
+            action = -2;
+        }
+
+        Ingredient ingredient = recipeList.FirstOrDefault(i => i.ObjectName == objectName);
+
+        if (ingredient != null)
+        {
+            string ret = ingredient.UpdateIngredientProgress(action, 0);
+            recipeText.RecipeTextAdd();
+        }
+    }
+
     public bool isRecipeComplete()
     {
         foreach (Ingredient ingredient in recipeList)
@@ -95,6 +113,7 @@ public class GlobalStateManager : MonoBehaviour
 
         return true;
     }
+
 
     public void TrashCount()
     {

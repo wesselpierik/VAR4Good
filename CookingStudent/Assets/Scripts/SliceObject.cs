@@ -60,8 +60,6 @@ public class SliceObject : MonoBehaviour
         {
             bool hasHit = Physics.Linecast(startSlicepoint.position, endSlicepoint.position, out RaycastHit hit, sliceableLayer);
 
-            // Debug.Log(hasHit);
-
             if (hasHit)
             {
                 if (audioPlayer != null)
@@ -77,8 +75,6 @@ public class SliceObject : MonoBehaviour
 
     }
 
-
-
     private void PrepareHull(GameObject target, GameObject hull)
     {
 
@@ -87,8 +83,6 @@ public class SliceObject : MonoBehaviour
         hull.name = target.name;
         hull.layer = target.layer;
         hull.tag = target.tag;
-        // hull.GetComponent<Rigidbody>().mass = 100;
-
 
         IngredientCooking targetIngredientCooking = target.GetComponent<IngredientCooking>();
         if (targetIngredientCooking != null)
@@ -172,16 +166,11 @@ public class SliceObject : MonoBehaviour
 
             Destroy(target);
 
-            // counter--;
 
             if (cuttingBoard == null) return;
 
             // tell the cuttingboard we sliced a specific ingredient
-            bool isDone = cuttingBoard.Cut(parentNode);
-
-            // if (isDone)
-            // counter -= 2;
-
+            cuttingBoard.Cut(parentNode);
         }
         else
             Debug.LogWarning("Hull is null");
@@ -195,25 +184,4 @@ public class SliceObject : MonoBehaviour
         collider.convex = true;
 
     }
-
-
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
-    //         counter++;
-    //     // Debug.Log($"Enter: {counter}");
-    // }
-
-
-    // private void OnTriggerExit(Collider other)
-    // {
-    //     if ((LayerMask.GetMask("Sliceable") & (1 << other.gameObject.layer)) > 0)
-    //     {
-    //         counter--;
-    //         if (counter == 0)
-    //             canSlice = true;
-    //     }
-
-    //     // Debug.Log($"Exit: {counter}");
-    // }
 }

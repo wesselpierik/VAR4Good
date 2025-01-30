@@ -16,6 +16,15 @@ public class Ingredient
     {
         switch (action)
         {
+            case -2: // trashed the sliced ingredient
+                CurrentCount = 0;
+                break;
+            case -1: // trashed the ingredient
+                if (CurrentCount > 0)
+                {
+                    CurrentCount--;
+                }
+                break;
             case 0: // Slice the ingredient
                 CurrentCount++;
                 break;
