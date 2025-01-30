@@ -62,8 +62,6 @@ public class UIManager : MonoBehaviour
     {
         postcardActive = !postcardActive;
         postcardUI.SetActive(postcardActive);
-        BlurUI(postcardActive);
-
         ShowHands(!postcardActive);
     }
 
@@ -71,7 +69,6 @@ public class UIManager : MonoBehaviour
     {
         pauseActive = !pauseActive;
         pauseUI.SetActive(pauseActive);
-        BlurUI(pauseActive);
         PauseUI(pauseActive);
     }
 
@@ -89,13 +86,9 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void BlurUI(bool active)
-    {
-        globalVolume.SetActive(active);
-    }
-
     void PauseUI(bool active)
     {
+        globalVolume.SetActive(active);
         Time.timeScale = active ? 0 : 1;
     }
 
@@ -136,7 +129,7 @@ public class UIManager : MonoBehaviour
             Color newColor = fadeColor;
             newColor.a = Mathf.Lerp(alphaIn, alphaOut, timer / fadeDuration);
             fadeImage.color = newColor;
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
             yield return null;
         }
         Color newColor2 = fadeColor;
