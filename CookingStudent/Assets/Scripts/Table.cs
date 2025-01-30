@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Table : MonoBehaviour
 {
-    private string burgerName = "food_burger";
+    private string burgerName = "food_burger(Clone)";
     public UIManager uiManager;
     private bool done = false;
 
