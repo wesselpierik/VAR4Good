@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     public GameObject pauseUI;
 
     public GameObject fadeUI;
+    public GameObject resultUI;
+
     public Camera cam;
     private Image fadeImage;
 
@@ -24,6 +26,8 @@ public class UIManager : MonoBehaviour
     private bool postcardActive = false;
     private bool pauseActive = false;
     private bool fadeActive = true;
+    private bool resultActive = false;
+
 
     public float fadeDuration = 2.0f;
 
@@ -69,6 +73,14 @@ public class UIManager : MonoBehaviour
         pauseActive = !pauseActive;
         pauseUI.SetActive(pauseActive);
         PauseUI(pauseActive);
+    }
+
+    void ToggleResult() {
+        resultActive = !resultActive;
+        resultUI.SetActive(resultActive);
+        resultUI.GetComponent<FinalScoreUI>().Show();
+
+        PauseUI(resultActive);
     }
 
     void ToggleFade()

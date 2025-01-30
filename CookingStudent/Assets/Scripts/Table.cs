@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class Table : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    string burgerName = "food_burger";
+    UIManager uiManager;
+    bool done = false;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void OnTriggerEnter(Collider other) {
+        if (!done && other.transform.name == burgerName) {
+            uiManager.ToggleResult;
+            done = true;
+        }
     }
 }

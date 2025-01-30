@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class FinalScoreUi : MonoBehaviour
+public class FinalScoreUI : MonoBehaviour
 {
     public TextMeshProUGUI contaminateText;
     public TextMeshProUGUI burnText;
@@ -11,7 +11,7 @@ public class FinalScoreUi : MonoBehaviour
     public GlobalScore globalScore;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Show()
     {
         ContaminateText();
         BurnText();
