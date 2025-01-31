@@ -26,13 +26,16 @@ public class GlobalScore : ScriptableObject
     public void ResetScore()
     {
         playerScore = 115;  // +15 for initial contamination
+        burnCount = 0;
+        trashCount = 0;
+        contaminationCount = 0;
     }
 
     public void TrashCount()
     {
         trashCount++;
     }
-    
+
     public int GetTrashCount()
     {
         return trashCount;
