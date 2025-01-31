@@ -22,7 +22,7 @@ public class Contamination : MonoBehaviour
     private bool isHand;
     private bool showContamination;
 
-    private int penalty = -3;
+    private int penalty = -5;
 
     void Start()
     {

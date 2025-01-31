@@ -49,7 +49,7 @@ public class GlobalStateManager : MonoBehaviour
 
     public void DisplayScore()
     {
-        Debug.Log(globalScore.GetScore());
+        Debug.Log($"Current score right now is: {globalScore.GetScore()}");
     }
 
     public string SliceObject(string objectName)

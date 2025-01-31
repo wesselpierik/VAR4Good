@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GlobalScore", menuName = "Scriptable Objects/GlobalScore")]
 public class GlobalScore : ScriptableObject
 {
-    private int playerScore = 109; // +9 for initial contamination
+    private int playerScore;
     private int burnCount;
     private int trashCount;
     private int contaminationCount;
@@ -25,7 +25,7 @@ public class GlobalScore : ScriptableObject
 
     public void ResetScore()
     {
-        playerScore = 0;
+        playerScore = 115;  // +15 for initial contamination
     }
 
     public void TrashCount()

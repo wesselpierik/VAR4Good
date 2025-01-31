@@ -19,6 +19,8 @@ public class IngredientCooking : MonoBehaviour
     public float burningTime = 5.0f; // In Seconds
     private float timer = 0f;
 
+    private int penalty = -20;
+
     private Renderer r;
 
     private void Awake()
@@ -106,7 +108,7 @@ public class IngredientCooking : MonoBehaviour
             c.Decontaminate(false, true);
         }
 
-        GlobalStateManager.Instance.AddScore(-15);
+        GlobalStateManager.Instance.AddScore(penalty);
         GlobalStateManager.Instance.DisplayScore();
         GlobalStateManager.Instance.BurnCount();
 
