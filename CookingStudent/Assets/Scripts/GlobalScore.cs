@@ -4,7 +4,7 @@ using UnityEngine;
 public class GlobalScore : ScriptableObject
 {
     [SerializeField]
-    private int playerScore;
+    private int playerScore = 100;
 
     [SerializeField]
     private int burnCount;
@@ -22,25 +22,24 @@ public class GlobalScore : ScriptableObject
 
     public int GetScore()
     {
-
-        int finalScore = 100 - playerScore;
-
-        if (finalScore < 0)
+        if (playerScore < 0)
         {
-            finalScore = 0;
+            playerScore = 0;
         }
 
-        return finalScore;
+        return playerScore;
     }
 
     public void ResetScore()
     {
         playerScore = 0;
     }
+
     public void TrashCount()
     {
         trashCount++;
     }
+    
     public int GetTrashCount()
     {
         return trashCount;

@@ -92,10 +92,6 @@ public class CuttingBoard : MonoBehaviour
         // spawn prefab
         GameObject slicedIngredient = Instantiate(assetPrefab);
 
- 
-        // MeshCollider meshCollider = slicedIngredient.AddComponent<MeshCollider>();
-        // meshCollider.convex = true;
-
         slicedIngredient.AddComponent<BoxCollider>();
 
 
