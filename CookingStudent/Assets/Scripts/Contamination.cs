@@ -80,13 +80,23 @@ public class Contamination : MonoBehaviour
     {
         if (!canReceiveContamination) return;
 
+        if (!isContaminatedWashable && contaminateWashable) {
+            GlobalStateManager.Instance.AddScore(-5);
+            GlobalStateManager.Instance.ContaminationCount();
+        }
+
+
+        if (!isContaminatedCookable && contaminateCookable) {
+            GlobalStateManager.Instance.AddScore(-5);
+            GlobalStateManager.Instance.ContaminationCount();
+        }
+
         // update contamination status
         isContaminatedWashable = isContaminatedWashable || contaminateWashable;
         isContaminatedCookable = isContaminatedCookable || contaminateCookable;
 
+
         UpdateMaterial();
-        GlobalStateManager.Instance.AddScore(-5);
-        GlobalStateManager.Instance.ContaminationCount();
     }
 
     public void Decontaminate(bool decontaminateWashable, bool decontaminateCookable)
