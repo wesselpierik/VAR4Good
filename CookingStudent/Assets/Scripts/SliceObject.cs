@@ -115,7 +115,7 @@ public class SliceObject : MonoBehaviour
             case "food_ingredient_onion":
                 return new Color32(88, 81, 71, 255);
             case "food_ingredient_cheese":
-                return new Color32(200, 200, 107, 255);
+                return new Color32(234, 210, 107, 255);
             default:
                 return new Color32(128, 128, 128, 255);
         }

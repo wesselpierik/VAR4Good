@@ -126,7 +126,6 @@ public class Contamination : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         AttemptContamination(other.gameObject.GetComponent<Contamination>());
-        // Debug.Log($"{name}, {other.transform.name}");
     }
 
     void AttemptContamination(Contamination c)
