@@ -5,7 +5,6 @@ public class FinalScoreUI : MonoBehaviour
 {
     public TextMeshProUGUI contaminateText;
     public TextMeshProUGUI burnText;
-    // public TextMeshProUGUI trashText;
     public TextMeshProUGUI finalScoreText;
     public TextMeshProUGUI feedbackText;
     public GlobalScore globalScore;
@@ -14,7 +13,6 @@ public class FinalScoreUI : MonoBehaviour
     {
         ContaminateText();
         BurnText();
-        // TrashText();
         FinalScore();
         Feedback();
     }
@@ -31,13 +29,6 @@ public class FinalScoreUI : MonoBehaviour
         burnText.text = $"You have burned something {burnCount} times.";
     }
 
-    // private void TrashText()
-    // {
-    //     int trashCount = globalScore.GetTrashCount();
-    //     trashText.text = $"You have thrown something in the trash {trashCount} times.";
-    // }
-
-
     private void FinalScore()
     {
         int finalScore = globalScore.GetScore();
@@ -49,13 +40,10 @@ public class FinalScoreUI : MonoBehaviour
     {
         int finalScore = globalScore.GetScore();
 
-        if (finalScore > 70)
-        {
+        if (finalScore > 70) {
             feedbackText.text = "You did well!";
 
-        }
-        else
-        {
+        } else {
             feedbackText.text = "You should practice more...";
         }
     }

@@ -13,16 +13,16 @@ public class Contamination : MonoBehaviour
     public bool canSpreadContamination = true;
     public bool canReceiveContamination = true;
 
-
-
-    // Hardcode
+    // Hardcode the colors
     private Color originalColor = Color.white;
     private Color washableColor = Color.blue;
     private Color cookableColor = Color.red;
     private Color washableCookableColor = new Color(0.75f, 0.0f, 1.0f);
 
     private bool isHand;
-    private bool showContamination; // this should be in a global settings scripts probably...
+    private bool showContamination;
+
+    private int penalty = -3;
 
     void Start()
     {
@@ -76,18 +76,19 @@ public class Contamination : MonoBehaviour
 
     }
 
+    /* Get contaminated, this is called from another contaminated object */
     void Contaminate(bool contaminateWashable, bool contaminateCookable)
     {
         if (!canReceiveContamination) return;
 
         if (!isContaminatedWashable && contaminateWashable) {
-            GlobalStateManager.Instance.AddScore(-5);
+            GlobalStateManager.Instance.AddScore(penalty);
             GlobalStateManager.Instance.ContaminationCount();
         }
 
 
         if (!isContaminatedCookable && contaminateCookable) {
-            GlobalStateManager.Instance.AddScore(-5);
+            GlobalStateManager.Instance.AddScore(penalty);
             GlobalStateManager.Instance.ContaminationCount();
         }
 
@@ -138,6 +139,7 @@ public class Contamination : MonoBehaviour
         AttemptContamination(other.gameObject.GetComponent<Contamination>());
     }
 
+    /* Contaminate another object */
     void AttemptContamination(Contamination c)
     {
         if (canSpreadContamination && IsContaminated() && c != null)

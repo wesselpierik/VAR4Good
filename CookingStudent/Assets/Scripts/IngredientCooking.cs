@@ -106,7 +106,7 @@ public class IngredientCooking : MonoBehaviour
             c.Decontaminate(false, true);
         }
 
-        GlobalStateManager.Instance.AddScore(-5);
+        GlobalStateManager.Instance.AddScore(-15);
         GlobalStateManager.Instance.DisplayScore();
         GlobalStateManager.Instance.BurnCount();
 

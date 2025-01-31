@@ -43,6 +43,8 @@ public class GlobalStateManager : MonoBehaviour
             Debug.LogWarning("globalScore is null");
         }
         globalScore.AddScore(amount);
+
+        DisplayScore();
     }
 
     public void DisplayScore()

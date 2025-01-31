@@ -6,15 +6,11 @@ public class AudioPlayer : MonoBehaviour
     public AudioResource[] resources;
     [Range(0f, 1f)] public float[] resourceVolumes;
 
-    // public AudioClip[] clips;
-
-    // [Range(0f, 1f)] public float[] clipVolumes;
-
     private AudioSource audioSource;
     private AudioSource audioSource2;
 
-
-    public float delay = 0f; //delay in seconds
+    // delay in seconds
+    public float delay = 0f;
     private float timer = 0f;
 
     void Start()

@@ -5,20 +5,14 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class CuttingBoard : MonoBehaviour
 {
-    //private GameObject ingredientParent;
-    // private bool isCutting = false;
     public string assetFolderPath = "Ingredients";
 
     void OnCollisionEnter(Collision collision)
     {
-        // Debug.Log("==================");
-        // Debug.Log($"Touched! Cutting: {isCutting}");
-
         // check if collision is not null and check if parent has ingredient tag
         GameObject ob = collision.gameObject;
         if (!ob.CompareTag("Ingredient")) return;
 
-        // Debug.Log($"Object: {ob.name}");
 
         // get the ingredient class from the global list
         // check if parent count is 0
@@ -27,11 +21,6 @@ public class CuttingBoard : MonoBehaviour
         Debug.Log(ingredient);
 
         if (ingredient == null || ingredient.TargetCount == 0 || ingredient.CurrentCount == ingredient.TargetCount) return;
-
-        // Debug.Log($"Ingredient parent count: {ingredient.parentCount}");
-        // Debug.Log("Set isCuttin to true");
-
-        // isCutting = true;
 
         // attach the sliceable layer and remove the interactable
         Destroy(ob.GetComponent<CustomXRGrabInteractable>());
@@ -70,14 +59,10 @@ public class CuttingBoard : MonoBehaviour
     // returns true if cutting is done, false otherwise
     public bool Cut(GameObject parent)
     {
-        // if (!isCutting) return false;
-
         Ingredient ingredient = GetIngredient(parent);
-
 
         // return if not an ingredient in the list or not done
         if (ingredient == null || ingredient.CurrentCount < ingredient.TargetCount) return false;
-
 
         // Get prefab
         string assetPath = $"{assetFolderPath}/{parent.name}_slice";
@@ -107,8 +92,6 @@ public class CuttingBoard : MonoBehaviour
         bool parentIsContaminatedCookable = false;
         bool parentIsContaminatedWashable = false;
 
-
-
         foreach (Transform child in parent.transform)
         {
             GameObject ob = child.gameObject;
@@ -122,13 +105,11 @@ public class CuttingBoard : MonoBehaviour
             }
         }
 
-
         slicedIngredient.AddComponent<Contamination>();
         Contamination c = slicedIngredient.GetComponent<Contamination>();
         c.isContaminatedCookable = parentIsContaminatedCookable;
         c.isContaminatedWashable = parentIsContaminatedWashable;
         slicedIngredient.AddComponent<Outline>();
-
 
         Destroy(parent);
 

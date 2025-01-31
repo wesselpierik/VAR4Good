@@ -3,16 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GlobalScore", menuName = "Scriptable Objects/GlobalScore")]
 public class GlobalScore : ScriptableObject
 {
-    [SerializeField]
-    private int playerScore = 100;
-
-    [SerializeField]
+    private int playerScore = 109; // +9 for initial contamination
     private int burnCount;
-
-    [SerializeField]
     private int trashCount;
-
-    [SerializeField]
     private int contaminationCount;
 
     public void AddScore(int amount)
@@ -22,10 +15,10 @@ public class GlobalScore : ScriptableObject
 
     public int GetScore()
     {
-        if (playerScore < 0)
-        {
-            playerScore = 0;
-        }
+        // if (playerScore < 0)
+        // {
+        //     playerScore = 0;
+        // }
 
         return playerScore;
     }
