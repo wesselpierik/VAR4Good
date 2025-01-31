@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: VAR4Good 2025 Groep C Marijn
+  companyName: VAR4Good-2025-GroepC
   productName: CookingStudent
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
